@@ -1,6 +1,6 @@
 import c from 'picocolors'
 import type { ApiBlock, ApiBodyParams, ApiOptions, ApiParameter, SwaggerData } from './types'
-import { commonUrl, getApiName, getContentOriginRef, getNamespace, handleJsType, handleWeirdName } from './utils'
+import { getApiName, getContentOriginRef, getNamespace, handleJsType, handleWeirdName } from './utils'
 
 export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths']): ApiBlock[] {
   const apiList: ApiBlock[] = []
@@ -11,7 +11,7 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
       const hasMultiMethod = Object.keys(obj).length > 1
       Object.keys(obj).forEach((method: string) => {
         const item = obj[method]
-        const url = commonUrl(path)
+        const url = path
         const name = getApiName(url, hasMultiMethod ? method : '')
         const namespace = getNamespace(url)
         const summary = item.summary // 接口注释

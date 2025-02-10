@@ -9,7 +9,7 @@ import converter from 'swagger2openapi'
 import type { ApiBlock, ApiInterface, ApiOptions, ApiParameter, InitOptions, SwaggerData } from './types'
 import { handleApiModel } from './handleApiModel'
 import { handleInterface } from './handleInterface'
-import { handleJsType } from './utils'
+import { commonUrl, handleJsType } from './utils'
 
 const CWD = process.cwd()
 let initOptions: InitOptions
@@ -137,7 +137,7 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
       const apiBodyFn = initOptions.apiBody
       const apiBodyStr = apiBodyFn({
         name,
-        url: (apiOptions.urlPrefix || '') + url,
+        url: (apiOptions.urlPrefix || '') + commonUrl(url),
         method: capitalize(method),
         summary,
         parameters,
