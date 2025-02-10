@@ -137,7 +137,7 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
       const apiBodyFn = initOptions.apiBody
       const apiBodyStr = apiBodyFn({
         name,
-        url,
+        url: (apiOptions.urlPrefix || '') + url,
         method: capitalize(method),
         summary,
         parameters,

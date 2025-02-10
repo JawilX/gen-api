@@ -6,6 +6,8 @@ export interface ApiOptions {
   /** 输出到哪个目录中 */
   outputDir?: string
   absOutputDir?: string
+  /** url前缀 */
+  urlPrefix?: string
   /** 是否生成 */
   enable?: boolean
   /** 无需生成的接口，如配置成 ignore: /\\/abcDef\\/|\\/test\\// ， 则路径中带 /abcDef/ 和 /test/ 的接口将不会生成 */
