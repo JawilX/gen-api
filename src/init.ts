@@ -1,8 +1,8 @@
+import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
-import { promises as fs } from 'node:fs'
-import c from 'picocolors'
 import { execa } from 'execa'
+import c from 'picocolors'
 import { CONFIG_FILE_NAME } from './constant'
 
 const cwd = process.cwd()
@@ -18,15 +18,16 @@ async function writeConfigFile(filePath = configFilePath) {
           {
             swaggerUrl: '',
             outputDir: '/src/api',
+            urlPrefix: '',
             enable: true,
             ignore: /\\/test\\//,
           },
         ],
-        httpTpl: 'import type { UseFetchOptions } from \\'@vueuse/core\\'',
+        httpTpl: \`import type { UseFetchOptions } from '@vueuse/core'\`,
         apiBody: ({ url, method, summary, name, formDataStr, outputInterface, pstr1, pstr2 }) => {
           return \`
             /** \${summary || '无注释'} */
-            export function \${name}(\${pstr1}, useFetchOptions?: UseFetchOptions) {
+            export function \${name}(\${pstr1}, useFetchOptions?: UseFetchOptions): UseFetchReturn<\${outputInterface}['data']> {
               return use\${method}\${formDataStr}<\${outputInterface}>(\\\`\${url}\\\`, \${pstr2}, useFetchOptions)
             }\`
         },
@@ -51,6 +52,7 @@ export async function init(args: { force: boolean }) {
       return console.log(c.yellow('本地已经存在配置文件, 如需覆盖，请执行 gen-api init --force'))
     }
     catch (error) {
+      console.error(error)
       await writeConfigFile()
     }
   }
