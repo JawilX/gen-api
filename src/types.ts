@@ -37,7 +37,6 @@ export interface ApiBodyParams {
   /** 由 parameters 处理得到的 */
   pstr1?: string
   pstr2?: string
-  pstr3?: string
 }
 
 export interface InitOptions {

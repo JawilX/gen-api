@@ -1,12 +1,12 @@
-import process from 'node:process'
-import path from 'node:path'
-import { promises as fs } from 'node:fs'
-import c from 'picocolors'
-import { execa } from 'execa'
-import axios from 'axios'
-import { capitalize } from '@antfu/utils'
-import converter from 'swagger2openapi'
 import type { ApiBlock, ApiInterface, ApiOptions, ApiParameter, InitOptions, SwaggerData } from './types'
+import { promises as fs } from 'node:fs'
+import path from 'node:path'
+import process from 'node:process'
+import { capitalize } from '@antfu/utils'
+import axios from 'axios'
+import { execa } from 'execa'
+import c from 'picocolors'
+import converter from 'swagger2openapi'
 import { handleApiModel } from './handleApiModel'
 import { handleInterface } from './handleInterface'
 import { commonUrl, handleJsType } from './utils'
@@ -116,20 +116,23 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
       // 入参需要引入的interface
       parameters?.forEach(item => !item.isSimpleJsType && item.type && fileUsedInterface.push(item.type))
 
-      let { p1, p2, p3 } = getParamStr(parameters)
+      let { p1, p2 } = getParamStr(parameters)
       if (requestBodyRef) {
         fileUsedInterface.push(requestBodyRef)
-        p1 = `data: ${requestBodyRef}`
+        // 既有 requestBodyRef，也有在 parameters 中，则需要处理
+        let p1ObjStr = p1.replace('data?: ', '')
+        p1ObjStr = p1ObjStr && p1ObjStr !== 'any' ? ` & ${p1ObjStr}` : ''
+        p1 = `data?: ${requestBodyRef}${p1ObjStr}`
         p2 = 'data'
       }
       if (requestFormData) {
         const { schema } = requestFormData
         if (schema?.type === 'object' && formDataParameters) {
-          p1 = `data: {${formDataParameters.map(item => `${item.name}?: ${item.type}${item.isArray ? '[]' : ''}`).join(', ')}}`
+          p1 = `data?: {${formDataParameters.map(item => `${item.name}?: ${item.type}${item.isArray ? '[]' : ''}`).join(', ')}}`
           p2 = 'data'
         }
         else {
-          p1 = `data: ${handleJsType(schema?.format || schema?.type || 'binary')}`
+          p1 = `data?: ${handleJsType(schema?.format || schema?.type || 'binary')}`
           p2 = 'data'
         }
       }
@@ -147,7 +150,6 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
         outputInterface: outputInterface || 'any', // 出参不存在，处理成any
         pstr1: p1,
         pstr2: p2,
-        pstr3: p3,
       })
       if (!apiBodyStr)
         throw new Error('apiBody缺少返回值！')
@@ -170,6 +172,7 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
       await fs.access(outputDir)
     }
     catch (error) {
+      console.error(error)
       // 若目标目录不存在，则创建
       await fs.mkdir(outputDir, { recursive: true })
     }
@@ -203,6 +206,7 @@ async function writeInterfaceToFile(apiOptions: ApiOptions, interfaces: ApiInter
     await fs.access(absOutputDir)
   }
   catch (error) {
+    console.error(error)
     // 若目标目录不存在，则创建
     await fs.mkdir(absOutputDir, { recursive: true })
   }
@@ -233,13 +237,11 @@ function getParamStr(parameters?: ApiParameter[]) {
 
   let p1 = ''
   let p2 = ''
-  let p3 = ''
   // 只有一个参数，且 in body
   if (avaliableParam.length === 1 && avaliableParam[0].in === 'body') {
     const onlyParam = avaliableParam[0]
-    p1 = `data: ${onlyParam.type}${onlyParam.isArray ? '[]' : ''}`
+    p1 = `data?: ${onlyParam.type}${onlyParam.isArray ? '[]' : ''}`
     p2 = 'data'
-    p3 = ''
   }
   // 所有的参数都 in path
   else if (avaliableParam.every(p => p.in === 'path')) {
@@ -248,9 +250,8 @@ function getParamStr(parameters?: ApiParameter[]) {
       desc = desc && desc !== cur.name.trim() ? `\n  // ${desc}\n` : '\n' // 有注释且和名字不一样
       return `${pre}${desc}${cur.name}?:${cur.type}${cur.isArray ? '[]' : ''};`
     }, '')
-    p1 = `data: {${str}\n}`
+    p1 = `data?: {${str}\n}`
     p2 = 'data'
-    p3 = `const {${avaliableParam.map(p => p.name).join(',')}} = data`
   }
   // 所有的参数都 in query 或 in body
   else if (avaliableParam.every(p => p.in === 'query' || p.in === 'body')) {
@@ -259,34 +260,29 @@ function getParamStr(parameters?: ApiParameter[]) {
       desc = desc && desc !== cur.name.trim() ? `\n  // ${desc}\n` : '\n' // 有注释且和名字不一样
       return `${pre}${desc}${cur.name}?: ${cur.type}${cur.isArray ? '[]' : ''};`
     }, '')
-    p1 = `data: {${str}\n}`
+    p1 = `data?: {${str}\n}`
     p2 = 'data'
-    p3 = ''
   }
   // 存在 in path 的参数，且其它都 in query 或 in body
   else if (
     avaliableParam.some(p => p.in === 'path')
     && avaliableParam.filter(p => p.in !== 'path').every(p => p.in === 'query' || p.in === 'body')
   ) {
-    const notInPathParam = avaliableParam.filter(p => p.in !== 'path')
     const str = avaliableParam.reduce((pre, cur) => {
       let desc = cur.description?.trim()
       desc = desc && desc !== cur.name.trim() ? `\n  // ${desc}\n` : '\n' // 有注释且和名字不一样
       return `${pre}${desc}${cur.name}?: ${cur.type}${cur.isArray ? '[]' : ''};`
     }, '')
-    p1 = `data: {${str}\n}`
-    p2 = ` {${notInPathParam.map(p => p.name).join(',')}} `
-    p3 = `const {${avaliableParam.map(p => p.name).join(',')}} = data`
+    p1 = `data?: {${str}\n}`
+    p2 = `data`
   }
   // 其他奇怪的或未知的情况，如 in formData
   else {
     p1 = 'data?: any'
     p2 = 'data'
-    p3 = ''
   }
   return {
     p1,
     p2,
-    p3,
   }
 }

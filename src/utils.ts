@@ -1,6 +1,6 @@
+import type { ApiContent } from './types'
 import { capitalize } from '@antfu/utils'
 import { pinyin } from 'pinyin-pro'
-import type { ApiContent } from './types'
 
 const jsKeyWords = [
   'delete',
@@ -27,11 +27,11 @@ const jsKeyWords = [
 
 /**
  * 处理接口地址
- * "/abc/def/{taskId}"   => `/abc/def/${data.taskId}`
- * "/api/abc-defg/v1/{type}/list/filter"  => `/api/abc-defg/v1/${data.type}/list/filter`
+ * "/abc/def/{taskId}"   => `/abc/def/${data?.taskId}`
+ * "/api/abc-defg/v1/{type}/list/filter"  => `/api/abc-defg/v1/${data?.type}/list/filter`
  */
 export function commonUrl(url: string): string {
-  return url.replace(/{/g, '${data.')
+  return url.replace(/\{/g, '${data?.')
 }
 
 /**
@@ -41,7 +41,7 @@ export function getApiName(url: string, method: string) {
   // 去除开头的 /api
   url = url.replace(/^\/api/, '')
   // 去除可能存在的短杠、左右花括号和$、 点号
-  url = url.replace(/\$|\{|\}|-|\./g, '')
+  url = url.replace(/[${}\-.]/g, '')
   let name = url.replace(/\/\w/g, (match, index) => {
     const letter = match.replace('/', '')
     return index === 0 ? letter.toLowerCase() : capitalize(letter)
@@ -80,9 +80,9 @@ export function getContentOriginRef(content: ApiContent) {
 export function handleWeirdName(originKey: string) {
   if (!originKey || !originKey.trim())
     return ''
-  let str = originKey.replace(/\[|\]|\(|\)|«|»|\{|\}|（|）/g, '') // 去除各种括号 [] () «» {}
-  str = str.replace(/\s|-|&|\/|\*|=|\+|\$/g, '') // 去除所有空格，短杠 - ，斜杠 /， 星号 *， 等号 =，加号 +, $符
-  str = str.replace(/(,|，|、|；|：|:|;|\.|。|"|'|‘|’|“|”)/g, '') // 去除中英文逗号，顿号，冒号，分号，中英文句号，中引文单双引号
+  let str = originKey.replace(/[[\]()«»{}（）]/g, '') // 去除各种括号 [] () «» {}
+  str = str.replace(/[\s\-&/*=+$]/g, '') // 去除所有空格，短杠 - ，斜杠 /， 星号 *， 等号 =，加号 +, $符
+  str = str.replace(/([,，、；：:;.。"'‘’“”])/g, '') // 去除中英文逗号，顿号，冒号，分号，中英文句号，中引文单双引号
   // 汉字转拼音 历史消息=>LiShiXiaoXi
   if (hasChinese(str))
     str = pinyin(str, { nonZh: 'consecutive', toneType: 'none', v: true, type: 'array' }).map(upperCaseFirstLetter).join('')
@@ -90,7 +90,7 @@ export function handleWeirdName(originKey: string) {
 }
 
 export function hasChinese(str: string) {
-  return /[\u4E00-\u9FA5]+/g.test(str)
+  return /[\u4E00-\u9FA5]+/.test(str)
 }
 
 export function handleJsType(originType: string) {
