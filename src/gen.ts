@@ -107,7 +107,8 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
     let apiStr = ''
     const namespace = item.namespace
     let fileUsedInterface: string[] = [] // 当前文件用到的 interface
-    item.apis.forEach((api) => {
+    const itemApis = item.apis.sort((a, b) => a.name.localeCompare(b.name))
+    itemApis.forEach((api) => {
       const { name, url, method, summary, parameters, requestBodyRef, requestFormData, formDataParameters, outputInterface } = api
       // 出参存在且不是简单类型
       if (outputInterface && !handleJsType(outputInterface))
@@ -188,11 +189,13 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
 async function writeInterfaceToFile(apiOptions: ApiOptions, interfaces: ApiInterface[]) {
   const absOutputDir = apiOptions.absOutputDir || ''
   let str = ''
-  interfaces.forEach((item) => {
+  const interfacesSorted = interfaces.sort((a, b) => a?.name?.localeCompare(b?.name || '') || 0)
+  interfacesSorted.forEach((item) => {
     str += `export interface ${item.name} {\n\n`
     const properties = item.properties
     if (properties) {
-      Object.keys(properties).forEach((key) => {
+      const propertiesKeysSorted = Object.keys(properties).sort((a, b) => a.localeCompare(b))
+      propertiesKeysSorted.forEach((key) => {
         const it = properties[key]
         // 注释
         str += it.description ? `/** ${it.description} */\n` : ''
