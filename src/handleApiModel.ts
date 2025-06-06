@@ -1,5 +1,5 @@
-import c from 'picocolors'
 import type { ApiBlock, ApiBodyParams, ApiOptions, ApiParameter, SwaggerData } from './types'
+import c from 'picocolors'
 import { getApiName, getContentOriginRef, getNamespace, handleJsType, handleWeirdName } from './utils'
 
 export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths']): ApiBlock[] {

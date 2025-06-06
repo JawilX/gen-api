@@ -2,11 +2,11 @@ import process from 'node:process'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { version } from '../package.json'
-import { init } from './init'
-import { gen } from './gen'
 import { resolveConfig } from './config'
+import { gen } from './gen'
+import { init } from './init'
 
-// eslint-disable-next-line no-unused-expressions
+// eslint-disable-next-line ts/no-unused-expressions
 yargs(hideBin(process.argv))
   .scriptName('gen-api')
   .usage('$0 [args]')

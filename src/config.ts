@@ -1,6 +1,6 @@
+import type { InitOptions } from './types'
 import process from 'node:process'
 import { createConfigLoader } from 'unconfig'
-import type { InitOptions } from './types'
 
 export async function resolveConfig(): Promise<InitOptions> {
   const loader = createConfigLoader({
