@@ -5,63 +5,65 @@ import { getApiName, getContentOriginRef, getNamespace, handleJsType, handleWeir
 export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths']): ApiBlock[] {
   const apiList: ApiBlock[] = []
   for (const path in paths) {
-    const isIgnore = apiOptions.ignore && apiOptions.ignore.test(path)
-    if (!isIgnore) {
-      const obj = paths[path]
-      const hasMultiMethod = Object.keys(obj).length > 1
-      Object.keys(obj).forEach((method: string) => {
-        const item = obj[method]
-        const url = path
-        const name = getApiName(url, hasMultiMethod ? method : '')
-        const namespace = getNamespace(url)
-        const summary = item.summary // 接口注释
-        const parameters = getParameters(item.parameters) // 入参
-        const requestBodyRef = getContentOriginRef(item.requestBody?.content)
-        const requestFormData = item.requestBody?.content?.['multipart/form-data']
-        const formDataProperties = requestFormData?.schema?.properties
-        let formDataParameters
-        if (formDataProperties) {
-          const list = []
-          for (const key in formDataProperties) {
-            const item = formDataProperties[key]
-            list.push({ ...item, name: key } as any)
-          }
-          formDataParameters = getParameters(list)
+    if (apiOptions.ignore && apiOptions.ignore.test(path))
+      continue
+    if (apiOptions.only && !apiOptions.only.test(path))
+      continue
+
+    const obj = paths[path]
+    const hasMultiMethod = Object.keys(obj).length > 1
+    Object.keys(obj).forEach((method: string) => {
+      const item = obj[method]
+      const url = path
+      const name = getApiName(url, hasMultiMethod ? method : '')
+      const namespace = getNamespace(url)
+      const summary = item.summary // 接口注释
+      const parameters = getParameters(item.parameters) // 入参
+      const requestBodyRef = getContentOriginRef(item.requestBody?.content)
+      const requestFormData = item.requestBody?.content?.['multipart/form-data']
+      const formDataProperties = requestFormData?.schema?.properties
+      let formDataParameters
+      if (formDataProperties) {
+        const list = []
+        for (const key in formDataProperties) {
+          const item = formDataProperties[key]
+          list.push({ ...item, name: key } as any)
         }
+        formDataParameters = getParameters(list)
+      }
 
-        const resContent = item?.responses['200']?.content
-        // 出参模型
-        const resScheme = resContent?.['application/json']?.schema || resContent?.['*/*']?.schema
+      const resContent = item?.responses['200']?.content
+      // 出参模型
+      const resScheme = resContent?.['application/json']?.schema || resContent?.['*/*']?.schema
 
-        let outputInterface = '' // 出参interface
-        // 如果存在出参模型
-        if (resScheme?.$ref)
-          outputInterface = handleWeirdName(resScheme.$ref.replace('#/components/schemas/', ''))
+      let outputInterface = '' // 出参interface
+      // 如果存在出参模型
+      if (resScheme?.$ref)
+        outputInterface = handleWeirdName(resScheme.$ref.replace('#/components/schemas/', ''))
         // 出参是个简单类型
-        else if (resScheme?.type)
-          outputInterface = handleJsType(resScheme.type)
+      else if (resScheme?.type)
+        outputInterface = handleJsType(resScheme.type)
 
-        outputInterface = handleJsType(outputInterface) ? handleJsType(outputInterface) : outputInterface
-        if (outputInterface === 'Void' || outputInterface === 'void')
-          outputInterface = ''
+      outputInterface = handleJsType(outputInterface) ? handleJsType(outputInterface) : outputInterface
+      if (outputInterface === 'Void' || outputInterface === 'void')
+        outputInterface = ''
 
-        const apiModel: ApiBodyParams = {
-          name,
-          url,
-          method,
-          summary,
-          parameters,
-          requestBodyRef,
-          requestFormData,
-          formDataParameters,
-          outputInterface,
-        }
-        const idx = apiList.findIndex(item => item.namespace === namespace)
-        if (idx > -1)
-          apiList[idx].apis.push(apiModel)
-        else apiList.push({ namespace, apis: [apiModel] })
-      })
-    }
+      const apiModel: ApiBodyParams = {
+        name,
+        url,
+        method,
+        summary,
+        parameters,
+        requestBodyRef,
+        requestFormData,
+        formDataParameters,
+        outputInterface,
+      }
+      const idx = apiList.findIndex(item => item.namespace === namespace)
+      if (idx > -1)
+        apiList[idx].apis.push(apiModel)
+      else apiList.push({ namespace, apis: [apiModel] })
+    })
   }
   return apiList
 }
