@@ -1,7 +1,7 @@
 import type { ApiInterface, SwaggerData } from './types'
 import { handleJsType, handleWeirdName } from './utils'
 
-export function handleInterface(schemas: SwaggerData['components']['schemas']): ApiInterface[] {
+export function handleInterface(schemas: SwaggerData['components']['schemas'] = {}): ApiInterface[] {
   /**
    * [{
    *    name:"",   // 原始 key 处理后结果，如： ApiResponse
