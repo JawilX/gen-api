@@ -25,9 +25,11 @@ async function writeConfigFile(filePath = configFilePath) {
         ],
         httpTpl: \`import type { UseFetchOptions } from '@vueuse/core'\`,
         apiBody: ({ url, method, summary, name, formDataStr, outputInterface, pstr1, pstr2 }) => {
+          const dataType = outputInterface?.includes('ApiResponseVoid') ? 'unknown' : \`\${outputInterface}['data']\`
+          const returnType = \`UseFetchReturn<\${dataType}> & PromiseLike<UseFetchReturn<\${dataType}>>\`
           return \`
             /** \${summary || '无注释'} */
-            export function \${name}(\${pstr1}, useFetchOptions?: UseFetchOptions): UseFetchReturn<\${outputInterface}['data']> {
+            export function \${name}(\${pstr1}, useFetchOptions?: UseFetchOptions): \${returnType} {
               return use\${method}\${formDataStr}<\${outputInterface}>(\\\`\${url}\\\`, \${pstr2}, useFetchOptions)
             }\`
         },
