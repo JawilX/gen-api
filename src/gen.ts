@@ -9,7 +9,7 @@ import c from 'picocolors'
 import converter from 'swagger2openapi'
 import { handleApiModel } from './handleApiModel'
 import { handleInterface } from './handleInterface'
-import { commonUrl, handleJsType } from './utils'
+import { commonUrl, handleJsType, mixedTypeCompare } from './utils'
 
 const CWD = process.cwd()
 let initOptions: InitOptions
@@ -107,7 +107,7 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
     let apiStr = ''
     const namespace = item.namespace
     let fileUsedInterface: string[] = [] // 当前文件用到的 interface
-    const itemApis = item.apis.sort((a, b) => a.name.localeCompare(b.name))
+    const itemApis = item.apis.sort((a, b) => mixedTypeCompare(a.name, b.name))
     itemApis.forEach((api) => {
       const { name, url, method, summary, parameters, requestBodyRef, requestFormData, formDataParameters, outputInterface } = api
       // 出参存在且不是简单类型
@@ -189,12 +189,12 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
 async function writeInterfaceToFile(apiOptions: ApiOptions, interfaces: ApiInterface[]) {
   const absOutputDir = apiOptions.absOutputDir || ''
   let str = ''
-  const interfacesSorted = interfaces.sort((a, b) => a?.name?.localeCompare(b?.name || '') || 0)
+  const interfacesSorted = interfaces.sort((a, b) => mixedTypeCompare(a?.name, b?.name))
   interfacesSorted.forEach((item) => {
     str += `export interface ${item.name} {\n\n`
     const properties = item.properties
     if (properties) {
-      const propertiesKeysSorted = Object.keys(properties).sort((a, b) => a.localeCompare(b))
+      const propertiesKeysSorted = Object.keys(properties).sort((a, b) => mixedTypeCompare(a, b))
       propertiesKeysSorted.forEach((key) => {
         const it = properties[key]
         // 注释

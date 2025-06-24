@@ -137,3 +137,17 @@ export function upperCaseFirstLetter(str: string) {
 export function lowerCaseFirstLetter(str: string) {
   return str.slice(0, 1).toLowerCase() + str.slice(1)
 }
+
+/** 处理混合类型（字符串和数字）的排序问题 */
+export function mixedTypeCompare(a?: string | number, b?: string | number) {
+  // 如果都是数字，直接比较
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a - b
+  }
+  // 如果都是字符串，使用自然排序
+  if (typeof a === 'string' && typeof b === 'string') {
+    return a.localeCompare(b, undefined, { numeric: true })
+  }
+  // 数字排在字符串前面
+  return typeof a === 'number' ? -1 : 1
+}
