@@ -38,8 +38,9 @@ export function commonUrl(url: string): string {
  * 将接口地址转化为接口名称
  */
 export function getApiName(url: string, method: string) {
-  // 去除开头的 /api
-  url = url.replace(/^\/api/, '')
+  url = url
+    .replace(/^\/api/, '') // 去除开头的 /api
+    .replace(/\/$/, '') // 去除结尾的 /
   // 去除可能存在的短杠、左右花括号和$、 点号
   url = url.replace(/[${}\-.]/g, '')
   let name = url.replace(/\/\w/g, (match, index) => {
@@ -87,6 +88,17 @@ export function handleWeirdName(originKey: string) {
   if (hasChinese(str))
     str = pinyin(str, { nonZh: 'consecutive', toneType: 'none', v: true, type: 'array' }).map(upperCaseFirstLetter).join('')
   return str
+}
+
+/** 处理注释 */
+export function handleDescription(desc?: string) {
+  if (!desc)
+    return ''
+  return desc
+    .trim() // 去除首尾空格
+    .replace(/[\n\t]/g, ' ') // 去除换行符和制表符
+    .replace(/\s+/g, ' ') // 多个空格合并成一个空格
+    .replace(/(\/\*+)|(\*+\/)/g, '') // 去除 /* 和 */
 }
 
 export function hasChinese(str: string) {
