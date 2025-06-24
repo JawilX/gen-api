@@ -1,6 +1,6 @@
 import type { ApiBlock, ApiBodyParams, ApiOptions, ApiParameter, SwaggerData } from './types'
 import c from 'picocolors'
-import { getApiName, getContentOriginRef, getNamespace, handleJsType, handleWeirdName } from './utils'
+import { getApiName, getContentOriginRef, getNamespace, handleDescription, handleJsType, handleWeirdName } from './utils'
 
 export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths']): ApiBlock[] {
   const apiList: ApiBlock[] = []
@@ -17,7 +17,7 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
       const url = path
       const name = getApiName(url, hasMultiMethod ? method : '')
       const namespace = getNamespace(url)
-      const summary = item.summary // 接口注释
+      const summary = handleDescription(item.summary) // 接口注释
       const parameters = getParameters(item.parameters) // 入参
       const requestBodyRef = getContentOriginRef(item.requestBody?.content)
       const requestFormData = item.requestBody?.content?.['multipart/form-data']
@@ -173,7 +173,7 @@ function getParameters(parameters: ApiParameter[]): ApiParameter[] {
       }
       return {
         name: handleWeirdName(item.name),
-        description: item.description || '', // 注释
+        description: handleDescription(item.description), // 注释
         in: item.in, // 可能值： body ,header, query, path...
         isSimpleJsType,
         isArray,

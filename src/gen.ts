@@ -9,7 +9,7 @@ import c from 'picocolors'
 import converter from 'swagger2openapi'
 import { handleApiModel } from './handleApiModel'
 import { handleInterface } from './handleInterface'
-import { commonUrl, handleJsType, mixedTypeCompare } from './utils'
+import { commonUrl, handleDescription, handleJsType, mixedTypeCompare } from './utils'
 
 const CWD = process.cwd()
 let initOptions: InitOptions
@@ -198,7 +198,7 @@ async function writeInterfaceToFile(apiOptions: ApiOptions, interfaces: ApiInter
       propertiesKeysSorted.forEach((key) => {
         const it = properties[key]
         // 注释
-        str += it.description ? `/** ${it.description} */\n` : ''
+        str += it.description ? `/** ${handleDescription(it.description)} */\n` : ''
         str += `${it.name}?: ${it.type}${it.isArray ? '[]' : ''}\n`
       })
     }
@@ -249,7 +249,7 @@ function getParamStr(parameters?: ApiParameter[]) {
   // 所有的参数都 in path
   else if (avaliableParam.every(p => p.in === 'path')) {
     const str = avaliableParam.reduce((pre, cur) => {
-      let desc = cur.description?.trim()
+      let desc = handleDescription(cur.description)
       desc = desc && desc !== cur.name.trim() ? `\n  // ${desc}\n` : '\n' // 有注释且和名字不一样
       return `${pre}${desc}${cur.name}?:${cur.type}${cur.isArray ? '[]' : ''};`
     }, '')
@@ -259,7 +259,7 @@ function getParamStr(parameters?: ApiParameter[]) {
   // 所有的参数都 in query 或 in body
   else if (avaliableParam.every(p => p.in === 'query' || p.in === 'body')) {
     const str = avaliableParam.reduce((pre, cur) => {
-      let desc = cur.description?.trim()
+      let desc = handleDescription(cur.description)
       desc = desc && desc !== cur.name.trim() ? `\n  // ${desc}\n` : '\n' // 有注释且和名字不一样
       return `${pre}${desc}${cur.name}?: ${cur.type}${cur.isArray ? '[]' : ''};`
     }, '')
@@ -272,7 +272,7 @@ function getParamStr(parameters?: ApiParameter[]) {
     && avaliableParam.filter(p => p.in !== 'path').every(p => p.in === 'query' || p.in === 'body')
   ) {
     const str = avaliableParam.reduce((pre, cur) => {
-      let desc = cur.description?.trim()
+      let desc = handleDescription(cur.description)
       desc = desc && desc !== cur.name.trim() ? `\n  // ${desc}\n` : '\n' // 有注释且和名字不一样
       return `${pre}${desc}${cur.name}?: ${cur.type}${cur.isArray ? '[]' : ''};`
     }, '')

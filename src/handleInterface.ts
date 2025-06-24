@@ -1,5 +1,5 @@
 import type { ApiInterface, SwaggerData } from './types'
-import { handleJsType, handleWeirdName } from './utils'
+import { handleDescription, handleJsType, handleWeirdName } from './utils'
 
 export function handleInterface(schemas: SwaggerData['components']['schemas'] = {}): ApiInterface[] {
   /**
@@ -56,7 +56,7 @@ function handleInterfaceModal(property: ApiInterface) {
     isArray,
     isSimpleJsType,
     type: additionalProperties ? handleWeirdName(additionalProperties) : handleItemsType(property),
-    description: property.description?.replace(/\t/g, '  ') || '',
+    description: handleDescription(property.description),
   }
 }
 
