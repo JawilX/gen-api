@@ -2,22 +2,16 @@ import type { InitOptions } from './types'
 import process from 'node:process'
 import { createConfigLoader } from 'unconfig'
 
-export async function resolveConfig(): Promise<InitOptions> {
+export async function resolveConfig(options: {
+  /** 用户传入的 config 配置文件路径 */
+  config: string
+}): Promise<InitOptions> {
   const loader = createConfigLoader({
     sources: [
-      {
-        files: [
-          'api.config',
-        ],
-      },
-      {
-        files: [
-          '.apirc',
-        ],
-        extensions: ['json', ''],
-      },
+      { files: ['api.config'] },
+      { files: ['.apirc'], extensions: ['json', ''] },
     ],
-    cwd: process.cwd(),
+    cwd: options.config || process.cwd(),
     merge: false,
   })
 

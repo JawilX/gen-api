@@ -57,6 +57,7 @@
     "release": "bumpp && npm publish",
     "start": "esno src/cli.ts",
     "test": "vitest",
+    "test:gen": "nr start now -c test",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
