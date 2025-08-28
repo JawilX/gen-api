@@ -13,7 +13,7 @@ export function jobAddJob(data?: AddOrUpdateJobReq, useFetchOptions?: UseFetchOp
 
 /** 扫落叶职务 */
 export function jobDelJob(data?: {
-  jobId?: string
+  jobId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return useGet<ApiResponseboolean>(`/api/job/delJob`, data, useFetchOptions)
 }

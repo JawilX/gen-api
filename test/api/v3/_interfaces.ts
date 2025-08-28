@@ -161,7 +161,7 @@ export interface AddPathologyNoRuleReqM {
   /** 心法号规则前缀（用户如果不输入，默认为空） */
   prefix?: string
   /** 心法号规则流水号长度,默认为4 */
-  serialNoLength?: string
+  serialNoLength?: (number | string)
   /** 心法号规则时间格式(用户如果不输入，默认为YYYYMMDD) */
   timeFormat?: string
 
@@ -722,7 +722,7 @@ export interface ModifyPathologyNoRuleReqM {
   /** 心法号规则前缀（用户如果不输入，默认为空） */
   prefix?: string
   /** 心法号规则流水号长度,默认为4 */
-  serialNoLength?: string
+  serialNoLength?: (number | string)
   /** 心法号规则时间格式(用户如果不输入，默认为YYYYMMDD) */
   timeFormat?: string
 
@@ -824,7 +824,7 @@ export interface PageChargeItemRspM {
   /** 主键 */
   id?: string
   /** 是否外送 1： 是 0：否 */
-  isOutwardDelivery?: string
+  isOutwardDelivery?: (number | string)
   /** 是否外送 有两个值： 是 否 */
   isOutwardDeliveryText?: string
   /** 项目名称 */

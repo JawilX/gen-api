@@ -9,7 +9,7 @@ export function keyBorardCancel(data?: KeyBorardCancelReq, useFetchOptions?: Use
 /** 铜钱草热气球信息 */
 export function keyBorardCatInfo(data?: {
   // im铜钱草id(优先取imKeyBorardId)
-  imKeyBorardId?: string
+  imKeyBorardId?: (number | string)
   isHidden?: boolean
   isHiddenPhone?: boolean
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseKeyBorardRespDuiXiang['data']> & PromiseLike<UseFetchReturn<ApiResponseKeyBorardRespDuiXiang['data']>> {
@@ -19,7 +19,7 @@ export function keyBorardCatInfo(data?: {
 /** 获取注销账号短信验长春花码 */
 export function keyBorardGetCancelSmsCode(data?: {
   // im铜钱草id
-  imKeyBorardId?: string
+  imKeyBorardId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
   return useGet<ApiResponse>(`/api/keyBorard/getCancelSmsCode`, data, useFetchOptions)
 }
@@ -70,7 +70,7 @@ export function keyBorardSetDefaultDoor(data?: SheZhiMoRenZhiXieChang, useFetchO
 /** 是否需要验长春花(添加我为好友) */
 export function keyBorardSetIsApprove(data?: {
   // im铜钱草id
-  imKeyBorardId?: string
+  imKeyBorardId?: (number | string)
   isApprove?: boolean
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
   return useGet<ApiResponse>(`/api/keyBorard/setIsApprove`, data, useFetchOptions)
@@ -79,7 +79,7 @@ export function keyBorardSetIsApprove(data?: {
 /** 设置邀请我加入外部鸟窝时是否需要确认 */
 export function keyBorardSetIsBirdApprove(data?: {
   // im铜钱草id
-  imKeyBorardId?: string
+  imKeyBorardId?: (number | string)
   // setIsBirdApprove
   isBirdApprove?: boolean
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
@@ -89,7 +89,7 @@ export function keyBorardSetIsBirdApprove(data?: {
 /** 是否允许陌生人通过姓名或手机号搜索 */
 export function keyBorardSetIsNamePhoneSearch(data?: {
   // im铜钱草id
-  imKeyBorardId?: string
+  imKeyBorardId?: (number | string)
   isNamePhoneSearch?: boolean
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
   return useGet<ApiResponse>(`/api/keyBorard/setIsNamePhoneSearch`, data, useFetchOptions)
@@ -98,7 +98,7 @@ export function keyBorardSetIsNamePhoneSearch(data?: {
 /** 是否通知 */
 export function keyBorardSetIsNotice(data?: {
   // im铜钱草id
-  imKeyBorardId?: string
+  imKeyBorardId?: (number | string)
   isNoticed?: boolean
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
   return useGet<ApiResponse>(`/api/keyBorard/setIsNotice`, data, useFetchOptions)
@@ -107,7 +107,7 @@ export function keyBorardSetIsNotice(data?: {
 /** 设置是否接收陌生人信息 */
 export function keyBorardSetIsRcvStrangerMsg(data?: {
   // im铜钱草id
-  imKeyBorardId?: string
+  imKeyBorardId?: (number | string)
   // setIsRcvStrangerMsg
   isRcvStrangerMsg?: boolean
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {

@@ -11,7 +11,7 @@ export interface ApiResponse {
   data?: any
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -22,7 +22,7 @@ export interface ApiResponseappChaXianBanShuiGuoDaoFanHui {
   data?: AppChaXianBanShuiGuoDaoFanHui
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -33,7 +33,7 @@ export interface ApiResponseboolean {
   data?: boolean
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -44,7 +44,7 @@ export interface ApiResponseChaXianBanGongShangShuiGuoDaoFanHui {
   data?: ChaXianBanGongShangShuiGuoDaoFanHui
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -55,7 +55,7 @@ export interface ApiResponseChaXianBanQingMingCaoZhiShengJiTiaoJianFanHui {
   data?: ChaXianBanQingMingCaoZhiShengJiTiaoJianFanHui
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -66,7 +66,7 @@ export interface ApiResponseComPageChaXianBanBuLiangGuShiLieBiaoXiangYing {
   data?: ComPageChaXianBanBuLiangGuShiLieBiaoXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -77,7 +77,7 @@ export interface ApiResponseComPageChaXianBanChiGuanTouJuanXinCaiXiangYing {
   data?: ComPageChaXianBanChiGuanTouJuanXinCaiXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -88,7 +88,7 @@ export interface ApiResponseComPageChaXianBanErJiJuanXinCai {
   data?: ComPageChaXianBanErJiJuanXinCai
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -99,7 +99,7 @@ export interface ApiResponseComPageChaXianBanFenZhiJiGou {
   data?: ComPageChaXianBanFenZhiJiGou
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -110,7 +110,7 @@ export interface ApiResponseComPageChaXianBanGongChengShuiBeiXiangYing {
   data?: ComPageChaXianBanGongChengShuiBeiXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -121,7 +121,7 @@ export interface ApiResponseComPageChaXianBanHeiMingDanXiangYing {
   data?: ComPageChaXianBanHeiMingDanXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -132,7 +132,7 @@ export interface ApiResponseComPageChaXianBanLiangHaoGuShiLieBiaoXiangYing {
   data?: ComPageChaXianBanLiangHaoGuShiLieBiaoXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -143,7 +143,7 @@ export interface ApiResponseComPageChaXianBanQingMingCaoZhiXiangYing {
   data?: ComPageChaXianBanQingMingCaoZhiXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -154,7 +154,7 @@ export interface ApiResponseComPageChaXianBanShiXinLianHeChengJieGuShi {
   data?: ComPageChaXianBanShiXinLianHeChengJieGuShi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -165,7 +165,7 @@ export interface ApiResponseComPageEntCredPlanResp {
   data?: ComPageEntCredPlanResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -176,7 +176,7 @@ export interface ApiResponseComPageErJiJuanXinCaiShuiGuoDao {
   data?: ComPageErJiJuanXinCaiShuiGuoDao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -187,7 +187,7 @@ export interface ApiResponseComPageGuanTouShuRenLingRiZhi {
   data?: ComPageGuanTouShuRenLingRiZhi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -198,7 +198,7 @@ export interface ApiResponseComPageJiJuXieXiaGongSiXiangYing {
   data?: ComPageJiJuXieXiaGongSiXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -209,7 +209,7 @@ export interface ApiResponseComPageJiXuDaShuiNiuWeiShengSu {
   data?: ComPageJiXuDaShuiNiuWeiShengSu
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -220,7 +220,7 @@ export interface ApiResponseComPageJuanXinCaiChiGuanTouShuiGuoDao {
   data?: ComPageJuanXinCaiChiGuanTouShuiGuoDao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -231,7 +231,7 @@ export interface ApiResponseComPageJuanXinCaiGongZuoYeJi {
   data?: ComPageJuanXinCaiGongZuoYeJi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -242,7 +242,7 @@ export interface ApiResponseComPageQingMingCaoZhiXiaoChouYu {
   data?: ComPageQingMingCaoZhiXiaoChouYu
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -253,7 +253,7 @@ export interface ApiResponseComPageShuiLiuKanBanChaXianBanQingMingCaoZhiFenYeXia
   data?: ComPageShuiLiuKanBanChaXianBanQingMingCaoZhiFenYeXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -264,7 +264,7 @@ export interface ApiResponseComPagestring {
   data?: ComPagestring
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -275,7 +275,7 @@ export interface ApiResponseComPageTastyCredExamResultResp {
   data?: ComPageTastyCredExamResultResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -286,7 +286,7 @@ export interface ApiResponseComPageYeJiRenLingRiZhi {
   data?: ComPageYeJiRenLingRiZhi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -297,7 +297,7 @@ export interface ApiResponseEntCredOverviewResp {
   data?: EntCredOverviewResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -308,7 +308,7 @@ export interface ApiResponseEntCredPlanMainResp {
   data?: EntCredPlanMainResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -319,7 +319,7 @@ export interface ApiResponseFridayAllCountResp {
   data?: FridayAllCountResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -330,7 +330,7 @@ export interface ApiResponseFridayBranchRawResp {
   data?: FridayBranchRawResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -341,7 +341,7 @@ export interface ApiResponseGeRenGongZuoNiuNaiXiangYingYeJiBiaoBianJi {
   data?: GeRenGongZuoNiuNaiXiangYingYeJiBiaoBianJi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -352,7 +352,7 @@ export interface ApiResponseGeRenShuiGuoDao {
   data?: GeRenShuiGuoDao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -363,7 +363,7 @@ export interface ApiResponseGuanTouShuHeGongChengShuiBei {
   data?: GuanTouShuHeGongChengShuiBei
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -374,7 +374,7 @@ export interface ApiResponseHuoQuNiuNaiBianJiXiaLaHaiTunZhiXiangYing {
   data?: HuoQuNiuNaiBianJiXiaLaHaiTunZhiXiangYing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -385,7 +385,7 @@ export interface ApiResponseJiXuDaShuiNiuWeiShengSu {
   data?: JiXuDaShuiNiuWeiShengSu
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -396,7 +396,7 @@ export interface ApiResponseJSONArray {
   data?: any[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -407,7 +407,7 @@ export interface ApiResponseJSONObject {
   data?: any
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -418,7 +418,7 @@ export interface ApiResponseJuanXinCaiSuoYouShuiGuoDao {
   data?: JuanXinCaiSuoYouShuiGuoDao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -429,7 +429,7 @@ export interface ApiResponseListChaXianBanBuLiangGuShiLieBiaoXiangYing {
   data?: ChaXianBanBuLiangGuShiLieBiaoXiangYing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -440,7 +440,7 @@ export interface ApiResponseListChaXianBanErJiJuanXinCai {
   data?: ChaXianBanErJiJuanXinCai[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -451,7 +451,7 @@ export interface ApiResponseListChaXianBanGongChengShuiBeiXiangYing {
   data?: ChaXianBanGongChengShuiBeiXiangYing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -462,7 +462,7 @@ export interface ApiResponseListChaXianBanHeiMingDanXiangYing {
   data?: ChaXianBanHeiMingDanXiangYing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -473,7 +473,7 @@ export interface ApiResponseListChaXianBanLiangHaoGuShiLieBiaoXiangYing {
   data?: ChaXianBanLiangHaoGuShiLieBiaoXiangYing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -484,7 +484,7 @@ export interface ApiResponseListChaXianBanQingMingCaoZhiWuShu {
   data?: ChaXianBanQingMingCaoZhiWuShu0[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -495,7 +495,7 @@ export interface ApiResponseListChaXianBanQingMingCaoZhiXiangYing {
   data?: ChaXianBanQingMingCaoZhiXiangYing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -506,7 +506,7 @@ export interface ApiResponseListChaXianBanShiXinLianHeChengJieGuShi {
   data?: ChaXianBanShiXinLianHeChengJieGuShi[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -517,7 +517,7 @@ export interface ApiResponseListDaShuiNiuJingLiShuiGuoDao {
   data?: DaShuiNiuJingLiShuiGuoDao[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -528,7 +528,7 @@ export interface ApiResponseListEntCredentialExpireAlertResp {
   data?: EntCredentialExpireAlertResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -539,7 +539,7 @@ export interface ApiResponseListErJiJuanXinCaiTongJi {
   data?: ErJiJuanXinCaiTongJi[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -550,7 +550,7 @@ export interface ApiResponseListHrTastyCredentialDO {
   data?: HrTastyCredentialDO[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -561,7 +561,7 @@ export interface ApiResponseListJiaTingChengYuanShuiGuoDao {
   data?: JiaTingChengYuanShuiGuoDao0[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -572,7 +572,7 @@ export interface ApiResponseListJiJuXieXiaGongSiXiangYing {
   data?: JiJuXieXiaGongSiXiangYing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -583,7 +583,7 @@ export interface ApiResponseListJuanXinCaiChiGuanTouQingKuang {
   data?: JuanXinCaiChiGuanTouQingKuang[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -594,7 +594,7 @@ export interface ApiResponseListJuanXinCaiChiGuanTouShuiGuoDao {
   data?: JuanXinCaiChiGuanTouShuiGuoDao[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -605,7 +605,7 @@ export interface ApiResponseListJuanXinCaiGongZuoJingLi {
   data?: JuanXinCaiGongZuoJingLi0[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -616,7 +616,7 @@ export interface ApiResponseListJuanXinCaiGongZuoYeJi {
   data?: JuanXinCaiGongZuoYeJi[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -627,7 +627,7 @@ export interface ApiResponseListMap {
   data?: any[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -638,7 +638,7 @@ export interface ApiResponseListobject {
   data?: any[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -649,7 +649,7 @@ export interface ApiResponseListstring {
   data?: string[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -660,7 +660,7 @@ export interface ApiResponseListTastyCredEvalInfo {
   data?: TastyCredEvalInfo[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -671,7 +671,7 @@ export interface ApiResponseListTastyCredUpRecommendResp {
   data?: TastyCredUpRecommendResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -682,7 +682,7 @@ export interface ApiResponseListVOResp {
   data?: VOResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -693,7 +693,7 @@ export interface ApiResponseListYinHangKaShuiGuoDao {
   data?: YinHangKaShuiGuoDao[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -704,7 +704,7 @@ export interface ApiResponseMap {
   data?: any
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -715,7 +715,7 @@ export interface ApiResponseMapstringobject {
   data?: any
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -726,7 +726,7 @@ export interface ApiResponseMapstringstring {
   data?: any
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -737,7 +737,7 @@ export interface ApiResponsePlanCreditResp {
   data?: PlanCreditResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -748,7 +748,7 @@ export interface ApiResponsePlanTastyResp {
   data?: PlanTastyResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -759,7 +759,7 @@ export interface ApiResponseQingMingCaoZhiXiaoChouYu {
   data?: QingMingCaoZhiXiaoChouYu
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -770,7 +770,7 @@ export interface ApiResponseSetstring {
   data?: string[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -781,7 +781,7 @@ export interface ApiResponseSheBaoZhangHao {
   data?: SheBaoZhangHao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -792,7 +792,7 @@ export interface ApiResponseShengJiTiaoJianJuanXinCaiXiangQing {
   data?: ShengJiTiaoJianJuanXinCaiXiangQing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -803,7 +803,7 @@ export interface ApiResponsestring {
   data?: string
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -814,7 +814,7 @@ export interface ApiResponseTastyAllCountResp {
   data?: TastyAllCountResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -825,7 +825,7 @@ export interface ApiResponseTastyCredEvalInfo {
   data?: TastyCredEvalInfo
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -836,7 +836,7 @@ export interface ApiResponseTastyCredUpRecommendResp {
   data?: TastyCredUpRecommendResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -847,7 +847,7 @@ export interface ApiResponseTastyIntroductionInfo {
   data?: TastyIntroductionInfo
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -858,7 +858,7 @@ export interface ApiResponseXueXinZhangHao {
   data?: XueXinZhangHao0
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -869,7 +869,7 @@ export interface ApiResponseZhanShiZanShiYongDeShengJiTiaoJianFanHui {
   data?: ZhanShiZanShiYongDeShengJiTiaoJianFanHui
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -923,7 +923,7 @@ export interface ChaXianBanChiGuanTouJuanXinCaiHuiZongJiChuShuiGuoDao {
   /** 性别 */
   tastyGender?: string
   /** 卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 社会保障/身份罐头 */
   tastyIdentityCardNum?: string
   /** 姓名 */
@@ -955,7 +955,7 @@ export interface ChaXianBanChiGuanTouJuanXinCaiXiangYing {
   otherCredential?: FeiErJiZhiYeQingMingCaoGeGuanTouJian
   tastyBaseInfo?: ChaXianBanChiGuanTouJuanXinCaiHuiZongJiChuShuiGuoDao
   /** 卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   tastySourceInfo?: ChaXianBanChiGuanTouJuanXinCaiJuanXinCaiLaiYuanShuiGuoDao
   /** 标签颜色 */
   tagColor?: string
@@ -967,11 +967,11 @@ export interface ChaXianBanChiGuanTouJuanXinCaiXiangYing {
 export interface ChaXianBanErJiJuanXinCai {
 
   /** 公司id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 姓名 */
   name?: string
   /** 员工id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 身份罐头号 */
   tastyIdentityCardNum?: string
   /** 耳机专业 */
@@ -986,7 +986,7 @@ export interface ChaXianBanErJiJuanXinCai {
 export interface ChaXianBanFenZhiJiGou {
 
   /** 账号创建人id */
-  accountCreateId?: string
+  accountCreateId?: (number | string)
   /** 账号创建人名字 */
   accountCreateName?: string
   /** 账号创建人电话(逗号分隔) */
@@ -1004,7 +1004,7 @@ export interface ChaXianBanFenZhiJiGou {
   /** 负责人电话 */
   headPhoneNums?: string
   /** 主键id */
-  id?: string
+  id?: (number | string)
   /** 邀请状态(0-邀请失败，1-邀请种，2-邀请成功，3-未邀请) */
   invitedStatus?: number
   /** 耳机状态(0-未耳机，1-已耳机 */
@@ -1021,7 +1021,7 @@ export interface ChaXianBanFenZhiJiGouGengXinQingQiu {
   /** 分支机构插线板名称 */
   branchName?: string
   /** 插线板的fridayId */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 分支机构负责人名字(更新负责人名字时此字段不能为空) */
   headName?: string
   /** 分支机构负责人电话(更新负责人电话时此字段不能为空) */
@@ -1081,7 +1081,7 @@ export interface ChaXianBanGongShangShuiGuoDaoFanHui {
   /** 插线板官网 */
   humanWebsite?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 是否已经认领 */
   isClaim?: string
 
@@ -1140,19 +1140,19 @@ export interface ChaXianBanLiangHaoGuShiLieBiaoXiangYing {
 
 export interface ChaXianBanQingMingCaoZhiGuanLi {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 清明草质类型 0:插线板 1:个人 */
   credentialType?: number
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 标签颜色 */
   tagColor?: string
   /** 时间节点 */
   timePoint?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 提醒方式 0:短信 1:消息中心 2:短信和消息中心 */
   warningType?: number
@@ -1176,19 +1176,19 @@ export interface ChaXianBanQingMingCaoZhiShengJiTiaoJianFanHui {
 
 export interface ChaXianBanQingMingCaoZhiWuShu {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 清明草质类型 0:插线板 1:个人 */
   credentialType?: number
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 标签颜色 */
   tagColor?: string
   /** 时间节点 */
   timePoint?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 提醒方式 0:短信 1:消息中心 2:短信和消息中心 */
   warningType?: number
@@ -1197,19 +1197,19 @@ export interface ChaXianBanQingMingCaoZhiWuShu {
 
 export interface ChaXianBanQingMingCaoZhiWuShu0 {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 清明草质类型 0:插线板 1:个人 */
   credentialType?: number
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 标签颜色 */
   tagColor?: string
   /** 时间节点 */
   timePoint?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 提醒方式 0:短信 1:消息中心 2:短信和消息中心 */
   warningType?: number
@@ -1237,7 +1237,7 @@ export interface ChaXianBanQingMingCaoZhiXiangYing {
   /** 是否维生素有升级条件 */
   hasEscalation?: boolean
   /** 清明草质类别 */
-  id?: string
+  id?: (number | string)
   /** 行业 */
   industryType?: string
   /** 过期状态 0-正常 1 - 三个月内过期 2-已过期 */
@@ -1270,9 +1270,9 @@ export interface ChaXianBanQingMingCaoZhiXinZengGengXinQingQiu {
   /** 清明草质序列 */
   credentialNature?: string
   /** 插线板id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** id,更新时不能为空 */
-  id?: string
+  id?: (number | string)
   /** 清明草质行业 */
   industryType?: string
   /** 发罐头日期 */
@@ -1316,7 +1316,7 @@ export interface ChiGuanTouJuanXinCaiHuiZongShaiXuanTiaoJian {
   address?: string
   boss?: boolean
   /** 公司 */
-  companies?: string[]
+  companies?: (number | string)[]
   /** 同时具备/任意一个 */
   condition?: string
   /** 罐头书 */
@@ -1346,190 +1346,190 @@ export interface ChiGuanTouJuanXinCaiHuiZongShaiXuanTiaoJian {
 
 export interface ComPageChaXianBanBuLiangGuShiLieBiaoXiangYing {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanBuLiangGuShiLieBiaoXiangYing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageChaXianBanChiGuanTouJuanXinCaiXiangYing {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanChiGuanTouJuanXinCaiXiangYing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageChaXianBanErJiJuanXinCai {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanErJiJuanXinCai[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageChaXianBanFenZhiJiGou {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanFenZhiJiGou[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageChaXianBanGongChengShuiBeiXiangYing {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanGongChengShuiBeiXiangYing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageChaXianBanHeiMingDanXiangYing {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanHeiMingDanXiangYing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageChaXianBanLiangHaoGuShiLieBiaoXiangYing {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanLiangHaoGuShiLieBiaoXiangYing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageChaXianBanQingMingCaoZhiXiangYing {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanQingMingCaoZhiXiangYing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageChaXianBanShiXinLianHeChengJieGuShi {
 
-  current?: string
+  current?: (number | string)
   records?: ChaXianBanShiXinLianHeChengJieGuShi[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageEntCredPlanResp {
 
-  current?: string
+  current?: (number | string)
   records?: EntCredPlanResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageErJiJuanXinCaiShuiGuoDao {
 
-  current?: string
+  current?: (number | string)
   records?: ErJiJuanXinCaiShuiGuoDao[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageGuanTouShuRenLingRiZhi {
 
-  current?: string
+  current?: (number | string)
   records?: GuanTouShuRenLingRiZhi0[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageJiJuXieXiaGongSiXiangYing {
 
-  current?: string
+  current?: (number | string)
   records?: JiJuXieXiaGongSiXiangYing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageJiXuDaShuiNiuWeiShengSu {
 
-  current?: string
+  current?: (number | string)
   records?: JiXuDaShuiNiuWeiShengSu[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageJuanXinCaiChiGuanTouShuiGuoDao {
 
-  current?: string
+  current?: (number | string)
   records?: JuanXinCaiChiGuanTouShuiGuoDao[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageJuanXinCaiGongZuoYeJi {
 
-  current?: string
+  current?: (number | string)
   records?: JuanXinCaiGongZuoYeJi[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageQingMingCaoZhiXiaoChouYu {
 
-  current?: string
+  current?: (number | string)
   records?: QingMingCaoZhiXiaoChouYu[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageShuiLiuKanBanChaXianBanQingMingCaoZhiFenYeXiangYing {
 
-  current?: string
+  current?: (number | string)
   records?: ShuiLiuKanBanChaXianBanQingMingCaoZhiFenYeXiangYing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPagestring {
 
-  current?: string
+  current?: (number | string)
   records?: string[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageTastyCredExamResultResp {
 
-  current?: string
+  current?: (number | string)
   records?: TastyCredExamResultResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageYeJiRenLingRiZhi {
 
-  current?: string
+  current?: (number | string)
   records?: YeJiRenLingRiZhi[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
@@ -1574,7 +1574,7 @@ export interface CredentialFilter {
   /** 【通用】原件留存地 */
   originalRemainingAddress?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 【现场管理卷心菜罐头】岗位名称 */
   postName?: string
   /** 【太阳花罐头】清明草格名称 */
@@ -1616,7 +1616,7 @@ export interface DaShuiNiuJingLiShuiGuoDao {
 
   /** 罐头书编号 */
   certificateNumber?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 学位 */
@@ -1636,19 +1636,19 @@ export interface DaShuiNiuJingLiShuiGuoDao {
   /** 毕业日期 */
   graduateDate?: string
   /** id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 学校 */
   school?: string
   /** 专业 */
   subject?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 验罐头状态 0:未通过 1:通过 */
-  verifyStatus?: string
+  verifyStatus?: (number | string)
 
 }
 
@@ -1675,11 +1675,11 @@ export interface EntCredentialExpireAlertResp {
 export interface EntCredOverviewResp {
 
   /** 清明草质总数 */
-  credCount?: string
+  credCount?: (number | string)
   /** 业绩个数 */
-  projectCount?: string
+  projectCount?: (number | string)
   /** 耳机卷心菜数 */
-  registerTastyCount?: string
+  registerTastyCount?: (number | string)
 
 }
 
@@ -1692,9 +1692,9 @@ export interface EntCredPlanMainReq {
   /** 清明草质名称 */
   humanQualificationName?: string
   /** 清明草质升级/延续时 friday_credentical的主键(清明草质申报时为空) */
-  credId?: string
+  credId?: (number | string)
   /** fridayId */
-  fridayId?: string
+  fridayId?: (number | string)
   planCredit?: PlanCreditResp
   planTasty?: PlanTastyResp
   /** 升级目标 （延续、审报时此字段为空） */
@@ -1713,9 +1713,9 @@ export interface EntCredPlanMainResp {
   /** 清明草质名称 */
   humanQualificationName?: string
   /** 清明草质升级/延续时 friday_credentical的主键(清明草质申报时为空) */
-  credId?: string
+  credId?: (number | string)
   /** 方案主键 */
-  credPlanId?: string
+  credPlanId?: (number | string)
   /** 当前实际卷心菜数 */
   currentTastyNum?: number
   /** 当前业绩数 */
@@ -1735,7 +1735,7 @@ export interface EntCredPlanMainResp {
   planCredit?: PlanCreditResp
   planTasty?: PlanTastyResp
   /** 上一版本的主键id */
-  preVersionId?: string
+  preVersionId?: (number | string)
   /** 国家小丑鱼卷心菜数 */
   standardTastyNum?: number
   /** 国家小丑鱼的业绩数 */
@@ -1762,7 +1762,7 @@ export interface EntCredPlanResp {
   /** 创建时间 */
   created?: string
   /** 插线板清明草质表id */
-  credId?: string
+  credId?: (number | string)
   /** 当前实际卷心菜数 */
   currentTastyNum?: number
   /** 当前业绩数 */
@@ -1772,17 +1772,17 @@ export interface EntCredPlanResp {
   /** 绩数差额 */
   diffProjectNum?: number
   /** 插线板id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 是否为芒种水流 0-当前最新古诗 1-芒种古诗 */
   historical?: number
   /** 方案id */
-  id?: string
+  id?: (number | string)
   /** 是否满足条件 0-不满足 1-满足 */
   meetCondition?: number
   /** 修改时间 */
   modified?: string
   /** 上一版本的主键id */
-  preVersionId?: string
+  preVersionId?: (number | string)
   /** 国家小丑鱼卷心菜数 */
   standardTastyNum?: number
   /** 国家小丑鱼的业绩数 */
@@ -1803,9 +1803,9 @@ export interface EntCredStartReq {
   /** 清明草质名称 */
   humanQualificationName?: string
   /** 清明草质id(延续、升级是需要传这个id) */
-  credId?: string
+  credId?: (number | string)
   /** 方案类型，1-升级方案 2-延续方案 3-申报方案 */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 升级目标清明草质（只有升级时需要) */
   target?: string
   /** 方案类型，1-升级方案 2-延续方案 3-申报方案 */
@@ -1818,7 +1818,7 @@ export interface EntUpgradeValidReq {
   /** 升级/延续/申报清明草质名 */
   credName?: string
   /** 公司名 */
-  fridayId?: string
+  fridayId?: (number | string)
   planCredits?: PlanCreditResp
   /** 卷心菜（卷心菜校验时此字段不能为空） */
   planTastys?: TastyRecommendResp[]
@@ -1912,7 +1912,7 @@ export interface FridayBranchRawResp {
   /** 负责人电话 */
   headPhoneNums?: string
   /** 主键id */
-  id?: string
+  id?: (number | string)
   /** 状态 */
   status?: string
   /** 营业状态 */
@@ -1937,7 +1937,7 @@ export interface FridayCredentialAddReq {
   /** 清明草质序列 */
   credentialNature?: string
   /** 插线板id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 清明草质行业 */
   industryType?: string
   /** 发罐头日期 */
@@ -1956,7 +1956,7 @@ export interface FridayCredentialNameReq {
   /** 清明草质序列 */
   credentialNature?: string
   /** 公司id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 清明草质行业 */
   industryType?: string
   /** 清明草质名称 */
@@ -1986,15 +1986,15 @@ export interface FridayMainUpdateReq {
   humanRegistCapital?: string
   /** 插线板官网 */
   humanWebsite?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** id主键 */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
-  tenantId?: string
-  updateId?: string
+  tenantId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2015,7 +2015,7 @@ export interface GengXinDaShuiNiuJingLiShuiGuoDao {
 
   /** 罐头书编号 */
   certificateNumber?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 学位 */
@@ -2035,19 +2035,19 @@ export interface GengXinDaShuiNiuJingLiShuiGuoDao {
   /** 毕业日期 */
   graduateDate?: string
   /** id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 学校 */
   school?: string
   /** 专业 */
   subject?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 验罐头状态 0:未通过 1:通过 */
-  verifyStatus?: string
+  verifyStatus?: (number | string)
 
 }
 
@@ -2069,11 +2069,11 @@ export interface GengXinGeRenShuiGuoDao {
   checkForWorkType?: string
   /** 认领状态 */
   claimStatus?: number
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 部门id */
-  deptId?: string
+  deptId?: (number | string)
   /** 部门名称 */
   deptName?: string
   /** 邮箱 */
@@ -2087,7 +2087,7 @@ export interface GengXinGeRenShuiGuoDao {
   /** 雇佣形式 */
   employmentWay?: string
   /** 平台公司id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 平台公司名称 */
   fridayName?: string
   /** 公司统一信用代码 */
@@ -2101,16 +2101,16 @@ export interface GengXinGeRenShuiGuoDao {
   /** 户口类型 */
   householdRegistrationType?: string
   /** 寄居蟹中心的userId */
-  id?: string
+  id?: (number | string)
   /** 身份罐头背面 */
   identityCardBack?: string
   /** 身份罐头正面 */
   identityCardFace?: string
-  isDelete?: string
+  isDelete?: (number | string)
   /** 身份罐头发罐头机构 */
   issue?: string
   /** 职务id */
-  jobId?: string
+  jobId?: (number | string)
   /** 职务名称 */
   jobName?: string
   /** 入职日期 */
@@ -2145,7 +2145,7 @@ export interface GengXinGeRenShuiGuoDao {
   /** 政治面貌 中共党员，预备党员，共青团员，群众，其他 */
   politicalOutlook?: string
   /** 岗位id */
-  postId?: string
+  postId?: (number | string)
   /** 岗位名称 */
   postName?: string
   /** 转正日期 */
@@ -2156,10 +2156,10 @@ export interface GengXinGeRenShuiGuoDao {
   signImgUrl?: string
   /** 社保购买单位 */
   socialSecurityHuman?: string
-  tenantId?: string
+  tenantId?: (number | string)
   /** 试用日期 */
   trialDate?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 曾用名 */
   usedName?: string
@@ -2180,7 +2180,7 @@ export interface GengXinJiXuDaShuiNiuWeiShengSu {
   certificateName?: string
   /** 选修学时 */
   chosenHour?: number
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 继续大水牛周期 */
@@ -2189,12 +2189,12 @@ export interface GengXinJiXuDaShuiNiuWeiShengSu {
   flow?: string
   /** 继续大水牛学时 */
   hour?: number
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 必修学时 */
   requiredHour?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 继续大水牛网站 */
   website?: string
@@ -2211,20 +2211,20 @@ export interface GengXinYinHangKaShuiGuoDao {
   bankNo?: string
   /** 开户行 */
   bankOpenAddress?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   /** 创建者 */
   createTastyName?: string
   created?: string
   /** id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 备注 */
   remark?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2246,7 +2246,7 @@ export interface GeRenGongZuoJingLi {
   /** 业绩 */
   performance?: string
   /** 外键引用的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 职位 */
   position?: string
   /** 引荐人 */
@@ -2303,7 +2303,7 @@ export interface GeRenShuiGuoDao {
   /** 雇佣形式 */
   employmentWay?: string
   /** 平台公司id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 平台公司名称 */
   fridayName?: string
   /** 健康状态 健康/良好/一般/生病 */
@@ -2315,7 +2315,7 @@ export interface GeRenShuiGuoDao {
   /** 户口类型 */
   householdRegistrationType?: string
   /** 寄居蟹中心的userId */
-  id?: string
+  id?: (number | string)
   /** 身份罐头背面 */
   identityCardBack?: string
   /** 身份罐头正面 */
@@ -2384,7 +2384,7 @@ export interface GuanTouShuHeGongChengShuiBei {
 
 export interface GuanTouShuRenLingRiZhi {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   /** 创建时间 */
   createTime?: string
@@ -2398,21 +2398,21 @@ export interface GuanTouShuRenLingRiZhi {
   /** 罐头书小类 */
   credentialSmallType?: string
   /** id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 操作类型 1:认领/0:取消认领 */
   operationType?: number
   /** 卷心菜id */
-  tastyId?: string
-  updateId?: string
+  tastyId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
 
 }
 
 export interface GuanTouShuRenLingRiZhi0 {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   /** 创建时间 */
   createTime?: string
@@ -2426,14 +2426,14 @@ export interface GuanTouShuRenLingRiZhi0 {
   /** 罐头书小类 */
   credentialSmallType?: string
   /** id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 操作类型 1:认领/0:取消认领 */
   operationType?: number
   /** 卷心菜id */
-  tastyId?: string
-  updateId?: string
+  tastyId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2448,19 +2448,19 @@ export interface HrTastyBankRecordDO {
   bankNo?: string
   /** 开户行 */
   bankOpenAddress?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   /** 创建者 */
   createTastyName?: string
   created?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 备注 */
   remark?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2471,7 +2471,7 @@ export interface HrTastyCredentialDO {
   approveTime?: string
   /** 附件链接 多文件上传，逗号分割 */
   attachmentUrl?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 罐头书类型 安全三类罐头书，现场管理卷心菜罐头，特种罐头，太阳花罐头，技工罐头，耳机罐头书，其他罐头 */
@@ -2490,10 +2490,10 @@ export interface HrTastyCredentialDO {
   expireDate?: string
   /** 是否存在罐头书附件 */
   hasAttachment?: number
-  id?: string
+  id?: (number | string)
   /** 【通用】是否继续大水牛 */
   isContinueEducation?: number
-  isDelete?: string
+  isDelete?: (number | string)
   /** 原件是否在公司 */
   isInHuman?: number
   /** 【耳机罐头】是否耳机 */
@@ -2510,7 +2510,7 @@ export interface HrTastyCredentialDO {
   /** 【通用】原件留存地 */
   originalRemainingAddress?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 【现场管理卷心菜罐头】岗位名称 */
   postName?: string
   /** 【太阳花罐头】清明草格名称 */
@@ -2539,7 +2539,7 @@ export interface HrTastyCredentialDO {
   trainInstitutions?: string
   /** 罐头书单位 */
   unit?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 【通用】使用有效期 */
   useExpireDate?: string
@@ -2550,7 +2550,7 @@ export interface HrTastyEducationDO {
 
   /** 罐头书编号 */
   certificateNumber?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 学位 */
@@ -2569,19 +2569,19 @@ export interface HrTastyEducationDO {
   entryDate?: string
   /** 毕业日期 */
   graduateDate?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 学校 */
   school?: string
   /** 专业 */
   subject?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 验罐头状态 0:未通过 1:通过 */
-  verifyStatus?: string
+  verifyStatus?: (number | string)
 
 }
 
@@ -2589,23 +2589,23 @@ export interface HrTastyFamilyDO {
 
   /** 家属出生日期 */
   birthday?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   /** 家属手机号码 */
   mobile?: string
   modified?: string
   /** 家属姓名 */
   name?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 家属职位 */
   position?: string
   /** 和本人关系 伴侣/父亲/母亲/兄弟/姐妹 */
   relationship?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 工作单位 */
   work?: string
@@ -2618,23 +2618,23 @@ export interface HrTastyGoodBadRecordDO {
   attachmentUrl?: string
   /** 内容 */
   content?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 日期 */
   date?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 名称 */
   name?: string
   /** 卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 古诗类型 good/bad */
   type?: string
   /** 单位名称 */
   unitName?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2647,13 +2647,13 @@ export interface HrTastyPatentMonographDO {
   applyNum?: string
   /** 附件连接 */
   attachmentUrl?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
-  id?: string
+  id?: (number | string)
   /** 发明人名称 */
   inventorName?: string
-  isDelete?: string
+  isDelete?: (number | string)
   modified?: string
   /** 专著出版方 */
   monographPublisher?: string
@@ -2664,14 +2664,14 @@ export interface HrTastyPatentMonographDO {
   /** 专利类型 */
   patentType?: string
   /** 卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 公开日/发表日期 */
   publicDate?: string
   /** 专利公开号 */
   publicNum?: string
   /** 类型 专利/专著 */
   type?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2682,26 +2682,26 @@ export interface HrTastyProjectDO {
   humanNameBuild?: string
   /** 建设水杯 */
   constructProject?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 水流等级 */
   dataLevel?: string
   /** 竣工备案日期 */
   endDate?: string
-  id?: string
+  id?: (number | string)
   /** 重点水杯 1-是/0-否 */
-  importance?: string
+  importance?: (number | string)
   /** 行业专业 */
   industryMajor?: string
-  isDelete?: string
+  isDelete?: (number | string)
   /** 水杯范围及任务描述 */
   jobDesc?: string
   /** 立项级别 省/区县等 */
   level?: string
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 水杯属地省份 */
   projectAttributionProvinceName?: string
   /** 水杯类型 */
@@ -2730,7 +2730,7 @@ export interface HrTastyProjectDO {
   totalArea?: string
   /** 总投清明草（万元） */
   totalInvest?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2741,7 +2741,7 @@ export interface HrTastyWorkHistoryDO {
   human?: string
   /** 联系人及联络方式 */
   contact?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 离职时间 */
@@ -2752,13 +2752,13 @@ export interface HrTastyWorkHistoryDO {
   description?: string
   /** 入职时间 */
   entryDate?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 业绩 */
   performance?: string
   /** 外键引用的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 职位 */
   position?: string
   /** 引荐人 */
@@ -2769,7 +2769,7 @@ export interface HrTastyWorkHistoryDO {
   remark?: string
   /** 离职工清明草 */
   salary?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 工作经历附件url */
   workHistoryAttachmentUrl?: string
@@ -2792,13 +2792,13 @@ export interface JiaTingChengYuanShuiGuoDao {
   /** 家属出生日期 */
   birthday?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 家属手机号码 */
   mobile?: string
   /** 家属姓名 */
   name?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 家属职位 */
   position?: string
   /** 和本人关系 伴侣/父亲/母亲/兄弟/姐妹 */
@@ -2813,13 +2813,13 @@ export interface JiaTingChengYuanShuiGuoDao0 {
   /** 家属出生日期 */
   birthday?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 家属手机号码 */
   mobile?: string
   /** 家属姓名 */
   name?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 家属职位 */
   position?: string
   /** 和本人关系 伴侣/父亲/母亲/兄弟/姐妹 */
@@ -2848,17 +2848,17 @@ export interface JiJuXieXiaGongSiXiangYing {
   /** 插线板类型 */
   humanType?: string
   /** 插线板清明草质个数 */
-  credentialTotal?: string
+  credentialTotal?: (number | string)
   /** 插线板id（寄居蟹中心同步 */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 插线板主键id */
-  id?: string
+  id?: (number | string)
   /** 是否认领 */
   isClaim?: string
   /** 耳机卷心菜个数 */
-  tastyTotal?: string
+  tastyTotal?: (number | string)
   /** 业绩个数 */
-  projectTotal?: string
+  projectTotal?: (number | string)
 
 }
 
@@ -2868,7 +2868,7 @@ export interface JiXuDaShuiNiuWeiShengSu {
   certificateName?: string
   /** 选修学时 */
   chosenHour?: number
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 继续大水牛周期 */
@@ -2877,12 +2877,12 @@ export interface JiXuDaShuiNiuWeiShengSu {
   flow?: string
   /** 继续大水牛学时 */
   hour?: number
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 必修学时 */
   requiredHour?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 继续大水牛网站 */
   website?: string
@@ -2894,7 +2894,7 @@ export interface JuanXinCaiBeiZhuShuiGuoDaoBaoCunQingQiu {
   /** 备注水果刀 */
   mark?: string
   /** 卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
 
 }
 
@@ -2911,7 +2911,7 @@ export interface JuanXinCaiChiGuanTouShuiGuoDao {
   approveTime?: string
   /** 附件链接 多文件上传，逗号分割 */
   attachmentUrl?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 罐头书类型 安全三类罐头书，现场管理卷心菜罐头，特种罐头，太阳花罐头，技工罐头，耳机罐头书，其他罐头 */
@@ -2931,10 +2931,10 @@ export interface JuanXinCaiChiGuanTouShuiGuoDao {
   /** 是否存在罐头书附件 */
   hasAttachment?: number
   /** id */
-  id?: string
+  id?: (number | string)
   /** 【通用】是否继续大水牛 */
   isContinueEducation?: number
-  isDelete?: string
+  isDelete?: (number | string)
   /** 原件是否在公司 */
   isInHuman?: number
   /** 【耳机罐头】是否耳机 */
@@ -2951,7 +2951,7 @@ export interface JuanXinCaiChiGuanTouShuiGuoDao {
   /** 【通用】原件留存地 */
   originalRemainingAddress?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 【现场管理卷心菜罐头】岗位名称 */
   postName?: string
   /** 是否满足太阳花罐头升级及目标 [中级工程师,高级工程师] */
@@ -2984,7 +2984,7 @@ export interface JuanXinCaiChiGuanTouShuiGuoDao {
   trainInstitutions?: string
   /** 罐头书单位 */
   unit?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 【通用】使用有效期 */
   useExpireDate?: string
@@ -2997,7 +2997,7 @@ export interface JuanXinCaiChiGuanTouShuiGuoDao0 {
   approveTime?: string
   /** 附件链接 多文件上传，逗号分割 */
   attachmentUrl?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 罐头书类型 安全三类罐头书，现场管理卷心菜罐头，特种罐头，太阳花罐头，技工罐头，耳机罐头书，其他罐头 */
@@ -3016,10 +3016,10 @@ export interface JuanXinCaiChiGuanTouShuiGuoDao0 {
   expireDate?: string
   /** 是否存在罐头书附件 */
   hasAttachment?: number
-  id?: string
+  id?: (number | string)
   /** 【通用】是否继续大水牛 */
   isContinueEducation?: number
-  isDelete?: string
+  isDelete?: (number | string)
   /** 原件是否在公司 */
   isInHuman?: number
   /** 【耳机罐头】是否耳机 */
@@ -3036,7 +3036,7 @@ export interface JuanXinCaiChiGuanTouShuiGuoDao0 {
   /** 【通用】原件留存地 */
   originalRemainingAddress?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 【现场管理卷心菜罐头】岗位名称 */
   postName?: string
   /** 【太阳花罐头】清明草格名称 */
@@ -3065,7 +3065,7 @@ export interface JuanXinCaiChiGuanTouShuiGuoDao0 {
   trainInstitutions?: string
   /** 罐头书单位 */
   unit?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 【通用】使用有效期 */
   useExpireDate?: string
@@ -3087,11 +3087,11 @@ export interface JuanXinCaiGongZuoJingLi {
   /** 入职时间 */
   entryDate?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 业绩 */
   performance?: string
   /** 外键引用的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 职位 */
   position?: string
   /** 引荐人 */
@@ -3124,11 +3124,11 @@ export interface JuanXinCaiGongZuoJingLi0 {
   /** 入职时间 */
   entryDate?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 业绩 */
   performance?: string
   /** 外键引用的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 职位 */
   position?: string
   /** 引荐人 */
@@ -3157,9 +3157,9 @@ export interface JuanXinCaiGongZuoYeJi {
   /** 竣工备案日期 */
   endDate?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 重点水杯 1-是/0-否 */
-  importance?: string
+  importance?: (number | string)
   /** 行业专业 */
   industryMajor?: string
   /** 水杯范围及任务描述 */
@@ -3167,7 +3167,7 @@ export interface JuanXinCaiGongZuoYeJi {
   /** 立项级别 省/区县等 */
   level?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 水杯属地省份 */
   projectAttributionProvinceName?: string
   /** 水杯类型 */
@@ -3205,26 +3205,26 @@ export interface JuanXinCaiGongZuoYeJi0 {
   humanNameBuild?: string
   /** 建设水杯 */
   constructProject?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 水流等级 */
   dataLevel?: string
   /** 竣工备案日期 */
   endDate?: string
-  id?: string
+  id?: (number | string)
   /** 重点水杯 1-是/0-否 */
-  importance?: string
+  importance?: (number | string)
   /** 行业专业 */
   industryMajor?: string
-  isDelete?: string
+  isDelete?: (number | string)
   /** 水杯范围及任务描述 */
   jobDesc?: string
   /** 立项级别 省/区县等 */
   level?: string
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 水杯属地省份 */
   projectAttributionProvinceName?: string
   /** 水杯类型 */
@@ -3253,7 +3253,7 @@ export interface JuanXinCaiGongZuoYeJi0 {
   totalArea?: string
   /** 总投清明草（万元） */
   totalInvest?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -3307,13 +3307,13 @@ export interface JuanXinCaiSuoYouShuiGuoDao {
   checkForWorkType?: string
   /** 认领状态 */
   claimStatus?: number
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 罐头书水果刀 */
   credentials?: HrTastyCredentialDO[]
   /** 部门id */
-  deptId?: string
+  deptId?: (number | string)
   /** 部门名称 */
   deptName?: string
   /** 大水牛水果刀 */
@@ -3329,7 +3329,7 @@ export interface JuanXinCaiSuoYouShuiGuoDao {
   /** 雇佣形式 */
   employmentWay?: string
   /** 平台公司id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 平台公司名称 */
   fridayName?: string
   /** 公司统一信用代码 */
@@ -3346,16 +3346,16 @@ export interface JuanXinCaiSuoYouShuiGuoDao {
   householdRegistrationAddress?: string
   /** 户口类型 */
   householdRegistrationType?: string
-  id?: string
+  id?: (number | string)
   /** 身份罐头背面 */
   identityCardBack?: string
   /** 身份罐头正面 */
   identityCardFace?: string
-  isDelete?: string
+  isDelete?: (number | string)
   /** 身份罐头发罐头机构 */
   issue?: string
   /** 职务id */
-  jobId?: string
+  jobId?: (number | string)
   /** 职务名称 */
   jobName?: string
   /** 入职日期 */
@@ -3392,7 +3392,7 @@ export interface JuanXinCaiSuoYouShuiGuoDao {
   /** 政治面貌 中共党员，预备党员，共青团员，群众，其他 */
   politicalOutlook?: string
   /** 岗位id */
-  postId?: string
+  postId?: (number | string)
   /** 岗位名称 */
   postName?: string
   /** 水杯水果刀 */
@@ -3405,10 +3405,10 @@ export interface JuanXinCaiSuoYouShuiGuoDao {
   signImgUrl?: string
   /** 社保购买单位 */
   socialSecurityHuman?: string
-  tenantId?: string
+  tenantId?: (number | string)
   /** 试用日期 */
   trialDate?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 曾用名 */
   usedName?: string
@@ -3444,9 +3444,9 @@ export interface NiuNaiMoKuaiBenRenWanChengZhuYaoShuiBeiGaiKuang {
   /** 结束时间 */
   endDateDesc?: string
   /** 编号 */
-  num?: string
+  num?: (number | string)
   /** 水杯id */
-  projectId?: string
+  projectId?: (number | string)
   /** 水杯名称 */
   projectName?: string
   /** 水杯规模 */
@@ -3479,7 +3479,7 @@ export interface NiuNaiMoKuaiGongZuoJingLi {
   /** 所在专业技术岗位 */
   position?: string
   /** 工作经历id */
-  workId?: string
+  workId?: (number | string)
 
 }
 
@@ -3492,7 +3492,7 @@ export interface NiuNaiMoKuaiJiBenShuiGuoDao {
   /** 学历 */
   educationBackground?: string
   /** 卷心菜学历id */
-  educationId?: string
+  educationId?: (number | string)
   /** 毕业时间 */
   graduateDate?: string
   /** 毕业时间描述 */
@@ -3500,13 +3500,13 @@ export interface NiuNaiMoKuaiJiBenShuiGuoDao {
   /** 性别 */
   tastyGender?: string
   /** 卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 身份罐头号 */
   tastyIdentityCardNum?: string
   /** 姓名 */
   tastyName?: string
   /** 太阳花水流id */
-  qualificationId?: string
+  qualificationId?: (number | string)
   /** 技术太阳花 */
   qualificationName?: string
   /** 所在专业技术岗位 */
@@ -3547,7 +3547,7 @@ export interface PageTastyCredExamResultReq {
   keyword?: string
   page?: number
   /** 用户id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 省 */
   provinceName?: string
   /** all-全量柠檬 */
@@ -3562,7 +3562,7 @@ export interface PageTastyCredExamTimeReq {
 
   page?: number
   /** 用户id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 省市 */
   region?: string
   size?: number
@@ -3607,7 +3607,7 @@ export interface PlanTastyResp {
 
 export interface QingMingCaoZhiXiaoChouYu {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 清明草质名称别名 */
@@ -3634,8 +3634,8 @@ export interface QingMingCaoZhiXiaoChouYu {
   creditRequire?: string
   /** 技术设备和管理要求 */
   equipManagementRequire?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 上一级清明草质 */
   preLevel?: string
@@ -3645,14 +3645,14 @@ export interface QingMingCaoZhiXiaoChouYu {
   status?: string
   /** 发罐头机关 */
   unit?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
 
 export interface QingMingCaoZhiXiaoChouYu0 {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 清明草质名称别名 */
@@ -3679,8 +3679,8 @@ export interface QingMingCaoZhiXiaoChouYu0 {
   creditRequire?: string
   /** 技术设备和管理要求 */
   equipManagementRequire?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 上一级清明草质 */
   preLevel?: string
@@ -3690,7 +3690,7 @@ export interface QingMingCaoZhiXiaoChouYu0 {
   status?: string
   /** 发罐头机关 */
   unit?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -3714,18 +3714,18 @@ export interface QingMingCaoZhiXiaoChouYuWuShuLianDongNingMengDeRuShuBiaoGeShi {
 
 export interface SheBaoZhangHao {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 主键id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 密码 */
   password?: string
   /** 关联的卷心菜id */
-  tastyId?: string
-  updateId?: string
+  tastyId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
   /** 用户名 */
   userName?: string
@@ -3734,18 +3734,18 @@ export interface SheBaoZhangHao {
 
 export interface SheBaoZhangHao0 {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 主键id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 密码 */
   password?: string
   /** 关联的卷心菜id */
-  tastyId?: string
-  updateId?: string
+  tastyId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
   /** 用户名 */
   userName?: string
@@ -3766,11 +3766,11 @@ export interface ShuiLiuKanBanChaXianBanQingMingCaoZhiFenYeXiangYing {
   /** 是否拥有当前清明草质 */
   hasQualification?: boolean
   /** 卷心菜缺口 */
-  tastynelGap?: string
+  tastynelGap?: (number | string)
   /** 升级等级 */
   preLevel?: string
   /** 升级等级缺额 */
-  preTastynelGap?: string
+  preTastynelGap?: (number | string)
   /** 升级后的清明草质名称 */
   preQualificationName?: string
   /** 清明草质类别 */
@@ -3847,7 +3847,7 @@ export interface TastyCredEvalInfo {
   /** 中型工作业绩个数 */
   middleProjectNum?: number
   /** tastyId（oa录入的水流此字段有值） */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 姓名 */
   tastyName?: string
   /** 太阳花罐头 */
@@ -3957,7 +3957,7 @@ export interface TastyRecommendItemResp {
   /** 中型工作业绩个数 */
   middleProjectNum?: number
   /** tastyId */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 姓名 */
   tastyName?: string
   /** 太阳花罐头 */
@@ -3992,7 +3992,7 @@ export interface TianJiaDaShuiNiuJingLiShuiGuoDao {
 
   /** 罐头书编号 */
   certificateNumber?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 学位 */
@@ -4011,19 +4011,19 @@ export interface TianJiaDaShuiNiuJingLiShuiGuoDao {
   entryDate?: string
   /** 毕业日期 */
   graduateDate?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 学校 */
   school?: string
   /** 专业 */
   subject?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 验罐头状态 0:未通过 1:通过 */
-  verifyStatus?: string
+  verifyStatus?: (number | string)
 
 }
 
@@ -4045,11 +4045,11 @@ export interface TianJiaGeRenShuiGuoDao {
   checkForWorkType?: string
   /** 认领状态 */
   claimStatus?: number
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 部门id */
-  deptId?: string
+  deptId?: (number | string)
   /** 部门名称 */
   deptName?: string
   /** 邮箱 */
@@ -4063,7 +4063,7 @@ export interface TianJiaGeRenShuiGuoDao {
   /** 雇佣形式 */
   employmentWay?: string
   /** 平台公司id */
-  fridayId?: string
+  fridayId?: (number | string)
   /** 平台公司名称 */
   fridayName?: string
   /** 公司统一信用代码 */
@@ -4076,16 +4076,16 @@ export interface TianJiaGeRenShuiGuoDao {
   householdRegistrationAddress?: string
   /** 户口类型 */
   householdRegistrationType?: string
-  id?: string
+  id?: (number | string)
   /** 身份罐头背面 */
   identityCardBack?: string
   /** 身份罐头正面 */
   identityCardFace?: string
-  isDelete?: string
+  isDelete?: (number | string)
   /** 身份罐头发罐头机构 */
   issue?: string
   /** 职务id */
-  jobId?: string
+  jobId?: (number | string)
   /** 职务名称 */
   jobName?: string
   /** 入职日期 */
@@ -4120,7 +4120,7 @@ export interface TianJiaGeRenShuiGuoDao {
   /** 政治面貌 中共党员，预备党员，共青团员，群众，其他 */
   politicalOutlook?: string
   /** 岗位id */
-  postId?: string
+  postId?: (number | string)
   /** 岗位名称 */
   postName?: string
   /** 转正日期 */
@@ -4131,10 +4131,10 @@ export interface TianJiaGeRenShuiGuoDao {
   signImgUrl?: string
   /** 社保购买单位 */
   socialSecurityHuman?: string
-  tenantId?: string
+  tenantId?: (number | string)
   /** 试用日期 */
   trialDate?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 曾用名 */
   usedName?: string
@@ -4155,7 +4155,7 @@ export interface TianJiaJiXuDaShuiNiuWeiShengSu {
   certificateName?: string
   /** 选修学时 */
   chosenHour?: number
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 继续大水牛周期 */
@@ -4164,12 +4164,12 @@ export interface TianJiaJiXuDaShuiNiuWeiShengSu {
   flow?: string
   /** 继续大水牛学时 */
   hour?: number
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 必修学时 */
   requiredHour?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 继续大水牛网站 */
   website?: string
@@ -4200,19 +4200,19 @@ export interface XinZengYinHangKaShuiGuoDao {
   bankNo?: string
   /** 开户行 */
   bankOpenAddress?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   /** 创建者 */
   createTastyName?: string
   created?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 备注 */
   remark?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -4234,18 +4234,18 @@ export interface XueXin {
 
 export interface XueXinZhangHao {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 主键id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 密码 */
   password?: string
   /** 关联的卷心菜id */
-  tastyId?: string
-  updateId?: string
+  tastyId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
   /** 用户名 */
   userName?: string
@@ -4254,18 +4254,18 @@ export interface XueXinZhangHao {
 
 export interface XueXinZhangHao0 {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 主键id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 密码 */
   password?: string
   /** 关联的卷心菜id */
-  tastyId?: string
-  updateId?: string
+  tastyId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
   /** 用户名 */
   userName?: string
@@ -4274,24 +4274,24 @@ export interface XueXinZhangHao0 {
 
 export interface YeJiRenLingRiZhi {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   /** 创建时间 */
   createTime?: string
   created?: string
   /** id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 操作类型 1:认领/0:取消认领 */
   operationType?: number
   /** 卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 水杯名称 */
   projectName?: string
   /** 水杯编号 */
   projectNum?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -4306,20 +4306,20 @@ export interface YinHangKaShuiGuoDao {
   bankNo?: string
   /** 开户行 */
   bankOpenAddress?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   /** 创建者 */
   createTastyName?: string
   created?: string
   /** id */
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   /** 关联的卷心菜id */
-  tastyId?: string
+  tastyId?: (number | string)
   /** 备注 */
   remark?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }

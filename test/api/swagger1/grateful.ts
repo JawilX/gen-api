@@ -18,7 +18,7 @@ export function gratefulChannelUnbind(data?: QuDaoZhiXieChangJieMengQingQiuRuCan
 
 /** 切换房东 */
 export function gratefulSwitchGrateful(data?: {
-  gratefulId?: string
+  gratefulId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return useGet<ApiResponseboolean>(`/api/grateful/switchGrateful`, data, useFetchOptions)
 }

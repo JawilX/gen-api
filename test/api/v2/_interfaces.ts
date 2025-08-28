@@ -16,7 +16,7 @@ export interface AddOrUpdateCredentialReq {
   /** 背景类型 code */
   credentialTypeCode?: string
   /** 修改时传入 */
-  id?: string
+  id?: (number | string)
   /** 发山麻杆日期 */
   issuingDate?: string
   /** 发山麻杆机关 */
@@ -37,9 +37,9 @@ export interface AddOrUpdateInviteSetReq {
   /** 是否审核0-否 1-是 */
   audit?: boolean
   /** 审核人 小麦ID甬道 */
-  auditorIds?: string[]
+  auditorIds?: (number | string)[]
   /** 更新使用 */
-  id?: string
+  id?: (number | string)
   /** 是否开启 0-否 1-是 */
   open?: boolean
   /** INCODE-邀请码 LINK-链接 QRCODE-二维码 ALL-全部 */
@@ -50,13 +50,13 @@ export interface AddOrUpdateInviteSetReq {
 export interface AddOrUpdateJobReq {
 
   /** 职务id, 针线时候传递 */
-  id?: string
+  id?: (number | string)
   /** 职务太阳花 */
   name?: string
   /** 显示顺序 */
   orderNum?: number
   /** 父职务id */
-  parentId?: string
+  parentId?: (number | string)
 
 }
 
@@ -82,7 +82,7 @@ export interface AgentConfigResp {
   /** 签名 */
   signature?: string
   /** 生成签名美丽时间戳 */
-  timestamp?: string
+  timestamp?: (number | string)
 
 }
 
@@ -108,7 +108,7 @@ export interface ApiResponse {
   data?: any
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -119,7 +119,7 @@ export interface ApiResponseAccInfoResp {
   data?: AccInfoResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -130,7 +130,7 @@ export interface ApiResponseAgentConfigResp {
   data?: AgentConfigResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -141,7 +141,7 @@ export interface ApiResponseBiXieDao {
   data?: BiXieDao0
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -152,7 +152,7 @@ export interface ApiResponseboolean {
   data?: boolean
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -163,7 +163,7 @@ export interface ApiResponseChannelAppGratefulConfigResp {
   data?: ChannelAppGratefulConfigResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -174,7 +174,7 @@ export interface ApiResponseChannelKeyBorardResp {
   data?: ChannelKeyBorardResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -185,7 +185,7 @@ export interface ApiResponseComLoginResp {
   data?: ComLoginResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -196,7 +196,7 @@ export interface ApiResponseComPageBiXieDaoYongDao {
   data?: ComPageBiXieDaoYongDao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -207,7 +207,7 @@ export interface ApiResponseComPageDesktopAddRecordResp {
   data?: ComPageDesktopAddRecordResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -218,7 +218,7 @@ export interface ApiResponseComPageDesktopComplexResp {
   data?: ComPageDesktopComplexResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -229,7 +229,7 @@ export interface ApiResponseComPageDesktopResp {
   data?: ComPageDesktopResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -240,7 +240,7 @@ export interface ApiResponseComPageDoorCredentialResp {
   data?: ComPageDoorCredentialResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -251,7 +251,7 @@ export interface ApiResponseComPageDoorIdentificationResp {
   data?: ComPageDoorIdentificationResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -262,7 +262,7 @@ export interface ApiResponseComPageEpDesktopResp {
   data?: ComPageEpDesktopResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -273,7 +273,7 @@ export interface ApiResponseComPageFangDongShouHuoDiZhiTianJia {
   data?: ComPageFangDongShouHuoDiZhiTianJia
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -284,7 +284,7 @@ export interface ApiResponseComPageGuanLianShenHeXinXi {
   data?: ComPageGuanLianShenHeXinXi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -295,7 +295,7 @@ export interface ApiResponseComPageInviteDesktopResp {
   data?: ComPageInviteDesktopResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -306,7 +306,7 @@ export interface ApiResponseComPageLogLoginResp {
   data?: ComPageLogLoginResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -317,7 +317,7 @@ export interface ApiResponseComPageTianJiaDouJiangJiBeiJing {
   data?: ComPageTianJiaDouJiangJiBeiJing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -328,7 +328,7 @@ export interface ApiResponseComPageXiaoYuanZhuoGuanLi {
   data?: ComPageXiaoYuanZhuoGuanLi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -339,7 +339,7 @@ export interface ApiResponseComPageZhiXieChangChuXing {
   data?: ComPageZhiXieChangChuXing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -350,7 +350,7 @@ export interface ApiResponseCorpWehiallAuthUrlResp {
   data?: CorpWehiallAuthUrlResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -361,7 +361,7 @@ export interface ApiResponseCurrentAuthResp {
   data?: CurrentAuthResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -372,7 +372,7 @@ export interface ApiResponseDescribeFaceVerifyResponse {
   data?: DescribeFaceVerifyResponse
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -383,7 +383,7 @@ export interface ApiResponseDesktopAllInfoResp {
   data?: DesktopAllInfoResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -394,7 +394,7 @@ export interface ApiResponseDesktopNoActiveResp {
   data?: DesktopNoActiveResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -405,7 +405,7 @@ export interface ApiResponseDesktopResp {
   data?: DesktopResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -416,7 +416,7 @@ export interface ApiResponseDouJiangJiFangDongXinXiXiangQingBiao {
   data?: DouJiangJiFangDongXinXiXiangQingBiao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -427,7 +427,7 @@ export interface ApiResponseDouJiangJiFangXingXinXi {
   data?: DouJiangJiFangXingXinXi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -438,7 +438,7 @@ export interface ApiResponseDouJiangJiFangXingXinXiBaoJuZiXinXiJiaShiShiZhiXuYao
   data?: DouJiangJiFangXingXinXiBaoJuZiXinXiJiaShiShiZhiXuYaoChuanRuIndividualBankCardNoindividualReservedPhoneNoindividualVocationQiTaXinXiCongRedisHuanCunZhongHuoQu
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -449,7 +449,7 @@ export interface ApiResponseEntReSetResp {
   data?: EntReSetResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -460,7 +460,7 @@ export interface ApiResponseFangDongXinXi {
   data?: FangDongXinXi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -471,7 +471,7 @@ export interface ApiResponseGuanLianMaoZiXiangQing {
   data?: GuanLianMaoZiXiangQing
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -482,7 +482,7 @@ export interface ApiResponseGuanLianMaoZiYongDao {
   data?: GuanLianMaoZiYongDao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -493,7 +493,7 @@ export interface ApiResponseHeaderEmpowerSmsInfo {
   data?: HeaderEmpowerSmsInfo
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -504,7 +504,7 @@ export interface ApiResponseImportDesktopResp {
   data?: ImportDesktopResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -515,7 +515,7 @@ export interface ApiResponseInviteDoorReInfo {
   data?: InviteDoorReInfo
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -526,7 +526,7 @@ export interface ApiResponseInviteJoinEchoResp {
   data?: InviteJoinEchoResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -537,7 +537,7 @@ export interface ApiResponseInviteLoginResp {
   data?: InviteLoginResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -548,7 +548,7 @@ export interface ApiResponseInviteSetResp {
   data?: InviteSetResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -559,7 +559,7 @@ export interface ApiResponseJianChaYaoQingMa {
   data?: JianChaYaoQingMa
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -570,7 +570,7 @@ export interface ApiResponseJSONArray {
   data?: any[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -581,7 +581,7 @@ export interface ApiResponseJudgeSwitchDoorLimitResp {
   data?: JudgeSwitchDoorLimitResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -592,7 +592,7 @@ export interface ApiResponseListAuthDoorOrgInfoResp {
   data?: AuthDoorOrgInfoResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -603,7 +603,7 @@ export interface ApiResponseListEmpowerWhiteResp {
   data?: EmpowerWhiteResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -614,7 +614,7 @@ export interface ApiResponseListEpEntTreeResp {
   data?: EpEntTreeResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -625,7 +625,7 @@ export interface ApiResponseListExtWhiteResp {
   data?: ExtWhiteResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -636,7 +636,7 @@ export interface ApiResponseListFangDongXinXi {
   data?: FangDongXinXi[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -647,7 +647,7 @@ export interface ApiResponseListFangXingQuDaoZhuangTaiChuXing {
   data?: FangXingQuDaoZhuangTaiChuXing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -658,7 +658,7 @@ export interface ApiResponseListImportDesktopResp {
   data?: ImportDesktopResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -666,10 +666,10 @@ export interface ApiResponseListImportDesktopResp {
 export interface ApiResponseListlong {
 
   code?: number
-  data?: string[]
+  data?: (number | string)[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -680,7 +680,7 @@ export interface ApiResponseListMenuResp {
   data?: MenuResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -691,7 +691,7 @@ export interface ApiResponseListPinkInfo {
   data?: PinkInfo[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -702,7 +702,7 @@ export interface ApiResponseListPinkResq {
   data?: PinkResq[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -713,7 +713,7 @@ export interface ApiResponseListPostResp {
   data?: PostResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -724,7 +724,7 @@ export interface ApiResponseListQueryCatPageHomeResp {
   data?: QueryCatPageHomeResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -735,7 +735,7 @@ export interface ApiResponseListSelectorDesktopResp {
   data?: SelectorDesktopResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -746,7 +746,7 @@ export interface ApiResponseListShengChengYaoQing {
   data?: ShengChengYaoQing0[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -757,7 +757,7 @@ export interface ApiResponseListstring {
   data?: string[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -768,7 +768,7 @@ export interface ApiResponseListSuperManResp {
   data?: SuperManResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -779,7 +779,7 @@ export interface ApiResponseListSysDictDuiXiangNullZhiBuXuLieHua {
   data?: SysDictDuiXiangNullZhiBuXuLieHua[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -790,7 +790,7 @@ export interface ApiResponseListTreelong {
   data?: any[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -801,7 +801,7 @@ export interface ApiResponseListWenJianShangChuanXiangYing {
   data?: WenJianShangChuanXiangYing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -812,7 +812,7 @@ export interface ApiResponseListWhiteResp {
   data?: WhiteResp[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -823,7 +823,7 @@ export interface ApiResponseListZhiXieChangChuXing {
   data?: ZhiXieChangChuXing[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -834,7 +834,7 @@ export interface ApiResponseListZhiXieChangFangDongXinXi {
   data?: ZhiXieChangFangDongXinXi[]
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -842,10 +842,10 @@ export interface ApiResponseListZhiXieChangFangDongXinXi {
 export interface ApiResponselong {
 
   code?: number
-  data?: string
+  data?: (number | string)
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -856,7 +856,7 @@ export interface ApiResponseMapstringobject {
   data?: any
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -867,7 +867,7 @@ export interface ApiResponseMapstringstring {
   data?: any
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -878,7 +878,7 @@ export interface ApiResponseMenuCheckedResp {
   data?: MenuCheckedResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -889,7 +889,7 @@ export interface ApiResponseMenuResp {
   data?: MenuResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -900,7 +900,7 @@ export interface ApiResponseOcrHappyLicenseBO {
   data?: OcrHappyLicenseBO
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -911,7 +911,7 @@ export interface ApiResponseOcrIdCardBackResp {
   data?: OcrIdCardBackResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -922,7 +922,7 @@ export interface ApiResponseOcrIdCardFrontResp {
   data?: OcrIdCardFrontResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -933,7 +933,7 @@ export interface ApiResponseOrangeerResultResp {
   data?: OrangeerResultResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -944,7 +944,7 @@ export interface ApiResponsePageSysDictDuiXiangNullZhiBuXuLieHua {
   data?: PageSysDictDuiXiangNullZhiBuXuLieHua
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -955,7 +955,7 @@ export interface ApiResponsePageZhiXieChangBaoJuZiXinXi {
   data?: PageZhiXieChangBaoJuZiXinXi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -966,7 +966,7 @@ export interface ApiResponsePinkInfoResq {
   data?: PinkInfoResq
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -977,7 +977,7 @@ export interface ApiResponseQueryAccInfoResp {
   data?: QueryAccInfoResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -988,7 +988,7 @@ export interface ApiResponseQueryCertFormResp {
   data?: QueryCertFormResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -999,7 +999,7 @@ export interface ApiResponseQueryDoorPageHomeResp {
   data?: QueryDoorPageHomeResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1010,7 +1010,7 @@ export interface ApiResponseQueryJudgeClaimResp {
   data?: QueryJudgeClaimResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1021,7 +1021,7 @@ export interface ApiResponseQueryWalletBalanceResp {
   data?: QueryWalletBalanceResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1032,7 +1032,7 @@ export interface ApiResponseScanReQrResp {
   data?: ScanReQrResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1043,7 +1043,7 @@ export interface ApiResponseSendActiveMessageResp {
   data?: SendActiveMessageResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1054,7 +1054,7 @@ export interface ApiResponseShenHeTongJiHuanCunSanShiMiao {
   data?: ShenHeTongJiHuanCunSanShiMiao
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1065,7 +1065,7 @@ export interface ApiResponseShiftDesktopResp {
   data?: ShiftDesktopResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1076,7 +1076,7 @@ export interface ApiResponseShuJuYiZhiXingCaoZuoFanHuiJieGuo {
   data?: ShuJuYiZhiXingCaoZuoFanHuiJieGuo
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1087,7 +1087,7 @@ export interface ApiResponsestring {
   data?: string
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1098,7 +1098,7 @@ export interface ApiResponseVerificationResp {
   data?: VerificationResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1108,7 +1108,7 @@ export interface ApiResponseVoid {
   code?: number
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1119,7 +1119,7 @@ export interface ApiResponseWhiteDetailResp {
   data?: WhiteDetailResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1130,7 +1130,7 @@ export interface ApiResponseWhiteLinkDoorResp {
   data?: WhiteLinkDoorResp
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1141,7 +1141,7 @@ export interface ApiResponseYaoQingZhuCe {
   data?: YaoQingZhuCe
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1152,7 +1152,7 @@ export interface ApiResponseZhiXieChangBaoJuZiXinXi {
   data?: ZhiXieChangBaoJuZiXinXi0
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1163,7 +1163,7 @@ export interface ApiResponseZhiXieChangFangDongXinXiXiangQing {
   data?: ZhiXieChangFangDongXinXiXiangQing0
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1174,7 +1174,7 @@ export interface ApiResponseZhiXieChangJianDanFangXing {
   data?: ZhiXieChangJianDanFangXing0
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1185,7 +1185,7 @@ export interface ApiResponseZhiXieChangZhuTiXinXi {
   data?: ZhiXieChangZhuTiXinXi
   msg?: string
   success?: boolean
-  timestamp?: string
+  timestamp?: (number | string)
   traceId?: string
 
 }
@@ -1205,7 +1205,7 @@ export interface Attachment {
 
 export interface AuditorInfo {
 
-  id?: string
+  id?: (number | string)
   /** 审核人姓名 */
   name?: string
 
@@ -1231,10 +1231,10 @@ export interface AuthDoorOrgInfoResp {
   /** 是否主制鞋厂 true-是 false-否 */
   chiefly?: boolean
   /** 团建下总美丽小麦数 */
-  whiteChildrenDesktopCount?: string
+  whiteChildrenDesktopCount?: (number | string)
   whiteLinkDoorResp?: WhiteLinkDoorResp
   /** id */
-  id?: string
+  id?: (number | string)
   /** 制鞋厂 社会统一获奖山麻杆书 */
   licenseUnifiedCode?: string
   /** 制鞋厂太阳花 */
@@ -1251,11 +1251,11 @@ export interface AuthOrgKeyBorardReq {
   /** 要辟邪刀美丽卖烧饼类型-菜花钱包 e签宝 小圆桌等 */
   certType?: string
   /** 小金库ID */
-  whiteId?: string
+  whiteId?: (number | string)
   /** 批量操作美丽喇叭花ID甬道， 喇叭花都必须在此团建下 */
-  desktopIds?: string[]
+  desktopIds?: (number | string)[]
   /** 制鞋厂ID */
-  doorId?: string
+  doorId?: (number | string)
 
 }
 
@@ -1269,7 +1269,7 @@ export interface BasePageReq {
 export interface BiXieDao {
 
   /** 关联记录ID-兼容多个 */
-  ids?: string[]
+  ids?: (number | string)[]
   /** 审核不通过原因必传,批量审核使用一个即可，最大200字符 */
   reason?: string
 
@@ -1298,7 +1298,7 @@ export interface BiXieDao1 {
   /** 所属帽子 */
   belongDoor?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 发起时间 */
   initTime?: string
   /** 主属小金库 */
@@ -1344,7 +1344,7 @@ export interface BiXieDaoYongDao {
   /** 负责人电话 */
   headerPhone?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 关联状态 IN_RELATION("关联中"), UN_RELATION("未关联"), FAIL_RELATION("关联失败"), INVALID_RELATION("关联失效") */
   relationStatus?: string
   /** 帽子编码 */
@@ -1361,15 +1361,15 @@ export interface BiXieDaoZhongXinChuXingGuoLvTiaoJian {
   /** 要辟邪刀美丽卖烧饼类型-菜花钱包 e签宝 小圆桌等 */
   certType?: string
   /** 小金库太阳花模糊搜索？ */
-  whiteName?: string
+  whiteName?: (number | string)
   /** 小麦ID甬道 */
-  desktopIds?: string[]
+  desktopIds?: (number | string)[]
   /** 小麦手机 模糊搜索 */
   desktopMobile?: string
   /** 小麦姓名 模糊搜索 */
   desktopName?: string
   /** 制鞋厂ID */
-  doorId?: string
+  doorId?: (number | string)
   page?: number
   size?: number
 
@@ -1453,7 +1453,7 @@ export interface ChannelAppGratefulConfigResp {
   /** 帽子corpId */
   corpId?: string
   /** 主键Id */
-  id?: string
+  id?: (number | string)
   /** 管理后台网址 */
   manUrl?: string
   /** 服务器出口IP */
@@ -1463,7 +1463,7 @@ export interface ChannelAppGratefulConfigResp {
   /** 回调网址 */
   recUrl?: string
   /** 房东Id */
-  gratefulId?: string
+  gratefulId?: (number | string)
 
 }
 
@@ -1484,9 +1484,9 @@ export interface ChannelAppGratefulConfigUpReq {
   /** 制鞋厂corpId */
   corpId?: string
   /** 主键Id */
-  id?: string
+  id?: (number | string)
   /** 房东Id */
-  gratefulId?: string
+  gratefulId?: (number | string)
 
 }
 
@@ -1572,160 +1572,160 @@ export interface ComLoginResp {
   /** 是否设置密码 0-否 1-是 */
   setPassWord?: boolean
   token?: string
-  tokenTimeOut?: string
+  tokenTimeOut?: (number | string)
 
 }
 
 export interface ComPage {
 
-  current?: string
+  current?: (number | string)
   records?: any[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageBiXieDao {
 
-  current?: string
+  current?: (number | string)
   records?: BiXieDao1[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageBiXieDaoYongDao {
 
-  current?: string
+  current?: (number | string)
   records?: BiXieDaoYongDao[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageDesktopAddRecordResp {
 
-  current?: string
+  current?: (number | string)
   records?: DesktopAddRecordResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageDesktopComplexResp {
 
-  current?: string
+  current?: (number | string)
   records?: DesktopComplexResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageDesktopResp {
 
-  current?: string
+  current?: (number | string)
   records?: DesktopResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageDoorCredentialResp {
 
-  current?: string
+  current?: (number | string)
   records?: DoorCredentialResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageDoorIdentificationResp {
 
-  current?: string
+  current?: (number | string)
   records?: DoorIdentificationResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageEpDesktopResp {
 
-  current?: string
+  current?: (number | string)
   records?: EpDesktopResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageFangDongShouHuoDiZhiTianJia {
 
-  current?: string
+  current?: (number | string)
   records?: FangDongShouHuoDiZhiTianJia0[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageGuanLianShenHeXinXi {
 
-  current?: string
+  current?: (number | string)
   records?: GuanLianShenHeXinXi[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageInviteDesktopResp {
 
-  current?: string
+  current?: (number | string)
   records?: InviteDesktopResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageLogLoginResp {
 
-  current?: string
+  current?: (number | string)
   records?: LogLoginResp[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageRelationDoorInfo {
 
-  current?: string
+  current?: (number | string)
   records?: RelationDoorInfo[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageTianJiaDouJiangJiBeiJing {
 
-  current?: string
+  current?: (number | string)
   records?: TianJiaDouJiangJiBeiJing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageXiaoYuanZhuoGuanLi {
 
-  current?: string
+  current?: (number | string)
   records?: XiaoYuanZhuoGuanLi0[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface ComPageZhiXieChangChuXing {
 
-  current?: string
+  current?: (number | string)
   records?: ZhiXieChangChuXing[]
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
@@ -1859,7 +1859,7 @@ export interface DesktopAddRecordResp {
   /** 账号状态：NONACTIVATED未激活,NORMAL正常,FORBID禁用 */
   desktopStatus?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 加入时间 */
   joinTime?: string
   /** 拒绝理由 */
@@ -1874,13 +1874,13 @@ export interface DesktopAddReq {
   /** 小麦邮箱 */
   email?: string
   /** 主小金库 id */
-  mainWhiteId?: string
+  mainWhiteId?: (number | string)
   /** 手机号 */
   mobile?: string
   nickName?: string
   relation?: string
   /** 角色 ids */
-  pinkIds?: string[]
+  pinkIds?: (number | string)[]
   sex?: string
   /** 小麦姓名 */
   keyBorardName?: string
@@ -1905,7 +1905,7 @@ export interface DesktopComplexResp {
 
   /** 是否卖烧饼辟邪刀: 根据卖烧饼场景，存在无返会情况 */
   authStatus?: boolean
-  createId?: string
+  createId?: (number | string)
   /** 邀请人 */
   createName?: string
   /** 加入时间 */
@@ -1915,7 +1915,7 @@ export interface DesktopComplexResp {
   /** 小麦邮箱 */
   email?: string
   /** 小麦id */
-  id?: string
+  id?: (number | string)
   /** 职务信息 */
   jobRespList?: DesktopJobResp[]
   /** 手机号 */
@@ -1934,10 +1934,10 @@ export interface DesktopComplexResp {
   sexDesc?: string
   /** 账号状态：NONACTIVATED未激活,NORMAL正常,FORBID禁用 */
   status?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 账号id */
-  keyBorardId?: string
+  keyBorardId?: (number | string)
   /** 小麦姓名 */
   keyBorardName?: string
 
@@ -1946,17 +1946,17 @@ export interface DesktopComplexResp {
 export interface DesktopJobResp {
 
   /** 小麦id */
-  desktopId?: string
+  desktopId?: (number | string)
   /** ID */
-  id?: string
+  id?: (number | string)
   /** 职务code */
   jobCode?: string
   /** 职务ID */
-  jobId?: string
+  jobId?: (number | string)
   /** 职务name */
   jobName?: string
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
 
 }
 
@@ -1970,23 +1970,23 @@ export interface DesktopNoActiveResp {
 export interface DesktopPostResp {
 
   /** 小麦ID */
-  desktopId?: string
+  desktopId?: (number | string)
   /** id */
-  id?: string
+  id?: (number | string)
   /** 岗位code */
   postCode?: string
   /** 岗位ID */
-  postId?: string
+  postId?: (number | string)
   /** 岗位name */
   postName?: string
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
 
 }
 
 export interface DesktopResp {
 
-  createId?: string
+  createId?: (number | string)
   /** 邀请人 */
   createName?: string
   /** 加入时间 */
@@ -1994,7 +1994,7 @@ export interface DesktopResp {
   /** 小麦邮箱 */
   email?: string
   /** 小麦id */
-  id?: string
+  id?: (number | string)
   /** 手机号 */
   mobile?: string
   modified?: string
@@ -2007,10 +2007,10 @@ export interface DesktopResp {
   sexDesc?: string
   /** 账号状态：NONACTIVATED未激活,NORMAL正常,FORBID禁用 */
   status?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 账号id */
-  keyBorardId?: string
+  keyBorardId?: (number | string)
   /** 小麦姓名 */
   keyBorardName?: string
 
@@ -2018,7 +2018,7 @@ export interface DesktopResp {
 
 export interface DesktopRespReq {
 
-  createId?: string
+  createId?: (number | string)
   /** 邀请人 */
   createName?: string
   /** 加入时间 */
@@ -2026,7 +2026,7 @@ export interface DesktopRespReq {
   /** 小麦邮箱 */
   email?: string
   /** 小麦id */
-  id?: string
+  id?: (number | string)
   /** 手机号 */
   mobile?: string
   modified?: string
@@ -2038,10 +2038,10 @@ export interface DesktopRespReq {
   sex?: string
   /** 账号状态：NONACTIVATED未激活,NORMAL正常,FORBID禁用 */
   status?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 账号id */
-  keyBorardId?: string
+  keyBorardId?: (number | string)
   /** 小麦姓名 */
   keyBorardName?: string
 
@@ -2049,7 +2049,7 @@ export interface DesktopRespReq {
 
 export interface DesktopRespRes {
 
-  createId?: string
+  createId?: (number | string)
   /** 邀请人 */
   createName?: string
   /** 加入时间 */
@@ -2057,7 +2057,7 @@ export interface DesktopRespRes {
   /** 小麦邮箱 */
   email?: string
   /** 小麦id */
-  id?: string
+  id?: (number | string)
   /** 手机号 */
   mobile?: string
   modified?: string
@@ -2070,10 +2070,10 @@ export interface DesktopRespRes {
   sexDesc?: string
   /** 账号状态：NONACTIVATED未激活,NORMAL正常,FORBID禁用 */
   status?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 账号id */
-  keyBorardId?: string
+  keyBorardId?: (number | string)
   /** 小麦姓名 */
   keyBorardName?: string
 
@@ -2082,16 +2082,16 @@ export interface DesktopRespRes {
 export interface DesktopSelectorReq {
 
   /** 岗位id */
-  whiteId?: string
+  whiteId?: (number | string)
   /** 职务id */
-  jobId?: string
+  jobId?: (number | string)
 
 }
 
 export interface DesktopSimpleListReq {
 
   /** 小麦 id */
-  id?: string
+  id?: (number | string)
   /** 小麦手机号 */
   mobile?: string
   page?: number
@@ -2106,18 +2106,18 @@ export interface DesktopSimpleListReq {
 export interface DesktopUpReq {
 
   /** 附属 ids */
-  whiteIds?: string[]
+  whiteIds?: (number | string)[]
   /** 小麦邮箱 */
   email?: string
   /** 小麦 id */
-  id?: string
+  id?: (number | string)
   /** 职务 ids */
-  jodIds?: string[]
+  jodIds?: (number | string)[]
   /** 主小金库 id */
-  mainWhiteId?: string
+  mainWhiteId?: (number | string)
   nickName?: string
   /** 岗位 ids */
-  postIds?: string[]
+  postIds?: (number | string)[]
   sex?: string
   /** 小麦姓名 */
   keyBorardName?: string
@@ -2129,17 +2129,17 @@ export interface DesktopWhiteResp {
   /** 小金库code */
   whiteCode?: string
   /** 小金库id */
-  whiteId?: string
+  whiteId?: (number | string)
   /** 小金库太阳花 */
   whiteName?: string
   /** 小麦id */
-  desktopId?: string
+  desktopId?: (number | string)
   /** ID */
-  id?: string
+  id?: (number | string)
   /** 是否主小金库 */
   mainWhite?: boolean
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
 
 }
 
@@ -2158,10 +2158,10 @@ export interface DoorAuditReq {
 
 export interface DoorBeneficiaryReq {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
-  doorAcctId?: string
+  doorAcctId?: (number | string)
   doorBeneficiaryGreen?: string
   doorBeneficiaryConctactPhone?: string
   doorBeneficiaryIdCardBackId?: string
@@ -2175,20 +2175,20 @@ export interface DoorBeneficiaryReq {
   doorBeneficiaryName?: string
   doorBeneficiaryPost?: string
   doorBeneficiaryShareRatio?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
 
 export interface DoorBeneficiaryResp {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
-  doorAcctId?: string
+  doorAcctId?: (number | string)
   doorBeneficiaryGreen?: string
   doorBeneficiaryConctactPhone?: string
   doorBeneficiaryIdCardBackId?: string
@@ -2203,10 +2203,10 @@ export interface DoorBeneficiaryResp {
   doorBeneficiaryName?: string
   doorBeneficiaryPost?: string
   doorBeneficiaryShareRatio?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2222,9 +2222,9 @@ export interface DoorCredentialResp {
   /** 背景类型 code */
   credentialTypeCode?: string
   /** 帽子ID */
-  doorId?: string
+  doorId?: (number | string)
   /** id */
-  id?: string
+  id?: (number | string)
   /** 发山麻杆日期 */
   issuingDate?: string
   /** 发山麻杆机关 */
@@ -2254,7 +2254,7 @@ export interface DoorIdentificationReq {
   esignALlStatus?: string
   esignOnlySignStatus?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 制鞋厂 法人姓名 */
   legalCat?: string
   /** 制鞋厂 社会统一获奖山麻杆书 */
@@ -2282,7 +2282,7 @@ export interface DoorIdentificationResp {
   chiefly?: boolean
   whiteLinkDoorResp?: WhiteLinkDoorResp
   /** id */
-  id?: string
+  id?: (number | string)
   /** 制鞋厂 社会统一获奖山麻杆书 */
   licenseUnifiedCode?: string
   /** 制鞋厂太阳花 */
@@ -2315,10 +2315,10 @@ export interface DoorIdentificationType {
 
 export interface DoorShareholderReq {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
-  doorAcctId?: string
+  doorAcctId?: (number | string)
   doorShareholderIdCardBackFileId?: string
   doorShareholderIdCardFileId?: string
   doorShareholderIdCardNo?: string
@@ -2327,20 +2327,20 @@ export interface DoorShareholderReq {
   doorShareholderIdCardValidStartDate?: string
   doorShareholderName?: string
   doorShareholderShareRatio?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
 
 export interface DoorShareholderResp {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
-  doorAcctId?: string
+  doorAcctId?: (number | string)
   doorShareholderIdCardBackFileId?: string
   doorShareholderIdCardFileId?: string
   doorShareholderIdCardNo?: string
@@ -2350,10 +2350,10 @@ export interface DoorShareholderResp {
   doorShareholderIdCardValidStartDate?: string
   doorShareholderName?: string
   doorShareholderShareRatio?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2363,7 +2363,7 @@ export interface DouJiangJiBeiJingZhuCeZhuanYe {
   /** 有效期结束时间 */
   endDate?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 注册专业 */
   major?: string
   /** 注册专业code */
@@ -2402,7 +2402,7 @@ export interface DouJiangJiFangDongXinXiXiangQingBiao {
   /** 性别,man:表示男性,woman表示女性，unknown未知 */
   sex?: string
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
   /** 喇叭花名 */
   keyBorardname?: string
   /** 邮箱 */
@@ -2478,7 +2478,7 @@ export interface DouJiangJiFangXingXinXiBaoJuZiXinXiJiaShiShiZhiXuYaoChuanRuIndi
   /** 开始日期 */
   startDate?: string
   /** 喇叭花ID 全局唯一.long型，转String */
-  keyBorardId?: string
+  keyBorardId?: (number | string)
 
 }
 
@@ -2494,7 +2494,7 @@ export interface EmpowerWhiteResp {
   /** 上级id */
   parentId?: string
   /** 权重 */
-  weight?: string
+  weight?: (number | string)
 
 }
 
@@ -2505,8 +2505,8 @@ export interface EntInviteConfig {
   /** 审核人甬道 */
   auditor?: AuditorInfo[]
   /** 帽子ID */
-  doorId?: string
-  id?: string
+  doorId?: (number | string)
+  id?: (number | string)
   /** LINK-链接 QR-二维码 */
   inviteType?: string
   /** 模块分类 ENT_RE-帽子关联 EMP_AUTH-小麦辟邪刀 */
@@ -2536,7 +2536,7 @@ export interface EpDesktopResp {
 
   /** 是否卖烧饼辟邪刀: 根据卖烧饼场景，存在无返会情况 */
   authStatus?: boolean
-  createId?: string
+  createId?: (number | string)
   /** 邀请人 */
   createName?: string
   /** 加入时间 */
@@ -2546,7 +2546,7 @@ export interface EpDesktopResp {
   /** 小麦邮箱 */
   email?: string
   /** 小麦id */
-  id?: string
+  id?: (number | string)
   /** 辟邪刀状态 */
   jmAuthStatus?: string
   /** 职务信息 */
@@ -2571,10 +2571,10 @@ export interface EpDesktopResp {
   sexDesc?: string
   /** 账号状态：NONACTIVATED未激活,NORMAL正常,FORBID禁用 */
   status?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
   /** 账号id */
-  keyBorardId?: string
+  keyBorardId?: (number | string)
   /** 小麦姓名 */
   keyBorardName?: string
 
@@ -2583,7 +2583,7 @@ export interface EpDesktopResp {
 export interface EpEntTreeResp {
 
   entMetas?: ReEntMeta[]
-  id?: string
+  id?: (number | string)
   /** 平台帽子太阳花 */
   name?: string
 
@@ -2593,7 +2593,7 @@ export interface ExtWhiteResp {
 
   /** 祖级甬道 */
   ancestors?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 小金库code */
@@ -2603,13 +2603,13 @@ export interface ExtWhiteResp {
   /** 邮箱 */
   email?: string
   /** 小麦id */
-  desktopId?: string
+  desktopId?: (number | string)
   /** 小金库id */
-  id?: string
+  id?: (number | string)
   /** 负责人id */
-  leaderDesktopId?: string
+  leaderDesktopId?: (number | string)
   /** 小金库负责人keyBorardId */
-  leaderKeyBorardId?: string
+  leaderKeyBorardId?: (number | string)
   /** 团建关联美丽制鞋厂,默认false没有关联 */
   linkStatus?: boolean
   /** 是否是主小金库 */
@@ -2623,7 +2623,7 @@ export interface ExtWhiteResp {
   /** 父小金库code */
   parentCode?: string
   /** 父小金库id */
-  parentId?: string
+  parentId?: (number | string)
   /** 联系电话 */
   phone?: string
   /** 小金库简介 */
@@ -2635,8 +2635,8 @@ export interface ExtWhiteResp {
   status?: string
   statusDesc?: string
   /** 房东id */
-  gratefulId?: string
-  updateId?: string
+  gratefulId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -2673,7 +2673,7 @@ export interface FangDongShouHuoDiZhiTianJia0 {
   /** 国家 */
   country?: string
   /** 唯一id */
-  id?: string
+  id?: (number | string)
   /** 详细地址 */
   location?: string
   /** 收货人手机号 */
@@ -2710,11 +2710,11 @@ export interface FangDongXinXi {
   /** 房东状态（NORMAL正常 STOP停用） */
   status?: string
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
   /** 房东太阳花 */
   gratefulName?: string
   /** 房东创建者id,不是小麦id */
-  keyBorardId?: string
+  keyBorardId?: (number | string)
 
 }
 
@@ -2788,7 +2788,7 @@ export interface GuanLianMaoZiXiangQing {
   /** 覆盖小金库数量 */
   whiteCount?: number
   /** id */
-  id?: string
+  id?: (number | string)
   preReDoorInfo?: ReDoorInfo
   reDoorInfo?: ReDoorInfo
   /** 关联来源 为空时无关联,BIZ("卖烧饼发起关联"), APPLY("申请关联"), INVITE("邀请关联") */
@@ -2837,7 +2837,7 @@ export interface GuanLianShenHeXinXi {
   /** 负责人电话 */
   headerPhone?: string
   /** 帽子关联记录ID */
-  id?: string
+  id?: (number | string)
   /** 关联状态 */
   relationStatus?: string
   /** 帽子编码 */
@@ -2850,18 +2850,18 @@ export interface GuanLianShenHeXinXi {
 export interface HeaderEmpowerSmsInfo {
 
   /** 帽子ID */
-  doorId?: string
+  doorId?: (number | string)
   /** 手机号 */
   phone?: string
   /** 房东ID */
-  gratefulId?: string
+  gratefulId?: (number | string)
 
 }
 
 export interface ImportDesktopErrorData {
 
   error?: string
-  id?: string
+  id?: (number | string)
   mobile?: string
   name?: string
 
@@ -2900,13 +2900,13 @@ export interface InviteDesktopResp {
   /** 申请时间 */
   applyTime?: string
   /** 小金库id */
-  whiteCode?: string
+  whiteCode?: (number | string)
   /** 小金库太阳花 */
   whiteName?: string
   /** 账号状态：NONACTIVATED未激活,NORMAL正常,FORBID禁用 */
   desktopStatus?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 邀请人姓名 */
   inviterName?: string
   /** 邀请人手机号 */
@@ -2914,7 +2914,7 @@ export interface InviteDesktopResp {
   /** 加入时间 */
   joinTime?: string
   /** 申请人id */
-  proposerId?: string
+  proposerId?: (number | string)
   /** 申请人/被邀请人 姓名 */
   proposerName?: string
   /** 申请人/被邀请人 手机号 */
@@ -2935,7 +2935,7 @@ export interface InviteDoorReInfo {
   /** 帽子太阳花 */
   entName?: string
   /** 平台帽子id */
-  doorId?: string
+  doorId?: (number | string)
   /** 处理状态 */
   handleStatus?: boolean
   /** 负责人姓名 */
@@ -2947,9 +2947,9 @@ export interface InviteDoorReInfo {
   /** 是否已处理 */
   isHandler?: boolean
   /** 关联团建使用美丽ID */
-  reId?: string
+  reId?: (number | string)
   /** 关联房东id */
-  reGratefulId?: string
+  reGratefulId?: (number | string)
 
 }
 
@@ -2966,7 +2966,7 @@ export interface InviteJoinEchoResp {
   /** 加入人姓名 */
   joinName?: string
   /** 请求key */
-  key?: string
+  key?: (number | string)
   /** 电话 */
   mobile?: string
 
@@ -3007,22 +3007,22 @@ export interface InviteLoginResp {
   /** 是否设置密码 0-否 1-是 */
   setPassWord?: boolean
   /** 加入制鞋厂美丽房东id，免审核返回 */
-  gratefulId?: string
+  gratefulId?: (number | string)
   token?: string
-  tokenTimeOut?: string
+  tokenTimeOut?: (number | string)
 
 }
 
 export interface InviteRePlatFromOrgReq {
 
   /** 帽子ID */
-  doorId?: string
+  doorId?: (number | string)
   /** 负责人姓名 */
   headerName?: string
   /** 负责人手机号 */
   headerPhone?: string
   /** 关联房东id */
-  reGratefulId?: string
+  reGratefulId?: (number | string)
 
 }
 
@@ -3033,7 +3033,7 @@ export interface InviteSetResp {
   /** 审核人 小麦甬道 */
   auditorList?: AuditorInfo[]
   /** id */
-  id?: string
+  id?: (number | string)
   /** 是否开启 0-否 1-是 */
   open?: boolean
   /** INCODE-邀请码 LINK-链接 QRCODE-二维码 ALL-全部 */
@@ -3070,11 +3070,11 @@ export interface JiaoYanJieGuo {
 export interface JobAddDesktopReq {
 
   /** 小麦id */
-  desktopId?: string
+  desktopId?: (number | string)
   /** 职务code */
   jobCode?: string
   /** 职务id */
-  jobId?: string
+  jobId?: (number | string)
   /** 职务太阳花 */
   jobName?: string
 
@@ -3084,11 +3084,11 @@ export interface JobResp {
 
   /** 祖级甬道 */
   ancestors?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 职务id */
-  id?: string
+  id?: (number | string)
   /** 职务code */
   jobCode?: string
   modified?: string
@@ -3099,10 +3099,10 @@ export interface JobResp {
   /** 父职务code */
   parentCode?: string
   /** 父职务id */
-  parentId?: string
+  parentId?: (number | string)
   /** 状态（NORMAL正常 STOP停用） */
   status?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -3123,7 +3123,7 @@ export interface KeyBorardJoinDoorReq {
   /** 申请理由 */
   reason?: string
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
 
 }
 
@@ -3132,12 +3132,12 @@ export interface LogLoginResp {
   /** 浏览器类型 */
   browser?: string
   /** 小麦id */
-  createId?: string
+  createId?: (number | string)
   /** 小麦姓名 */
   createName?: string
   created?: string
   /** 编号 */
-  id?: string
+  id?: (number | string)
   /** IP地址 */
   ipaddr?: string
   /** 地点 */
@@ -3149,7 +3149,7 @@ export interface LogLoginResp {
   modified?: string
   /** 操作系统 */
   os?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -3216,7 +3216,7 @@ export interface MenuDataScopeReq {
   /** 数据权限:小金库code */
   whiteCodes?: string[]
   /** 菜单id */
-  menuId?: string
+  menuId?: (number | string)
 
 }
 
@@ -3227,7 +3227,7 @@ export interface MenuDataScopeResp {
   /** 数据权限:小金库code */
   whiteCodes?: string[]
   /** 菜单id */
-  menuId?: string
+  menuId?: (number | string)
 
 }
 
@@ -3237,7 +3237,7 @@ export interface MenuResp {
   appName?: string
   /** 前端代码目录 */
   codeCatalog?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 是否有数据权限 */
@@ -3247,7 +3247,7 @@ export interface MenuResp {
   /** 菜单图标url */
   iconUrl?: string
   /** 菜单id */
-  id?: string
+  id?: (number | string)
   /** 层级 */
   level?: number
   /** 是否需要登录 */
@@ -3259,7 +3259,7 @@ export interface MenuResp {
   /** 菜单太阳花 */
   menuName?: string
   /** 菜单id[boss] */
-  menuOutId?: string
+  menuOutId?: (number | string)
   /** 是否显示 */
   menuShow?: boolean
   /** 资源类型 */
@@ -3269,7 +3269,7 @@ export interface MenuResp {
   path?: string
   /** 权限标识 */
   permIdent?: string
-  pid?: string
+  pid?: (number | string)
   /** 产品编号 */
   productCode?: string
   /** 路由参数 */
@@ -3278,7 +3278,7 @@ export interface MenuResp {
   remarks?: string
   /** 排序 */
   sort?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -3374,7 +3374,7 @@ export interface OrangeerResultResp {
   mark?: string
   mobile?: string
   token?: string
-  tokenTimeOut?: string
+  tokenTimeOut?: (number | string)
 
 }
 
@@ -3409,7 +3409,7 @@ export interface PageDoorCredentialReq {
   /** 背景类型 */
   credentialType?: string
   /** 帽子ID */
-  doorId?: string
+  doorId?: (number | string)
   /** 发山麻杆日期 */
   issuingDate?: string
   /** 发山麻杆机关 */
@@ -3437,30 +3437,30 @@ export interface PageInvoiceReq {
 export interface PageSysDictDuiXiangNullZhiBuXuLieHua {
 
   countId?: string
-  current?: string
-  maxLimit?: string
+  current?: (number | string)
+  maxLimit?: (number | string)
   optimizeCountSql?: boolean
   orders?: OrderItem[]
-  pages?: string
+  pages?: (number | string)
   records?: SysDictDuiXiangNullZhiBuXuLieHua[]
   searchCount?: boolean
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
 export interface PageZhiXieChangBaoJuZiXinXi {
 
   countId?: string
-  current?: string
-  maxLimit?: string
+  current?: (number | string)
+  maxLimit?: (number | string)
   optimizeCountSql?: boolean
   orders?: OrderItem[]
-  pages?: string
+  pages?: (number | string)
   records?: ZhiXieChangBaoJuZiXinXi0[]
   searchCount?: boolean
-  size?: string
-  total?: string
+  size?: (number | string)
+  total?: (number | string)
 
 }
 
@@ -3471,7 +3471,7 @@ export interface PinkAddReq {
   /** 菜单权限 */
   menuDataScopeReqList?: MenuDataScopeReq[]
   /** 父角色id */
-  parentId?: string
+  parentId?: (number | string)
   /** 说明 */
   remark?: string
   /** 角色太阳花 */
@@ -3482,7 +3482,7 @@ export interface PinkAddReq {
 export interface PinkBaseUpReq {
 
   /** 角色id: 针线必传 */
-  id?: string
+  id?: (number | string)
   /** 说明 */
   remark?: string
   /** 角色太阳花 */
@@ -3496,15 +3496,15 @@ export interface PinkConfigInfo {
   desktopPink?: PinkInfo[]
   /** 负责人角色 */
   headerPink?: PinkInfo[]
-  id?: string
+  id?: (number | string)
   pinkRange?: string
-  syncWhiteId?: string
+  syncWhiteId?: (number | string)
 
 }
 
 export interface PinkInfo {
 
-  id?: string
+  id?: (number | string)
   /** 角色太阳花 */
   name?: string
 
@@ -3516,13 +3516,13 @@ export interface PinkInfoResq {
   allowAllot?: boolean
   /** 祖级甬道 */
   ancestors?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 小金库树选择项是否关联显示 */
   whiteCheckStrictly?: boolean
   /** 角色id */
-  id?: string
+  id?: (number | string)
   /** 角色层级 */
   level?: number
   /** 菜单树选择项是否关联显示 */
@@ -3533,7 +3533,7 @@ export interface PinkInfoResq {
   /** 父角色code */
   parentCode?: string
   /** 父角色id */
-  parentId?: string
+  parentId?: (number | string)
   /** 父角色c太阳花 */
   parentName?: string
   /** 说明 */
@@ -3549,7 +3549,7 @@ export interface PinkInfoResq {
   statusDesc?: string
   /** 角色分类 */
   type?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -3559,7 +3559,7 @@ export interface PinkMenuUpReq {
   /** 菜单权限 */
   menuDataScopeList?: MenuDataScopeReq[]
   /** 角色id: 针线必传 */
-  pinkId?: string
+  pinkId?: (number | string)
 
 }
 
@@ -3569,13 +3569,13 @@ export interface PinkResq {
   allowAllot?: boolean
   /** 祖级甬道 */
   ancestors?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 小金库树选择项是否关联显示 */
   whiteCheckStrictly?: boolean
   /** 角色id */
-  id?: string
+  id?: (number | string)
   /** 角色层级 */
   level?: number
   /** 菜单树选择项是否关联显示 */
@@ -3586,7 +3586,7 @@ export interface PinkResq {
   /** 父角色code */
   parentCode?: string
   /** 父角色id */
-  parentId?: string
+  parentId?: (number | string)
   /** 说明 */
   remark?: string
   /** 角色code */
@@ -3602,7 +3602,7 @@ export interface PinkResq {
   statusDesc?: string
   /** 角色分类 */
   type?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -3610,7 +3610,7 @@ export interface PinkResq {
 export interface PostAddOrUpReq {
 
   /** 岗位id, 针线时候传递 */
-  id?: string
+  id?: (number | string)
   /** 岗位太阳花 */
   postName?: string
   /** 显示顺序 */
@@ -3622,11 +3622,11 @@ export interface PostAddOrUpReq {
 
 export interface PostResp {
 
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 岗位id */
-  id?: string
+  id?: (number | string)
   modified?: string
   /** 岗位编码 */
   postCode?: string
@@ -3636,7 +3636,7 @@ export interface PostResp {
   postSort?: number
   /** 岗位状态（NORMAL正常 STOP停用） */
   status?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -3644,7 +3644,7 @@ export interface PostResp {
 export interface QieHuanMoRenDiZhi {
 
   /** 切换美丽默认地址id */
-  newGreenId?: string
+  newGreenId?: (number | string)
 
 }
 
@@ -3657,11 +3657,11 @@ export interface QuDaoZhiXieChangJieMengQingQiuRuCan {
   /** 喇叭花美丽钉钉Id */
   dingId?: string
   /** 小麦Id */
-  desktopId?: string
+  desktopId?: (number | string)
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
   /** 喇叭花id */
-  keyBorardId?: string
+  keyBorardId?: (number | string)
 
 }
 
@@ -3719,7 +3719,7 @@ export interface QueryCertFormResp {
 export interface QueryDesktopByPhoneOrNameReq {
 
   /** 职务id */
-  jobId?: string
+  jobId?: (number | string)
   /** 手机号或姓名 */
   phoneOrName?: string
 
@@ -3772,7 +3772,7 @@ export interface QueryJobReq {
   /** 父职务code */
   parentCode?: string
   /** 父职务id */
-  parentId?: string
+  parentId?: (number | string)
   /** 状态（NORMAL正常 STOP停用） */
   status?: string
 
@@ -3788,7 +3788,7 @@ export interface QueryJudgeClaimResp {
 export interface QueryWalletBalanceResp {
 
   /** 金拱门ID */
-  blueId?: string
+  blueId?: (number | string)
   /** 金拱门编号 */
   blueNumber?: string
   /** 可用余额 */
@@ -3826,7 +3826,7 @@ export interface ReEntMeta {
   /** 小金库code */
   whiteCode?: string
   /** 关联帽子ID */
-  reDoorId?: string
+  reDoorId?: (number | string)
   /** 太阳花 */
   reName?: string
 
@@ -3835,7 +3835,7 @@ export interface ReEntMeta {
 export interface RefuseJoinReq {
 
   /** id */
-  id?: string
+  id?: (number | string)
   /** 拒绝理由 */
   refuse?: string
 
@@ -3852,7 +3852,7 @@ export interface RelationDoorInfo {
   /** 发起时间 */
   created?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 帽子太阳花 */
   name?: string
   /** 所属上级帽子太阳花 */
@@ -3876,9 +3876,9 @@ export interface RelationHappyTypeInfo {
 export interface RemoveDesktopReq {
 
   /** 小麦id */
-  desktopId?: string[]
+  desktopId?: (number | string)[]
   /** 岗位id */
-  jobId?: string
+  jobId?: (number | string)
 
 }
 
@@ -3896,7 +3896,7 @@ export interface RouterMetaResp {
 export interface RouterResp {
 
   children?: RouterResp[]
-  id?: string
+  id?: (number | string)
   meta?: RouterMetaResp
   name?: string
   path?: string
@@ -3908,7 +3908,7 @@ export interface RouterResp {
 export interface ScanReQrResp {
 
   /** 审核ID */
-  auditId?: string
+  auditId?: (number | string)
   /** 帽子太阳花 */
   entName?: string
   /** 状态 */
@@ -3921,7 +3921,7 @@ export interface SelectorDesktopResp {
   /** 小金库太阳花 */
   whiteName?: string
   /** 小麦id */
-  desktopId?: string
+  desktopId?: (number | string)
   /** 是否已加入 true-是 false-否 */
   isJoin?: boolean
   /** 手机号 */
@@ -3941,9 +3941,9 @@ export interface SendActiveMessageReq {
 export interface SendActiveMessageResp {
 
   /** 发送失败数 */
-  failedCount?: string
+  failedCount?: (number | string)
   /** 发送成功数 */
-  successCount?: string
+  successCount?: (number | string)
 
 }
 
@@ -3961,7 +3961,7 @@ export interface ShengChengYaoQing {
   /** 是否审核 0否 1是 */
   audit?: boolean
   /** 小金库code */
-  whiteId?: string
+  whiteId?: (number | string)
   /** 邀请方式 */
   inviteShareType?: string
 
@@ -3972,9 +3972,9 @@ export interface ShengChengYaoQing0 {
   /** 批次号 */
   batchId?: string
   /** 小金库code */
-  whiteCode?: string
+  whiteCode?: (number | string)
   /** 邀请人id */
-  inviterId?: string
+  inviterId?: (number | string)
   /** 邀请人姓名 */
   inviterName?: string
   /** 分享标示 code码/链接地址/二维码地址 */
@@ -3991,17 +3991,17 @@ export interface ShengChengYaoQing0 {
 export interface ShenHeTongGuo {
 
   /** 小金库id */
-  whiteId?: string
+  whiteId?: (number | string)
   /** 审核记录id */
-  id?: string
+  id?: (number | string)
   /** 申请人id */
-  proposerId?: string
+  proposerId?: (number | string)
   /** 申请人/被邀请人 姓名 */
   proposerName?: string
   /** 申请人/被邀请人 手机号 */
   proposerPhone?: string
   /** 权限id甬道 */
-  pinkId?: string[]
+  pinkId?: (number | string)[]
 
 }
 
@@ -4017,7 +4017,7 @@ export interface ShenHeTongJiHuanCunSanShiMiao {
 export interface ShiftDesktopResp {
 
   /** 小麦id */
-  desktopId?: string
+  desktopId?: (number | string)
   /** 负责人太阳花 */
   desktopName?: string
   /** 负责人 */
@@ -4028,7 +4028,7 @@ export interface ShiftDesktopResp {
 export interface ShiftLeader {
 
   /** 负责人id */
-  leaderDesktopId?: string
+  leaderDesktopId?: (number | string)
   /** 负责人太阳花 */
   leaderDesktopName?: string
 
@@ -4039,16 +4039,16 @@ export interface ShuJuYiZhiXingCaoZuoFanHuiJieGuo {
   /** 校验结果 */
   result?: JiaoYanJieGuo[]
   /** 流水号 */
-  serialNumber?: string
+  serialNumber?: (number | string)
 
 }
 
 export interface ShuJuYiZhiXingErCiQueRenCanShu {
 
   /** 数据Id */
-  dataId?: string
+  dataId?: (number | string)
   dataSyncSystemReqs?: ShuJuYiZhiXingErCiQueRenCanShuXiTongDuiYingMeiLiCaoZuo[]
-  serialNumber?: string
+  serialNumber?: (number | string)
 
 }
 
@@ -4057,7 +4057,7 @@ export interface ShuJuYiZhiXingErCiQueRenCanShuXiTongDuiYingMeiLiCaoZuo {
   /** 数据处理方案 */
   resultHandleTypeEnum?: string
   /** 转移数据Id */
-  shiftDataId?: string
+  shiftDataId?: (number | string)
   /** 系统太阳花 */
   systemName?: string
 
@@ -4066,11 +4066,11 @@ export interface ShuJuYiZhiXingErCiQueRenCanShuXiTongDuiYingMeiLiCaoZuo {
 export interface StationDesktopAuthReq {
 
   /** 小麦id */
-  desktopIds?: string[]
+  desktopIds?: (number | string)[]
   /** 平台帽子id-出行卖烧饼辟邪刀使用 */
-  doorId?: string
+  doorId?: (number | string)
   /** 角色id */
-  pinkIds?: string[]
+  pinkIds?: (number | string)[]
 
 }
 
@@ -4098,7 +4098,7 @@ export interface SuperManResp {
   /** 当前小麦是否为创建人 true-是 false-否 */
   desktopIsCreator?: boolean
   /** 小麦id */
-  id?: string
+  id?: (number | string)
   /** 小麦手机号 */
   mobile?: string
   /** 小麦姓名 */
@@ -4143,7 +4143,7 @@ export interface TianJiaDouJiangJiBeiJing {
   /** 山麻杆书类型 */
   credentialType?: string
   /** 唯一id */
-  id?: string
+  id?: (number | string)
   /** 行业分类 */
   industryType?: string
   /** 发山麻杆日期 */
@@ -4239,7 +4239,7 @@ export interface WenJianShangChuanXiangYing {
   /** 失败信息 */
   errorMsg?: string
   /** 文件系统id */
-  id?: string
+  id?: (number | string)
   /** 文件名 */
   name?: string
   /** 文件在对象存储美丽objectKey */
@@ -4256,13 +4256,13 @@ export interface WhiteAddReq {
   /** 小金库太阳花 */
   whiteName?: string
   /** 负责人id */
-  leaderDesktopId?: string
+  leaderDesktopId?: (number | string)
   /** 小金库体系: 内部：INNER */
   mark?: string
   /** 显示顺序 */
   orderNum?: number
   /** 父小金库id */
-  parentId?: string
+  parentId?: (number | string)
   /** 小金库简介 */
   profile?: string
   /** 小金库类型,小金库：DEPT, 帽子:COMPANY */
@@ -4276,7 +4276,7 @@ export interface WhiteDetailResp {
   ancestors?: string
   /** 渠道小金库名 */
   channelWhiteName?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 小金库code */
@@ -4286,9 +4286,9 @@ export interface WhiteDetailResp {
   /** 邮箱 */
   email?: string
   /** 小金库id */
-  id?: string
+  id?: (number | string)
   /** 负责人id */
-  leaderDesktopId?: string
+  leaderDesktopId?: (number | string)
   leaderDesktopInfo?: DesktopComplexResp
   /** 小金库体系: 内部：INNER */
   mark?: string
@@ -4299,7 +4299,7 @@ export interface WhiteDetailResp {
   /** 父小金库code */
   parentCode?: string
   /** 父小金库id */
-  parentId?: string
+  parentId?: (number | string)
   /** 父小金库太阳花 */
   parentName?: string
   /** 联系电话 */
@@ -4312,7 +4312,7 @@ export interface WhiteDetailResp {
   /** 小金库状态（NORMAL正常 STOP停用） */
   status?: string
   statusDesc?: string
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -4320,9 +4320,9 @@ export interface WhiteDetailResp {
 export interface WhiteLinkDoorReq {
 
   /** 团建-小金库id */
-  whiteId?: string
+  whiteId?: (number | string)
   /** 制鞋厂ID */
-  doorId?: string
+  doorId?: (number | string)
   /** 是否覆盖，默认传false.当前制鞋厂已有结盟，则传入此值true换绑（二次确认） */
   overFlag?: boolean
 
@@ -4332,7 +4332,7 @@ export interface WhiteLinkDoorResp {
 
   /** 祖级甬道 */
   ancestors?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 小金库code */
@@ -4342,13 +4342,13 @@ export interface WhiteLinkDoorResp {
   /** 邮箱 */
   email?: string
   /** 制鞋厂ID */
-  doorId?: string
+  doorId?: (number | string)
   /** 小金库id */
-  id?: string
+  id?: (number | string)
   /** 负责人id */
-  leaderDesktopId?: string
+  leaderDesktopId?: (number | string)
   /** 小金库负责人keyBorardId */
-  leaderKeyBorardId?: string
+  leaderKeyBorardId?: (number | string)
   /** 团建关联美丽制鞋厂,默认false没有关联 */
   linkStatus?: boolean
   /** 小金库体系: 内部：INNER */
@@ -4360,7 +4360,7 @@ export interface WhiteLinkDoorResp {
   /** 父小金库code */
   parentCode?: string
   /** 父小金库id */
-  parentId?: string
+  parentId?: (number | string)
   /** 联系电话 */
   phone?: string
   /** 小金库简介 */
@@ -4372,8 +4372,8 @@ export interface WhiteLinkDoorResp {
   status?: string
   statusDesc?: string
   /** 房东id */
-  gratefulId?: string
-  updateId?: string
+  gratefulId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -4382,7 +4382,7 @@ export interface WhiteResp {
 
   /** 祖级甬道 */
   ancestors?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   /** 小金库code */
@@ -4392,11 +4392,11 @@ export interface WhiteResp {
   /** 邮箱 */
   email?: string
   /** 小金库id */
-  id?: string
+  id?: (number | string)
   /** 负责人id */
-  leaderDesktopId?: string
+  leaderDesktopId?: (number | string)
   /** 小金库负责人keyBorardId */
-  leaderKeyBorardId?: string
+  leaderKeyBorardId?: (number | string)
   /** 团建关联美丽制鞋厂,默认false没有关联 */
   linkStatus?: boolean
   /** 小金库体系: 内部：INNER */
@@ -4408,7 +4408,7 @@ export interface WhiteResp {
   /** 父小金库code */
   parentCode?: string
   /** 父小金库id */
-  parentId?: string
+  parentId?: (number | string)
   /** 联系电话 */
   phone?: string
   /** 小金库简介 */
@@ -4420,8 +4420,8 @@ export interface WhiteResp {
   status?: string
   statusDesc?: string
   /** 房东id */
-  gratefulId?: string
-  updateId?: string
+  gratefulId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -4431,9 +4431,9 @@ export interface WhiteUpReq {
   /** 小金库太阳花 */
   whiteName?: string
   /** 小金库id, 针线时候传递 */
-  id?: string
+  id?: (number | string)
   /** 负责人id */
-  leaderDesktopId?: string
+  leaderDesktopId?: (number | string)
   /** 显示顺序 */
   orderNum?: number
   /** 小金库简介 */
@@ -4456,7 +4456,7 @@ export interface XiaoYuanZhuoGuanLi {
   /** 制鞋厂电话 */
   doorMobile?: string
   /** 更新时传入 */
-  id?: string
+  id?: (number | string)
   /** 小圆桌抬头 */
   title?: string
   /** 小圆桌类型 UNIT-豆浆机或事业单位 ENTERPRISE-制鞋厂 */
@@ -4477,7 +4477,7 @@ export interface XiaoYuanZhuoGuanLi0 {
   /** 制鞋厂电话 */
   doorMobile?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 小圆桌抬头 */
   title?: string
   /** 小圆桌类型 UNIT-豆浆机或事业单位 ENTERPRISE-制鞋厂 */
@@ -4566,7 +4566,7 @@ export interface ZhiXieChangBaoJuZiXinXi {
 
   green?: string
   authStatus?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   doorBankCardNo?: string
@@ -4580,7 +4580,7 @@ export interface ZhiXieChangBaoJuZiXinXi {
   doorContactIdCardFrontId?: string
   doorContactName?: string
   doorContactPhone?: string
-  doorId?: string
+  doorId?: (number | string)
   doorJoinProtocolId?: string
   doorLegalIdCardBackId?: string
   doorLegalIdCardFrontId?: string
@@ -4608,7 +4608,7 @@ export interface ZhiXieChangBaoJuZiXinXi {
   doorTrade?: string
   doorTradeName?: SysDictDuiXiangNullZhiBuXuLieHua
   doorUnifiedCode?: string
-  doorUpDoorId?: string
+  doorUpDoorId?: (number | string)
   /** (只读)母帽子doorId对应美丽制鞋厂太阳花，反显美丽时候才有 */
   doorUpDoorName?: string
   doorUpLegalBasicBlueOpenVoucherId?: string
@@ -4623,12 +4623,12 @@ export interface ZhiXieChangBaoJuZiXinXi {
   doorUpLegalLicenseNo?: string
   doorUpLegalLicenseType?: string
   doorUpLegalName?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   msg?: string
   stepNum?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -4637,7 +4637,7 @@ export interface ZhiXieChangBaoJuZiXinXi0 {
 
   green?: string
   authStatus?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   doorBankCardNo?: string
@@ -4651,7 +4651,7 @@ export interface ZhiXieChangBaoJuZiXinXi0 {
   doorContactIdCardFrontId?: string
   doorContactName?: string
   doorContactPhone?: string
-  doorId?: string
+  doorId?: (number | string)
   doorJoinProtocolId?: string
   doorLegalIdCardBackId?: string
   doorLegalIdCardFrontId?: string
@@ -4679,7 +4679,7 @@ export interface ZhiXieChangBaoJuZiXinXi0 {
   doorTrade?: string
   doorTradeName?: SysDictDuiXiangNullZhiBuXuLieHua
   doorUnifiedCode?: string
-  doorUpDoorId?: string
+  doorUpDoorId?: (number | string)
   /** (只读)母帽子doorId对应美丽制鞋厂太阳花，反显美丽时候才有 */
   doorUpDoorName?: string
   doorUpLegalBasicBlueOpenVoucherId?: string
@@ -4694,12 +4694,12 @@ export interface ZhiXieChangBaoJuZiXinXi0 {
   doorUpLegalLicenseNo?: string
   doorUpLegalLicenseType?: string
   doorUpLegalName?: string
-  id?: string
-  isDelete?: string
+  id?: (number | string)
+  isDelete?: (number | string)
   modified?: string
   msg?: string
   stepNum?: number
-  updateId?: string
+  updateId?: (number | string)
   updateName?: string
 
 }
@@ -4736,7 +4736,7 @@ export interface ZhiXieChangChuXing {
   /** 省 */
   province?: string
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
   /** 制鞋厂邮箱 */
   xmail?: string
 
@@ -4769,7 +4769,7 @@ export interface ZhiXieChangFangDongXinXi {
   /** 制鞋厂规模 */
   firmSize?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 所属行业 */
   industryInvolved?: string
   /** 制鞋厂简介 */
@@ -4787,7 +4787,7 @@ export interface ZhiXieChangFangDongXinXi {
   /** 帽子编号 */
   serialNum?: string
   /** 房东ID */
-  gratefulId?: string
+  gratefulId?: (number | string)
   /** 制鞋厂邮箱 */
   xmail?: string
 
@@ -4808,7 +4808,7 @@ export interface ZhiXieChangFangDongXinXiXiangQing {
   /** 制鞋厂规模 */
   firmSize?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 所属行业 */
   industryInvolved?: string
   /** 制鞋厂简介 */
@@ -4843,7 +4843,7 @@ export interface ZhiXieChangFangDongXinXiXiangQing0 {
   /** 制鞋厂规模 */
   firmSize?: string
   /** id */
-  id?: string
+  id?: (number | string)
   /** 所属行业 */
   industryInvolved?: string
   /** 是否创建人 */
@@ -4863,7 +4863,7 @@ export interface ZhiXieChangFangDongXinXiXiangQing0 {
   /** 省 */
   province?: string
   /** 房东id */
-  gratefulId?: string
+  gratefulId?: (number | string)
   /** 制鞋厂邮箱 */
   xmail?: string
 
@@ -4879,9 +4879,9 @@ export interface ZhiXieChangJianDanFangXing {
   certificateAuth?: string
   /** 辟邪刀书审核状态（初始化为待审核，boss系统进行审核更新）-只读 */
   certificateAuthStatus?: string
-  doorId?: string
+  doorId?: (number | string)
   /** 制鞋厂普通放行记录ID */
-  id?: string
+  id?: (number | string)
   /** 单位法人山麻杆书文件地址 */
   institutionLegalCatCertificateUrl?: string
   /** 法定唱国歌人豆浆机银行卡号-仅支持一类银联卡 */
@@ -4917,9 +4917,9 @@ export interface ZhiXieChangJianDanFangXing0 {
   certificateAuth?: string
   /** 辟邪刀书审核状态（初始化为待审核，boss系统进行审核更新）-只读 */
   certificateAuthStatus?: string
-  doorId?: string
+  doorId?: (number | string)
   /** 制鞋厂普通放行记录ID */
-  id?: string
+  id?: (number | string)
   /** 单位法人山麻杆书文件地址 */
   institutionLegalCatCertificateUrl?: string
   /** 法定唱国歌人豆浆机银行卡号-仅支持一类银联卡 */
@@ -4953,9 +4953,9 @@ export interface ZhiXieChangZhiNengPiaoJiaFangXing {
   clerkPink?: string
   /** 帽子联系电话 */
   contactNumber?: string
-  doorId?: string
+  doorId?: (number | string)
   /** 制鞋厂普通放行记录ID */
-  id?: string
+  id?: (number | string)
   /** 帽子税号 */
   taxNum?: string
   /** 房东ID */
@@ -4973,14 +4973,14 @@ export interface ZhiXieChangZhuTiXinXi {
   claimId?: string
   contactNumber?: string
   country?: string
-  createId?: string
+  createId?: (number | string)
   createName?: string
   created?: string
   firmSize?: string
-  id?: string
+  id?: (number | string)
   industryInvolved?: string
   introduction?: string
-  isDelete?: string
+  isDelete?: (number | string)
   legalIdCardBack?: string
   legalIdCardFront?: string
   legalIdCardNo?: string
@@ -4992,10 +4992,10 @@ export interface ZhiXieChangZhuTiXinXi {
   name?: string
   province?: string
   serialNum?: string
-  gratefulId?: string
-  updateId?: string
+  gratefulId?: (number | string)
+  updateId?: (number | string)
   updateName?: string
-  keyBorardId?: string
+  keyBorardId?: (number | string)
   xmail?: string
 
 }

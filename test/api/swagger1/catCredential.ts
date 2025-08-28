@@ -8,14 +8,14 @@ export function catCredentialAddCatCredential(data?: TianJiaDouJiangJiBeiJing0, 
 
 /** 扫落叶豆浆机背景 */
 export function catCredentialDeleteId(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return useGet<ApiResponseboolean>(`/api/catCredential/delete/${data?.id}`, data, useFetchOptions)
 }
 
 /** 扫落叶注册专业山麻杆书 */
 export function catCredentialDeleteMajorId(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return useGet<ApiResponseboolean>(`/api/catCredential/deleteMajor/${data?.id}`, data, useFetchOptions)
 }

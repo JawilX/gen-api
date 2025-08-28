@@ -3,7 +3,7 @@ import type { UseFetchOptions } from '@vueuse/core'
 /** 添加token到缓存 */
 export function tokenAddTokenToShangyunCache(data?: {
   clientType?: string
-  stationKeyBorardId?: string
+  stationKeyBorardId?: (number | string)
   token?: string
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
   return usePost<any>(`/api/token/addTokenToShangyunCache`, data, useFetchOptions)

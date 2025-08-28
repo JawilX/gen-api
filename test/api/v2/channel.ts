@@ -14,7 +14,7 @@ export function channelGratefulConfigAdd(data?: ChannelAppGratefulConfigAddReq, 
 /** 结盟详情 */
 export function channelGratefulConfigDetail(data?: {
   channelType?: string
-  gratefulId?: string
+  gratefulId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseChannelAppGratefulConfigResp['data']> & PromiseLike<UseFetchReturn<ApiResponseChannelAppGratefulConfigResp['data']>> {
   return useGet<ApiResponseChannelAppGratefulConfigResp>(`/api/channel/gratefulConfig/detail`, data, useFetchOptions)
 }

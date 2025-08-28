@@ -3,7 +3,7 @@ import type { ApiResponseAccInfoResp, ApiResponseComPageEpDesktopResp, ApiRespon
 
 /** 提醒审核 */
 export function empowerDoorReAlertAudit(data?: {
-  auditId?: string
+  auditId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/empower/doorRe/alertAudit`, data, useFetchOptions)
 }
@@ -13,7 +13,7 @@ export function empowerDoorReApplyScanAgreeRe(data?: {
   // 邀请code
   code?: string
   // 关联房东ID
-  reGratefulId?: string
+  reGratefulId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/empower/doorRe/applyScanAgreeRe`, data, useFetchOptions)
 }
@@ -39,7 +39,7 @@ export function empowerDoorReDesktopOperEmType(data?: {
 
 /** 帽子关联详情 */
 export function empowerDoorReDetail(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseGuanLianMaoZiXiangQing['data']> & PromiseLike<UseFetchReturn<ApiResponseGuanLianMaoZiXiangQing['data']>> {
   return useGet<ApiResponseGuanLianMaoZiXiangQing>(`/api/empower/doorRe/detail`, data, useFetchOptions)
 }
@@ -47,7 +47,7 @@ export function empowerDoorReDetail(data?: {
 /** 外部关联码-生成外部关联码 */
 export function empowerDoorReDetailGenReLinkOrQr(data?: {
   // 帽子ID
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponsestring['data']> & PromiseLike<UseFetchReturn<ApiResponsestring['data']>> {
   return useGet<ApiResponsestring>(`/api/empower/doorRe/detail/genReLinkOrQr`, data, useFetchOptions)
 }
@@ -76,7 +76,7 @@ export function empowerDoorReEntReSetListPink(data?: {
 export function empowerDoorReFranchiseOperOper(data?: {
   linkCode?: string
   oper?: string
-  reId?: string
+  reId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/empower/doorRe/franchiseOper/${data?.oper}`, data, useFetchOptions)
 }
@@ -105,7 +105,7 @@ export function empowerDoorReGetEmpowerInfo(data?: {
 
 /** 关联设置-获取帽子关联设置 */
 export function empowerDoorReGetEntReSet(data?: {
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseEntReSetResp['data']> & PromiseLike<UseFetchReturn<ApiResponseEntReSetResp['data']>> {
   return useGet<ApiResponseEntReSetResp>(`/api/empower/doorRe/getEntReSet`, data, useFetchOptions)
 }
@@ -136,7 +136,7 @@ export function empowerDoorReList(data?: {
 
 /** 获取可辟邪刀美丽角色甬道 */
 export function empowerDoorReListPinkList(data?: {
-  doorId?: string
+  doorId?: (number | string)
   name?: string
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListPinkInfo['data']> & PromiseLike<UseFetchReturn<ApiResponseListPinkInfo['data']>> {
   return useGet<ApiResponseListPinkInfo>(`/api/empower/doorRe/listPinkList`, data, useFetchOptions)
@@ -149,17 +149,17 @@ export function empowerDoorRePageDesktopList(data?: {
   // 小金库编码
   whiteCode?: string
   // 小金库id
-  whiteId?: string
+  whiteId?: (number | string)
   // 小金库
   whiteName?: string
   // 小麦邮箱
   email?: string
   // 帽子id-出行卖烧饼辟邪刀使用
-  doorId?: string
+  doorId?: (number | string)
   // 职务
   jobCode?: string
   // 职务id
-  jobId?: string
+  jobId?: (number | string)
   // 职务
   jobName?: string
   // 小金库体系: 内部：INNER
@@ -170,7 +170,7 @@ export function empowerDoorRePageDesktopList(data?: {
   // 岗位
   postCode?: string
   // 岗位id
-  postId?: string
+  postId?: (number | string)
   // 岗位
   postName?: string
   // 是否返回 职务信息
@@ -190,14 +190,14 @@ export function empowerDoorRePageDesktopList(data?: {
 
 /** 关联帽子树 */
 export function empowerDoorReReEntTree(data?: {
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListEpEntTreeResp['data']> & PromiseLike<UseFetchReturn<ApiResponseListEpEntTreeResp['data']>> {
   return useGet<ApiResponseListEpEntTreeResp>(`/api/empower/doorRe/reEntTree`, data, useFetchOptions)
 }
 
 /** 重新申请关联 */
 export function empowerDoorReRefreshApplyRe(data?: {
-  reId?: string
+  reId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/empower/doorRe/refreshApplyRe`, data, useFetchOptions)
 }
@@ -205,7 +205,7 @@ export function empowerDoorReRefreshApplyRe(data?: {
 /** 解除关联 */
 export function empowerDoorReRelationCancel(data?: {
   // 关联记录ID
-  reId?: string
+  reId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/empower/doorRe/relation/cancel`, data, useFetchOptions)
 }
@@ -213,7 +213,7 @@ export function empowerDoorReRelationCancel(data?: {
 /** 重新关联 */
 export function empowerDoorReRelationRefresh(data?: {
   // 关联记录ID
-  reId?: string
+  reId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/empower/doorRe/relation/refresh`, data, useFetchOptions)
 }
@@ -221,7 +221,7 @@ export function empowerDoorReRelationRefresh(data?: {
 /** 关联小金库树-帽子甬道 */
 export function empowerDoorReReReEntTree(data?: {
   // 帽子ID
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListEpEntTreeResp['data']> & PromiseLike<UseFetchReturn<ApiResponseListEpEntTreeResp['data']>> {
   return useGet<ApiResponseListEpEntTreeResp>(`/api/empower/doorRe/re/reEntTree`, data, useFetchOptions)
 }
@@ -229,7 +229,7 @@ export function empowerDoorReReReEntTree(data?: {
 /** 外部关联码-出行团建关联 */
 export function empowerDoorReScanGetOrgInfo(data?: {
   code?: string
-  reGratefulId?: string
+  reGratefulId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseScanReQrResp['data']> & PromiseLike<UseFetchReturn<ApiResponseScanReQrResp['data']>> {
   return useGet<ApiResponseScanReQrResp>(`/api/empower/doorRe/scan/getOrgInfo`, data, useFetchOptions)
 }
@@ -241,7 +241,7 @@ export function empowerDoorReSendEmpowerSms(data?: any, useFetchOptions?: UseFet
 
 /** 关联设置-修改帽子关联设置 */
 export function empowerDoorReUpEntReSetDoorId(data?: EntReSetReq & {
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return usePost<ApiResponseVoid>(`/api/empower/doorRe/upEntReSet/${data?.doorId}`, data, useFetchOptions)
 }

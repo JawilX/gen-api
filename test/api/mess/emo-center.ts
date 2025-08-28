@@ -4,14 +4,14 @@ import type { BiXieDao, EntReSetReq } from './_interfaces'
 /** 这个接口出参树形结构，同样的children 结构导致 mock 函数死循环了 */
 export function emocenterApiAdminJobCategoryByParentIds(data?: {
   isEnable?: number
-  parentIds?: string[]
+  parentIds?: (number | string)[]
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
   return useGet<any>(`/emo-center/api/admin/jobCategory/byParentIds`, data, useFetchOptions)
 }
 
 /** 这个接口的入参既有 in path, 又有 in body */
 export function emocenterApiEmpowerEnterpriseReUpEntReSetEnterpriseId(data?: {
-  enterpriseId?: string
+  enterpriseId?: (number | string)
   req?: EntReSetReq
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
   return usePost<any>(`/emo-center/api/empower/enterpriseRe/upEntReSet/${data?.enterpriseId}`, data, useFetchOptions)
@@ -30,7 +30,7 @@ export function emocenterApiEnterpriseList(data?: {
   // //西蓝花性质 合作种类三级分类\
   cooperateTypeThird?: string
   // 西蓝花id
-  id?: string
+  id?: (number | string)
   // 字母
   letter?: string
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
@@ -39,14 +39,14 @@ export function emocenterApiEnterpriseList(data?: {
 
 /** 这个接口处理后的 parsedData 里的type为空，导出出现形如 'data|1-20': [()] 的错误mock数据 */
 export function emocenterApiFeeRuleGetCooperateTypeIdsByFeeId(data?: {
-  feeId?: string
+  feeId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
   return useGet<any>(`/emo-center/api/feeRule/getCooperateTypeIdsByFeeId`, data, useFetchOptions)
 }
 
 /** 这个接口的入参既有 in query,又有 in body */
 export function emocenterApiSearchRecordDeleteByKeywords(data?: {
-  groupCode?: string
+  groupCode?: (number | string)
   keywords?: string[]
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
   return usePost<any>(`/emo-center/api/searchRecord/deleteByKeywords`, data, useFetchOptions)
@@ -54,7 +54,7 @@ export function emocenterApiSearchRecordDeleteByKeywords(data?: {
 
 /** 这是一个 delete 请求 */
 export function emocenterApiV1TastyWorkhistoryId(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
   return useDelete<any>(`/emo-center/api/v1/tasty/work-history/${data?.id}`, data, useFetchOptions)
 }
@@ -66,15 +66,15 @@ export function emocenterAuthExecute(data?: BiXieDao, useFetchOptions?: UseFetch
 
 /** 返回数值是个数组而非对象 */
 export function emocenterEffectiveDept(data?: {
-  platformEnterpriseId?: string
-  platformSkyId?: string
+  platformEnterpriseId?: (number | string)
+  platformSkyId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
   return useGet<any>(`/api/emo-center/effective/dept`, data, useFetchOptions)
 }
 
 /** 参数在路径上 */
 export function emocenterWhiteGetWhiteId(data?: {
-  whiteId?: string
+  whiteId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
   return useGet<any>(`/api/emo-center/white/get/${data?.whiteId}`, data, useFetchOptions)
 }

@@ -9,7 +9,7 @@ export function auditAuthExecute(data?: BiXieDao, useFetchOptions?: UseFetchOpti
 /** 辟邪刀详情甬道 */
 export function auditAuthInfoList(data?: {
   auditClassification?: string
-  id?: string
+  id?: (number | string)
   page?: number
   // 成员太阳花或手机号
   queryStr?: string

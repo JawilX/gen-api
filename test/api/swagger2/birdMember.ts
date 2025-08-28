@@ -38,7 +38,7 @@ export function birdMemberList(data?: NiaoWoChengYuanYongDaoChuXingRuCan, useFet
 
 /** 鸟窝管理员甬道(含鸟窝主) */
 export function birdMemberListAdmin(data?: {
-  imBirdId?: string
+  imBirdId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListNiaoWoChengYuanXinXiDuiXiangBirdMemberResp['data']> & PromiseLike<UseFetchReturn<ApiResponseListNiaoWoChengYuanXinXiDuiXiangBirdMemberResp['data']>> {
   return useGet<ApiResponseListNiaoWoChengYuanXinXiDuiXiangBirdMemberResp>(`/api/birdMember/listAdmin`, data, useFetchOptions)
 }

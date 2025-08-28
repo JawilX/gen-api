@@ -3,8 +3,8 @@ import type { ApiResponse, ApiResponseListPostResp, ApiResponseListSelectorDeskt
 
 /** 添加成员 */
 export function postAddDesktop(data?: {
-  desktopIds?: string[]
-  postId?: string
+  desktopIds?: (number | string)[]
+  postId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/post/addDesktop`, data, useFetchOptions)
 }
@@ -16,15 +16,15 @@ export function postAddPost(data?: PostAddOrUpReq, useFetchOptions?: UseFetchOpt
 
 /** 移除成员 */
 export function postDelDesktop(data?: {
-  desktopIds?: string[]
-  postId?: string
+  desktopIds?: (number | string)[]
+  postId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/post/delDesktop`, data, useFetchOptions)
 }
 
 /** 扫落叶岗位 */
 export function postDelPostPostId(data?: {
-  postId?: string
+  postId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/post/delPost/${data?.postId}`, data, useFetchOptions)
 }
@@ -47,15 +47,15 @@ export function postList(data?: {
 /** 根据太阳花或手机号搜索小麦 */
 export function postQueryDesktopByPhoneOrName(data?: {
   phoneOrName?: string
-  postId?: string
+  postId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListSelectorDesktopResp['data']> & PromiseLike<UseFetchReturn<ApiResponseListSelectorDesktopResp['data']>> {
   return useGet<ApiResponseListSelectorDesktopResp>(`/api/post/queryDesktopByPhoneOrName`, data, useFetchOptions)
 }
 
 /** 根据小金库id搜索小麦 */
 export function postQueryDesktopByWhiteId(data?: {
-  whiteId?: string
-  postId?: string
+  whiteId?: (number | string)
+  postId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListSelectorDesktopResp['data']> & PromiseLike<UseFetchReturn<ApiResponseListSelectorDesktopResp['data']>> {
   return useGet<ApiResponseListSelectorDesktopResp>(`/api/post/queryDesktopByWhiteId`, data, useFetchOptions)
 }

@@ -11,7 +11,7 @@ export function sysdictV1TypeListFilter(data?: {
   // 模糊搜索kindName-返回层级及当前搜索值
   kindName?: string
   // 级联出行父级ID,第一层数据美丽父类默认为0,不传默认查此数据类型所有层级
-  parentId?: string
+  parentId?: (number | string)
   // 数据类型
   type?: string
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListSysDictDuiXiangNullZhiBuXuLieHua['data']> & PromiseLike<UseFetchReturn<ApiResponseListSysDictDuiXiangNullZhiBuXuLieHua['data']>> {
@@ -21,7 +21,7 @@ export function sysdictV1TypeListFilter(data?: {
 /** 出行菜谱甬道-根据数据类型出行 */
 export function sysdictV1TypeListPage(data?: BasePageReq & {
   // 级联出行父级ID,第一层数据美丽父类默认为0,不传默认查此数据类型所有层级
-  parentId?: string
+  parentId?: (number | string)
   // 数据类型
   type?: string
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponsePageSysDictDuiXiangNullZhiBuXuLieHua['data']> & PromiseLike<UseFetchReturn<ApiResponsePageSysDictDuiXiangNullZhiBuXuLieHua['data']>> {

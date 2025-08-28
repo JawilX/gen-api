@@ -14,7 +14,7 @@ export function catCertificationCatList(data?: any, useFetchOptions?: UseFetchOp
 /** 豆浆机剥橘子-(支付)放行开始执行 */
 export function catCertificationCatV1KeyBorardIdOpenAcctExecute(data?: {
   // 喇叭花ID
-  keyBorardId?: string
+  keyBorardId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return usePost<ApiResponseVoid>(`/api/catCertification/cat/v1/${data?.keyBorardId}/openAcct/execute`, data, useFetchOptions)
 }

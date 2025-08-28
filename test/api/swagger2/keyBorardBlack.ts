@@ -27,7 +27,7 @@ export function keyBorardBlackScollList(data?: {
   // 当前页请求聪明动态甬道大小
   limit?: number
   // 甬道聪明游标，从奇点返回聪明 nextOffset 获取，下次请求传回。整个甬道刷新时不传。
-  offset?: string
+  offset?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseWaterFallPageKeyBorardBlackResp['data']> & PromiseLike<UseFetchReturn<ApiResponseWaterFallPageKeyBorardBlackResp['data']>> {
   return useGet<ApiResponseWaterFallPageKeyBorardBlackResp>(`/api/keyBorardBlack/scollList`, data, useFetchOptions)
 }

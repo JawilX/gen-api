@@ -13,7 +13,7 @@ export function deliverGreenCheckDefaultGreen(data?: QieHuanMoRenDiZhi, useFetch
 
 /** 扫落叶地址 */
 export function deliverGreenDeleteGreenId(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return useGet<ApiResponseboolean>(`/api/deliverGreen/deleteGreen/${data?.id}`, data, useFetchOptions)
 }

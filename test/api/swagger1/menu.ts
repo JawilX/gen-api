@@ -17,7 +17,7 @@ export function menuDesktopMenuList(data?: {
 
 /** 获取菜单详情 */
 export function menuGetMenuMenuId(data?: {
-  menuId?: string
+  menuId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseMenuResp['data']> & PromiseLike<UseFetchReturn<ApiResponseMenuResp['data']>> {
   return useGet<ApiResponseMenuResp>(`/api/menu/getMenu/${data?.menuId}`, data, useFetchOptions)
 }

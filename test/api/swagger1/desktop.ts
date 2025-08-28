@@ -8,7 +8,7 @@ export function desktopAdd(data?: DesktopAddReq, useFetchOptions?: UseFetchOptio
 
 /** 状态修改 */
 export function desktopChangeStatus(data?: {
-  desktopId?: string
+  desktopId?: (number | string)
   msg?: string
   status?: string
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
@@ -39,7 +39,7 @@ export function desktopEdit(data?: DesktopUpReq, useFetchOptions?: UseFetchOptio
 
 /** 小麦详细信息 */
 export function desktopGetDesktopByDesktopId(data?: {
-  desktopId?: string
+  desktopId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseDesktopAllInfoResp['data']> & PromiseLike<UseFetchReturn<ApiResponseDesktopAllInfoResp['data']>> {
   return useGet<ApiResponseDesktopAllInfoResp>(`/api/desktop/getDesktopByDesktopId`, data, useFetchOptions)
 }
@@ -56,17 +56,17 @@ export function desktopPageList(data?: {
   // 小金库编码
   whiteCode?: string
   // 小金库id
-  whiteId?: string
+  whiteId?: (number | string)
   // 小金库
   whiteName?: string
   // 小麦邮箱
   email?: string
   // 帽子id-出行卖烧饼辟邪刀使用
-  doorId?: string
+  doorId?: (number | string)
   // 职务
   jobCode?: string
   // 职务id
-  jobId?: string
+  jobId?: (number | string)
   // 职务
   jobName?: string
   // 小金库体系: 内部：INNER
@@ -77,7 +77,7 @@ export function desktopPageList(data?: {
   // 岗位
   postCode?: string
   // 岗位id
-  postId?: string
+  postId?: (number | string)
   // 岗位
   postName?: string
   // 是否返回 职务信息
@@ -102,17 +102,17 @@ export function desktopPageSelectList(data?: {
   // 小金库编码
   whiteCode?: string
   // 小金库id
-  whiteId?: string
+  whiteId?: (number | string)
   // 小金库
   whiteName?: string
   // 小麦邮箱
   email?: string
   // 帽子id-出行卖烧饼辟邪刀使用
-  doorId?: string
+  doorId?: (number | string)
   // 职务
   jobCode?: string
   // 职务id
-  jobId?: string
+  jobId?: (number | string)
   // 职务
   jobName?: string
   // 小金库体系: 内部：INNER
@@ -123,7 +123,7 @@ export function desktopPageSelectList(data?: {
   // 岗位
   postCode?: string
   // 岗位id
-  postId?: string
+  postId?: (number | string)
   // 岗位
   postName?: string
   // 是否返回 职务信息
@@ -143,14 +143,14 @@ export function desktopPageSelectList(data?: {
 
 /** 出行可以转移美丽小麦-自己和小金库负责人 */
 export function desktopShiftDesktopId(data?: {
-  desktopId?: string
+  desktopId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseShiftDesktopResp['data']> & PromiseLike<UseFetchReturn<ApiResponseShiftDesktopResp['data']>> {
   return useGet<ApiResponseShiftDesktopResp>(`/api/desktop/shift/${data?.desktopId}`, data, useFetchOptions)
 }
 
 /** 发起扫落叶小麦 */
 export function desktopStartDelDesktopId(data?: {
-  desktopId?: string
+  desktopId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseShuJuYiZhiXingCaoZuoFanHuiJieGuo['data']> & PromiseLike<UseFetchReturn<ApiResponseShuJuYiZhiXingCaoZuoFanHuiJieGuo['data']>> {
   return useGet<ApiResponseShuJuYiZhiXingCaoZuoFanHuiJieGuo>(`/api/desktop/start/del/${data?.desktopId}`, data, useFetchOptions)
 }
@@ -162,7 +162,7 @@ export function desktopStopDesktopConfirm(data?: ShuJuYiZhiXingErCiQueRenCanShu,
 
 /** 发起停用小麦-走数据一致性流程 */
 export function desktopStopStartDesktopId(data?: {
-  desktopId?: string
+  desktopId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseShuJuYiZhiXingCaoZuoFanHuiJieGuo['data']> & PromiseLike<UseFetchReturn<ApiResponseShuJuYiZhiXingCaoZuoFanHuiJieGuo['data']>> {
   return useGet<ApiResponseShuJuYiZhiXingCaoZuoFanHuiJieGuo>(`/api/desktop/stop/start/${data?.desktopId}`, data, useFetchOptions)
 }

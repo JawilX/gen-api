@@ -3,7 +3,7 @@ import type { AddOrUpdateInviteSetReq, ApiResponseboolean, ApiResponseComPageInv
 
 /** 取消屏蔽喇叭花 */
 export function inviteAuditCancelShieldId(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponsestring['data']> & PromiseLike<UseFetchReturn<ApiResponsestring['data']>> {
   return useGet<ApiResponsestring>(`/api/invite/audit/cancelShield/${data?.id}`, data, useFetchOptions)
 }
@@ -20,7 +20,7 @@ export function inviteAuditRefuse(data?: RefuseJoinReq, useFetchOptions?: UseFet
 
 /** 屏蔽喇叭花 */
 export function inviteAuditShieldId(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponsestring['data']> & PromiseLike<UseFetchReturn<ApiResponsestring['data']>> {
   return useGet<ApiResponsestring>(`/api/invite/audit/shield/${data?.id}`, data, useFetchOptions)
 }
@@ -45,7 +45,7 @@ export function inviteGenerateInviteShare(data?: ShengChengYaoQing, useFetchOpti
 /** 扫码或点击链接回显数据 */
 export function inviteInviteJoinEchoData(data?: {
   applyType?: string
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseInviteJoinEchoResp['data']> & PromiseLike<UseFetchReturn<ApiResponseInviteJoinEchoResp['data']>> {
   return useGet<ApiResponseInviteJoinEchoResp>(`/api/invite/inviteJoinEchoData`, data, useFetchOptions)
 }

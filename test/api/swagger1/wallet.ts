@@ -3,7 +3,7 @@ import type { ApiResponseboolean, ApiResponseQueryWalletBalanceResp } from './_i
 
 /** 出行余额 */
 export function walletBalance(data?: {
-  doorID?: string
+  doorID?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseQueryWalletBalanceResp['data']> & PromiseLike<UseFetchReturn<ApiResponseQueryWalletBalanceResp['data']>> {
   return useGet<ApiResponseQueryWalletBalanceResp>(`/api/wallet/balance`, data, useFetchOptions)
 }

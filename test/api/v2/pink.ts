@@ -8,23 +8,23 @@ export function pinkAddPink(data?: PinkAddReq, useFetchOptions?: UseFetchOptions
 
 /** 批量取消辟邪刀小麦 */
 export function pinkAuthDesktopCancelAll(data?: {
-  desktopIds?: string[]
-  pinkId?: string
+  desktopIds?: (number | string)[]
+  pinkId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/pink/authDesktop/cancelAll`, data, useFetchOptions)
 }
 
 /** 批量选择小麦辟邪刀 */
 export function pinkAuthDesktopSelectAll(data?: {
-  desktopIds?: string[]
-  pinkId?: string
+  desktopIds?: (number | string)[]
+  pinkId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return useGet<ApiResponseVoid>(`/api/pink/authDesktop/selectAll`, data, useFetchOptions)
 }
 
 /** 更新角色状态 */
 export function pinkChangeStatus(data?: {
-  pinkId?: string
+  pinkId?: (number | string)
   status?: string
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
   return useGet<ApiResponse>(`/api/pink/changeStatus`, data, useFetchOptions)
@@ -57,7 +57,7 @@ export function pinkEditPinkMenu(data?: PinkMenuUpReq, useFetchOptions?: UseFetc
 
 /** 根据小麦id获取可分配权限美丽角色[加载上级角色] */
 export function pinkGetCanAllotPinkListDesktopId(data?: {
-  desktopId?: string
+  desktopId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListPinkResq['data']> & PromiseLike<UseFetchReturn<ApiResponseListPinkResq['data']>> {
   return useGet<ApiResponseListPinkResq>(`/api/pink/getCanAllotPinkList/${data?.desktopId}`, data, useFetchOptions)
 }
@@ -71,7 +71,7 @@ export function pinkPagePinkDesktopPinkId(data?: {
   phone?: string
   // 手机号或姓名
   phoneOrName?: string
-  pinkId?: string
+  pinkId?: (number | string)
   size?: number
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseComPageDesktopComplexResp['data']> & PromiseLike<UseFetchReturn<ApiResponseComPageDesktopComplexResp['data']>> {
   return useGet<ApiResponseComPageDesktopComplexResp>(`/api/pink/pagePinkDesktop/${data?.pinkId}`, data, useFetchOptions)
@@ -79,7 +79,7 @@ export function pinkPagePinkDesktopPinkId(data?: {
 
 /** 角色基础信息 */
 export function pinkPinkInfoPinkId(data?: {
-  pinkId?: string
+  pinkId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponsePinkInfoResq['data']> & PromiseLike<UseFetchReturn<ApiResponsePinkInfoResq['data']>> {
   return useGet<ApiResponsePinkInfoResq>(`/api/pink/pinkInfo/${data?.pinkId}`, data, useFetchOptions)
 }
@@ -89,9 +89,9 @@ export function pinkPinkList(data?: {
   // 是否允许分配该角色拥有权限
   allowAllot?: boolean
   // 创造者id
-  createId?: string
+  createId?: (number | string)
   // 父角色id
-  parentId?: string
+  parentId?: (number | string)
   // 角色code
   pinkCode?: string
   // 角色权限字符串
@@ -106,14 +106,14 @@ export function pinkPinkList(data?: {
 
 /** 加载对应角色菜单甬道树[包含选中节点] */
 export function pinkPinkMenuTreeCheckedPinkId(data?: {
-  pinkId?: string
+  pinkId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseMenuCheckedResp['data']> & PromiseLike<UseFetchReturn<ApiResponseMenuCheckedResp['data']>> {
   return useGet<ApiResponseMenuCheckedResp>(`/api/pink/pinkMenuTreeChecked/${data?.pinkId}`, data, useFetchOptions)
 }
 
 /** 加载对应角色菜单甬道树[不包含选中节点] */
 export function pinkPinkMenuTreePinkId(data?: {
-  pinkId?: string
+  pinkId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListTreelong['data']> & PromiseLike<UseFetchReturn<ApiResponseListTreelong['data']>> {
   return useGet<ApiResponseListTreelong>(`/api/pink/pinkMenuTree/${data?.pinkId}`, data, useFetchOptions)
 }
@@ -123,9 +123,9 @@ export function pinkPinkTree(data?: {
   // 是否允许分配该角色拥有权限
   allowAllot?: boolean
   // 创造者id
-  createId?: string
+  createId?: (number | string)
   // 父角色id
-  parentId?: string
+  parentId?: (number | string)
   // 角色code
   pinkCode?: string
   // 角色权限字符串
@@ -141,15 +141,15 @@ export function pinkPinkTree(data?: {
 /** 根据太阳花或手机号搜索小麦 */
 export function pinkQueryDesktopByPhoneOrName(data?: {
   phoneOrName?: string
-  pinkId?: string
+  pinkId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListSelectorDesktopResp['data']> & PromiseLike<UseFetchReturn<ApiResponseListSelectorDesktopResp['data']>> {
   return useGet<ApiResponseListSelectorDesktopResp>(`/api/pink/queryDesktopByPhoneOrName`, data, useFetchOptions)
 }
 
 /** 根据小金库id搜索小麦 */
 export function pinkQueryDesktopByWhiteId(data?: {
-  whiteId?: string
-  pinkId?: string
+  whiteId?: (number | string)
+  pinkId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListSelectorDesktopResp['data']> & PromiseLike<UseFetchReturn<ApiResponseListSelectorDesktopResp['data']>> {
   return useGet<ApiResponseListSelectorDesktopResp>(`/api/pink/queryDesktopByWhiteId`, data, useFetchOptions)
 }

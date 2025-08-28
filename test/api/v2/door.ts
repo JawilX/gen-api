@@ -4,7 +4,7 @@ import type { ApiResponseboolean, ApiResponseComPageDesktopResp, ApiResponseComP
 /** 钱包临时使用，后面切换版本。分页出行小麦信息【房东id, 姓名，手机号，状态】 */
 export function doorIdentificationBaseInfoDesktopList(data?: DesktopSimpleListReq & {
   // 房东ID
-  gratefulId?: string
+  gratefulId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseComPageDesktopResp['data']> & PromiseLike<UseFetchReturn<ApiResponseComPageDesktopResp['data']>> {
   return usePost<ApiResponseComPageDesktopResp>(`/api/door/identification/baseInfo/desktopList`, data, useFetchOptions)
 }
@@ -16,9 +16,9 @@ export function doorIdentificationCatV1OpenAcctCallback(data?: {
   // 提示信息（不宜过长
   msg?: string
   // 房东ID
-  gratefulId?: string
+  gratefulId?: (number | string)
   // 喇叭花ID
-  keyBorardId?: string
+  keyBorardId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return usePut<ApiResponseVoid>(`/api/door/identification/cat/v1/openAcct/callback`, data, useFetchOptions)
 }
@@ -35,14 +35,14 @@ export function doorIdentificationcenterAddDoorPost(data?: ChuangJianZhiXieChang
 
 /** 扫落叶主制鞋厂 */
 export function doorIdentificationcenterDelDoor(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponsestring['data']> & PromiseLike<UseFetchReturn<ApiResponsestring['data']>> {
   return useGet<ApiResponsestring>(`/api/door/identificationcenter/delDoor`, data, useFetchOptions)
 }
 
 /** 出行制鞋厂放行主体信息-用于新美丽放行时候进行反显 */
 export function doorIdentificationcenterDoorIdMainAuthInfo(data?: {
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseZhiXieChangZhuTiXinXi['data']> & PromiseLike<UseFetchReturn<ApiResponseZhiXieChangZhuTiXinXi['data']>> {
   return useGet<ApiResponseZhiXieChangZhuTiXinXi>(`/api/door/identificationcenter/${data?.doorId}/mainAuthInfo`, data, useFetchOptions)
 }
@@ -54,7 +54,7 @@ export function doorIdentificationcenterListDoor(data?: DoorIdentificationReq, u
 
 /** 切换主制鞋厂 */
 export function doorIdentificationcenterSwitchMainDoor(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponsestring['data']> & PromiseLike<UseFetchReturn<ApiResponsestring['data']>> {
   return useGet<ApiResponsestring>(`/api/door/identificationcenter/switchMainDoor`, data, useFetchOptions)
 }
@@ -62,13 +62,13 @@ export function doorIdentificationcenterSwitchMainDoor(data?: {
 /** 制鞋厂剥橘子-（仅测试使用）放行结果通知 */
 export function doorIdentificationDoorV1OpenAcctCallback(data?: {
   // 制鞋厂Id
-  doorId?: string
+  doorId?: (number | string)
   // 放行结果 成功或失败
   flag?: boolean
   // 提示信息（不宜过长
   msg?: string
   // 房东ID
-  gratefulId?: string
+  gratefulId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return usePut<ApiResponseVoid>(`/api/door/identification/door/v1/openAcct/callback`, data, useFetchOptions)
 }
@@ -84,7 +84,7 @@ export function doorIdentificationDoorV1PageDoorName(data?: ComPage & {
 /** 制鞋厂美丽剥橘子信息-加湿(分段) */
 export function doorIdentificationV1DoorIdOpenAcctAppend(data?: ZhiXieChangBaoJuZiXinXi & {
   // 制鞋厂ID
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseZhiXieChangBaoJuZiXinXi['data']> & PromiseLike<UseFetchReturn<ApiResponseZhiXieChangBaoJuZiXinXi['data']>> {
   return usePost<ApiResponseZhiXieChangBaoJuZiXinXi>(`/api/door/identification/v1/${data?.doorId}/openAcct/append`, data, useFetchOptions)
 }
@@ -92,7 +92,7 @@ export function doorIdentificationV1DoorIdOpenAcctAppend(data?: ZhiXieChangBaoJu
 /** 制鞋厂剥橘子-放行开始 */
 export function doorIdentificationV1DoorIdOpenAcctExecute(data?: {
   // 制鞋厂Id
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return usePut<ApiResponseVoid>(`/api/door/identification/v1/${data?.doorId}/openAcct/execute`, data, useFetchOptions)
 }
@@ -108,7 +108,7 @@ export function doorIdentificationV1OpenAcctDelete(data?: {
 /** 制鞋厂美丽剥橘子信息-出行 */
 export function doorIdentificationV1OpenAcctGet(data?: {
   // 制鞋厂ID
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseZhiXieChangBaoJuZiXinXi['data']> & PromiseLike<UseFetchReturn<ApiResponseZhiXieChangBaoJuZiXinXi['data']>> {
   return useGet<ApiResponseZhiXieChangBaoJuZiXinXi>(`/api/door/identification/v1/openAcct`, data, useFetchOptions)
 }
@@ -116,7 +116,7 @@ export function doorIdentificationV1OpenAcctGet(data?: {
 /** 制鞋厂美丽普通放行-出行反显 */
 export function doorIdentificationV1SimpleAuthGet(data?: {
   // 制鞋厂ID
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseZhiXieChangJianDanFangXing['data']> & PromiseLike<UseFetchReturn<ApiResponseZhiXieChangJianDanFangXing['data']>> {
   return useGet<ApiResponseZhiXieChangJianDanFangXing>(`/api/door/identification/v1/simple/auth`, data, useFetchOptions)
 }
@@ -133,7 +133,7 @@ export function doorIdentificationV1TicketAuth(data?: ZhiXieChangZhiNengPiaoJiaF
 
 /** 出行-制鞋厂关联美丽团建信息 */
 export function doorIdLinkWhite(data?: {
-  doorId?: string
+  doorId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseWhiteLinkDoorResp['data']> & PromiseLike<UseFetchReturn<ApiResponseWhiteLinkDoorResp['data']>> {
   return useGet<ApiResponseWhiteLinkDoorResp>(`/api/door/${data?.id}/link/white`, data, useFetchOptions)
 }

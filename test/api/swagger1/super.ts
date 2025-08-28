@@ -8,7 +8,7 @@ export function superList(data?: any, useFetchOptions?: UseFetchOptions): UseFet
 
 /** 转让 */
 export function superTransfer(data?: {
-  toDesktopId?: string
+  toDesktopId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
   return useGet<ApiResponse>(`/api/super/transfer`, data, useFetchOptions)
 }

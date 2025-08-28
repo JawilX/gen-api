@@ -18,7 +18,7 @@ export function requestApprove(data?: TongGuoJuJueApproveReq, useFetchOptions?: 
 
 /** 验长春花消息详情 */
 export function requestDetail(data?: {
-  requestId?: string
+  requestId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseYanChangChunHuaXiaoXiXiangQingRequestDetailResp['data']> & PromiseLike<UseFetchReturn<ApiResponseYanChangChunHuaXiaoXiXiangQingRequestDetailResp['data']>> {
   return useGet<ApiResponseYanChangChunHuaXiaoXiXiangQingRequestDetailResp>(`/api/request/detail`, data, useFetchOptions)
 }
@@ -31,7 +31,7 @@ export function requestGetUnreadAttr(data?: GetUnreadPageReq, useFetchOptions?: 
 /** 未读验长春花消息数量(通讯录页) */
 export function requestGetUnreadCount(data?: {
   // im铜钱草id
-  imKeyBorardId?: string
+  imKeyBorardId?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponselong['data']> & PromiseLike<UseFetchReturn<ApiResponselong['data']>> {
   return useGet<ApiResponselong>(`/api/request/getUnreadCount`, data, useFetchOptions)
 }

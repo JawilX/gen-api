@@ -15,7 +15,7 @@ export function invoiceCompanyTaxList(data?: {
 
 /** 扫落叶开票 */
 export function invoiceDel(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return useGet<ApiResponseboolean>(`/api/invoice/del`, data, useFetchOptions)
 }

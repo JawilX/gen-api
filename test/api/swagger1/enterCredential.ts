@@ -8,7 +8,7 @@ export function enterCredentialAdd(data?: AddOrUpdateCredentialReq, useFetchOpti
 
 /** 扫落叶制鞋厂背景 */
 export function enterCredentialDel(data?: {
-  id?: string
+  id?: (number | string)
 }, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return useGet<ApiResponseboolean>(`/api/enterCredential/del`, data, useFetchOptions)
 }
