@@ -136,6 +136,7 @@ export function handleJsType(originType: string) {
     'uri': 'string',
     'url': 'string',
     'uuid': 'string',
+    'any': 'any',
   } as any
   return typeEnum[originType] || ''
 }
