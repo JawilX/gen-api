@@ -60,7 +60,10 @@ export function getApiName(url: string, method: string) {
  */
 export function getNamespace(url: string) {
   const arr = url.split('/')
-  return lowerCaseFirstLetter(arr.find(item => item && item !== 'api') || '')
+  let name = arr.find(item => item && item !== 'api')
+  name = handleWeirdName(name || '')
+  name = lowerCaseFirstLetter(name)
+  return name
 }
 
 /**
