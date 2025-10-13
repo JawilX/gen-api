@@ -56,7 +56,7 @@ function handleInterfaceModal(property: ApiInterface) {
     isArray,
     isSimpleJsType,
     type: additionalProperties ? handleWeirdName(additionalProperties) : handleItemsType(property),
-    description: handleDescription(property.description),
+    description: handleDescription(property.description || property.title),
   }
 }
 

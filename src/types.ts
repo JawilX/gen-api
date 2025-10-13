@@ -73,6 +73,7 @@ export interface ApiInterface {
   originalRef?: string
   /** 注释 */
   description?: string
+  title?: string
   /** 额外属性 */
   additionalProperties?: any
   items?: any
