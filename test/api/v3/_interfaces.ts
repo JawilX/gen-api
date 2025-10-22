@@ -18,7 +18,7 @@ export interface AddChargeItemReqM {
   /** 分子编号 */
   molecularCodeId?: string
   /** 价格 */
-  price?: string
+  price?: (number | string)
   /** 价格单位 (yuan,dollar,euro) */
   priceUnit?: string
   /** 报告模板 */
@@ -600,7 +600,7 @@ export interface ModifyChargeItemReqM {
   /** 分子编号 */
   molecularCodeId?: string
   /** 价格 */
-  price?: string
+  price?: (number | string)
   /** 价格单位 (yuan,dollar,euro) */
   priceUnit?: string
   /** 报告模板 */
@@ -834,7 +834,7 @@ export interface PageChargeItemRspM {
   /** 分子编号名称 */
   molecularCodeIdText?: string
   /** 价格 */
-  price?: string
+  price?: (number | string)
   /** 价格单位 code 三个值：yuan，dollar，euro */
   priceUnit?: string
   /** 价格单位Text 三个值：元，美元，欧元 */

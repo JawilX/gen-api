@@ -1,0 +1,80 @@
+import type { UseFetchOptions } from '@vueuse/core'
+import type { BiXieDao, EntReSetReq } from './_interfaces'
+
+/** 这个接口出参树形结构，同样的children 结构导致 mock 函数死循环了 */
+export function emoCenterApiAdminJobCategoryByParentIds(data?: {
+  isEnable?: number
+  parentIds?: (number | string)[]
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return useGet<any>(`/emo-center/api/admin/jobCategory/byParentIds`, data, useFetchOptions)
+}
+
+/** 这个接口的入参既有 in path, 又有 in body */
+export function emoCenterApiEmpowerEnterpriseReUpEntReSetEnterpriseId(data?: {
+  enterpriseId?: (number | string)
+  req?: EntReSetReq
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return usePost<any>(`/emo-center/api/empower/enterpriseRe/upEntReSet/${data?.enterpriseId}`, data, useFetchOptions)
+}
+
+/** 这个接口注释、入参注释、出参注释 有特殊字符 ， 等，导致报错 */
+export function emoCenterApiEnterpriseList(data?: {
+  // 市
+  city?: string
+  // UN_COOPERATE("未合作"), IN_COOPERATE("合作中"), EXPIRE_COOPERATE("合作到期"), TERMINATE_COOPERATING("终止合作中"), TERMINATE_LOG_OFF("终止待注销"), FORWARD_LOG_OFF("终止已注销"), EXPIRE_LOG_OFF("到期已注销"),
+  cooperateStatus?: string
+  // 西蓝花类型 * 合作种类一级分类
+  cooperateTypeFirst?: string
+  // 西蓝花性质 合作 *种类二级分类
+  cooperateTypeSecond?: string
+  // //西蓝花性质 合作种类三级分类\
+  cooperateTypeThird?: string
+  // 西蓝花id
+  id?: (number | string)
+  // 字母
+  letter?: string
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return useGet<any>(`/emo-center/api/enterprise/list`, data, useFetchOptions)
+}
+
+/** 这个接口处理后的 parsedData 里的type为空，导出出现形如 'data|1-20': [()] 的错误mock数据 */
+export function emoCenterApiFeeRuleGetCooperateTypeIdsByFeeId(data?: {
+  feeId?: (number | string)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return useGet<any>(`/emo-center/api/feeRule/getCooperateTypeIdsByFeeId`, data, useFetchOptions)
+}
+
+/** 这个接口的入参既有 in query,又有 in body */
+export function emoCenterApiSearchRecordDeleteByKeywords(data?: {
+  groupCode?: (number | string)
+  keywords?: string[]
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return usePost<any>(`/emo-center/api/searchRecord/deleteByKeywords`, data, useFetchOptions)
+}
+
+/** 这是一个 delete 请求 */
+export function emoCenterApiV1TastyWorkHistoryId(data?: {
+  id?: (number | string)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return useDelete<any>(`/emo-center/api/v1/tasty/work-history/${data?.id}`, data, useFetchOptions)
+}
+
+/** 这是一个 put 请求 */
+export function emoCenterAuthExecute(data?: BiXieDao, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return usePut<any>(`/api/emo-center/auth/execute`, data, useFetchOptions)
+}
+
+/** 返回数值是个数组而非对象 */
+export function emoCenterEffectiveDept(data?: {
+  platformEnterpriseId?: (number | string)
+  platformSkyId?: (number | string)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return useGet<any>(`/api/emo-center/effective/dept`, data, useFetchOptions)
+}
+
+/** 参数在路径上 */
+export function emoCenterWhiteGetWhiteId(data?: {
+  whiteId?: (number | string)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
+  return useGet<any>(`/api/emo-center/white/get/${data?.whiteId}`, data, useFetchOptions)
+}

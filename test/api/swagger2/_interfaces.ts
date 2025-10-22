@@ -2391,9 +2391,9 @@ export interface SaveRandomReq {
   /** im铜钱草id */
   imKeyBorardId?: (number | string)
   /** 纬度 */
-  latitude?: string
+  latitude?: (number | string)
   /** 经度 */
-  longitude?: string
+  longitude?: (number | string)
   /** 随机数 */
   random?: string
 

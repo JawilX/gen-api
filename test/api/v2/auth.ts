@@ -7,7 +7,7 @@ export function authDoorAuthKeyBorards(data?: AuthOrgKeyBorardReq, useFetchOptio
 }
 
 /** 出行某卖烧饼类型下，小麦是否有辟邪刀 */
-export function authDoorAuthKeyBorardsAuthstatus(data?: BiXieDaoZhongXinChuXingGuoLvTiaoJian, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListlong['data']> & PromiseLike<UseFetchReturn<ApiResponseListlong['data']>> {
+export function authDoorAuthKeyBorardsAuthStatus(data?: BiXieDaoZhongXinChuXingGuoLvTiaoJian, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListlong['data']> & PromiseLike<UseFetchReturn<ApiResponseListlong['data']>> {
   return usePost<ApiResponseListlong>(`/api/auth/door/auth/keyBorards/auth-status`, data, useFetchOptions)
 }
 
