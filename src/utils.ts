@@ -56,8 +56,7 @@ export function getApiName(url: string, method: string) {
  */
 export function getNamespace(url: string) {
   const arr = url.split('/')
-  let name = arr.find(item => item && item !== 'api')
-  name = handleWeirdName(name || '')
+  let name = arr.find(item => item && item !== 'api') || 'root'
   name = camelCase(name)
   return name
 }
