@@ -67,6 +67,7 @@
     "execa": "^9.5.3",
     "picocolors": "^1.1.1",
     "pinyin-pro": "^3.26.0",
+    "scule": "^1.3.0",
     "swagger2openapi": "^7.0.8",
     "unconfig": "^7.3.2",
     "yargs": "^17.7.2"

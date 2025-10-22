@@ -1,6 +1,7 @@
 import type { ApiContent } from './types'
 import { capitalize } from '@antfu/utils'
 import { pinyin } from 'pinyin-pro'
+import { camelCase } from 'scule'
 
 const jsKeyWords = [
   'delete',
@@ -38,15 +39,10 @@ export function commonUrl(url: string): string {
  * 将接口地址转化为接口名称
  */
 export function getApiName(url: string, method: string) {
-  url = url
-    .replace(/^\/api/, '') // 去除开头的 /api
-    .replace(/\/$/, '') // 去除结尾的 /
-  // 去除可能存在的短杠、左右花括号和$、 点号
-  url = url.replace(/[${}\-.]/g, '')
-  let name = url.replace(/\/\w/g, (match, index) => {
-    const letter = match.replace('/', '')
-    return index === 0 ? letter.toLowerCase() : capitalize(letter)
-  })
+  url = url.replace(/^\/api/, '') // 去除开头的 /api
+  // 去除可能存在的${}
+  url = url.replace(/[${}]/g, '')
+  let name = camelCase(url)
   // 路径相同的 api, 在后面拼上请求方法以做区分， 如，有两个接口处理后的接口名称都是 systemUser，则分别处理成： systemUserGet 和  systemUserPost
   if (method)
     name += capitalize(method)
@@ -62,7 +58,7 @@ export function getNamespace(url: string) {
   const arr = url.split('/')
   let name = arr.find(item => item && item !== 'api')
   name = handleWeirdName(name || '')
-  name = lowerCaseFirstLetter(name)
+  name = camelCase(name)
   return name
 }
 
