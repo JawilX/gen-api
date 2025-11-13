@@ -160,7 +160,7 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[]) {
 
     // interface 引入
     let importStr = ''
-    fileUsedInterface = [...new Set(fileUsedInterface)]
+    fileUsedInterface = [...new Set(fileUsedInterface)].sort((a, b) => mixedTypeCompare(a, b))
     if (fileUsedInterface.length) {
       importStr += `import type {`
       fileUsedInterface.forEach((item, index) => {
