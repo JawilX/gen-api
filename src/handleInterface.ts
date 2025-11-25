@@ -87,13 +87,15 @@ function handleItemsType(property: ApiInterface) {
       const name = handleWeirdName(property.items.$ref.replace('#/components/schemas/', ''))
       return name.startsWith('Error') ? 'any' : name
     }
-    else { return handleJsType(property.items?.format || property.items?.type) }
+    else {
+      return handleJsType(property.items?.format || property.items?.type) || property.items?.type || 'any'
+    }
   }
   else if (property?.$ref) {
     const name = handleWeirdName(property.$ref.replace('#/components/schemas/', ''))
     return name.startsWith('Error') ? 'any' : name
   }
   else {
-    return handleJsType(property.format || property.type)
+    return handleJsType(property.format || property.type) || property.type || 'any'
   }
 }
