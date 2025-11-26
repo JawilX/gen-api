@@ -15,7 +15,7 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
     Object.keys(obj).forEach((method: string) => {
       const item = obj[method]
       const url = path
-      const name = getApiName(url, hasMultiMethod ? method : '')
+      const name = getApiName(url, apiOptions.apiNameForceAppendMethod || hasMultiMethod ? method : '')
       const namespace = getNamespace(url)
       const summary = handleDescription(item.summary) // 接口注释
       const parameters = getParameters(item.parameters) // 入参

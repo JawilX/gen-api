@@ -10,6 +10,8 @@ export interface ApiOptions {
   urlPrefix?: string
   /** 是否生成 */
   enable?: boolean
+  /** 接口名称是否强制拼接 method, 默认 false，当url内有多个method时才拼接 */
+  apiNameForceAppendMethod?: boolean
   /** 无需生成的接口，如配置成 ignore: /\\/abcDef\\/|\\/test\\// ， 则路径中带 /abcDef/ 和 /test/ 的接口将不会生成 */
   ignore?: RegExp
   /** 只生成需要的接口 */
@@ -50,6 +52,8 @@ export interface InitOptions {
   /** 文件头部引入内容 */
   httpTpl?: string
   apiBody: (params: ApiBodyParams) => string
+  /** 接口名称是否强制拼接 method, 默认 false，当url内有多个method时才拼接 */
+  apiNameForceAppendMethod?: boolean
 }
 
 export interface ApiBlock {

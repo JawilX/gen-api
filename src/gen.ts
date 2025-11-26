@@ -27,7 +27,11 @@ export async function gen(config: InitOptions) {
   for (const item of apiList) {
     const swaggerUrl = item.swaggerUrl
     const absOutputDir = path.join(CWD, item.outputDir || '/src/api')
-    const apiOptions = { ...item, absOutputDir }
+    const apiOptions = {
+      apiNameForceAppendMethod: config.apiNameForceAppendMethod,
+      ...item,
+      absOutputDir,
+    }
 
     if (!swaggerUrl)
       return console.log(c.red('配置文件里的 swaggerUrl 不能为空'))
