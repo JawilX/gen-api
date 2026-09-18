@@ -96,22 +96,10 @@ async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions:
   assertUniqueApiNames(apiList)
   const interfaces = handleInterface(data.components?.schemas)
   const dtoNames = interfaces.map(item => item.name)
-  // 类型无法识别时生成器会退回 any，这里把退化位置显式挑出来交给报告
-  const degradedOutputs = apiList.flatMap(block => block.apis
-    .filter(api => api.outputInterfaceUnresolved)
-    .map(api => ({ name: api.name, url: api.url, method: api.method })))
-  const degradedProperties = interfaces.flatMap(item => item.properties
-    .filter(property => property.type === 'any' && !property.isSimpleJsType)
-    .map(property => ({ interface: item.name, name: property.name ?? '' })))
   const count = apiList.reduce((pre, cur) => {
     return pre + cur.apis.length
   }, 0)
   console.log(c.green(`总共 ${count} 个接口生成中...`))
-  if (degradedOutputs.length || degradedProperties.length) {
-    console.warn(c.yellow(
-      `类型无法识别，已按 any 生成：${degradedOutputs.length} 个接口出参、${degradedProperties.length} 个 DTO 属性；明细见 gen() 返回值`,
-    ))
-  }
   // 目录在此一次性创建，写入阶段不再探测目录是否存在
   await fs.mkdir(apiOptions.absOutputDir || './', { recursive: true })
   // 全部文件写入完成后才返回，调用方据此判断生成是否结束
@@ -125,8 +113,6 @@ async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions:
     controllers,
     dtoFile,
     dtoNames,
-    degradedOutputs,
-    degradedProperties,
   }
 }
 
