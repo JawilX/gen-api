@@ -183,6 +183,57 @@ describe('gen', () => {
     expect(importLine).toContain('DemoItem')
   })
 
+  it('同一控制器内接口名重复时 reject，且不创建输出目录', async () => {
+    await writeSpec('dup-names.json', {
+      openapi: '3.0.0',
+      info: { title: 'tmp', version: '1.0.0' },
+      paths: {
+        '/demo/user-list': { get: { responses: { 200: { content: { 'application/json': { schema: { type: 'string' } } } } } } },
+        '/demo/user_list': { get: { responses: { 200: { content: { 'application/json': { schema: { type: 'string' } } } } } } },
+      },
+    })
+    const name = 'api-dup'
+    const config = createConfig({ apiList: [{ swaggerUrl: './test/.tmp-gen/dup-names.json', outputDir: `/test/.tmp-gen/${name}`, enable: true }] })
+
+    const error = await gen(config).then(() => null, (e: Error) => e)
+    expect(error?.message).toContain('demo.ts 内接口名重复')
+    // 报错要能定位到冲突的两个接口
+    expect(error?.message).toContain('GET /demo/user-list')
+    expect(error?.message).toContain('GET /demo/user_list')
+    // 校验发生在创建目录之前，不会留下任何产物
+    await expect(fs.access(path.join(tmpDir, name))).rejects.toThrow()
+  })
+
+  it('出参 $ref 指向不存在的模型时 reject，且不写出控制器', async () => {
+    await writeSpec('missing-dto.json', {
+      openapi: '3.0.0',
+      info: { title: 'tmp', version: '1.0.0' },
+      paths: {
+        '/demo/detail': { get: { responses: { 200: { content: { 'application/json': { schema: { $ref: '#/components/schemas/Nope' } } } } } } },
+      },
+    })
+    const name = 'api-missing-dto'
+    const config = createConfig({ apiList: [{ swaggerUrl: './test/.tmp-gen/missing-dto.json', outputDir: `/test/.tmp-gen/${name}`, enable: true }] })
+
+    const error = await gen(config).then(() => null, (e: Error) => e)
+    expect(error?.message).toContain('_interfaces.ts 里不存在以下类型')
+    expect(error?.message).toContain('Nope')
+    // 目录已建但控制器一个都没写
+    await expect(fs.readdir(path.join(tmpDir, name))).resolves.toEqual([])
+  })
+
+  it('apiBody 返回空白内容时 reject', async () => {
+    await writeSpec('spec.json', spec)
+    const name = 'api-blank-template'
+    const config = createConfig({
+      apiList: [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir: `/test/.tmp-gen/${name}`, enable: true }],
+      apiBody: () => '  \n',
+    })
+
+    await expect(gen(config)).rejects.toThrow('apiBody缺少返回值')
+    await expect(fs.readdir(path.join(tmpDir, name))).resolves.toEqual([])
+  })
+
   it('swagger 文件不存在时 reject', async () => {
     const config = createConfig({ apiList: [{ swaggerUrl: './test/.tmp-gen/missing.json', outputDir, enable: true }] })
 

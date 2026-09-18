@@ -1,5 +1,5 @@
 import type { GeneratedInterface } from './handleInterface'
-import type { ApiBlock, ApiOptions, ApiParameter, InitOptions, SwaggerData } from './types'
+import type { ApiBlock, ApiBodyParams, ApiOptions, ApiParameter, InitOptions, SwaggerData } from './types'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
@@ -91,7 +91,9 @@ async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions:
     throw new Error('swagger 文档缺少可用的 paths')
 
   const apiList = handleApiModel(apiOptions, data.paths)
+  assertUniqueApiNames(apiList)
   const interfaces = handleInterface(data.components?.schemas)
+  const dtoNames = new Set(interfaces.flatMap(item => (item.name ? [item.name] : [])))
   const count = apiList.reduce((pre, cur) => {
     return pre + cur.apis.length
   }, 0)
@@ -99,15 +101,34 @@ async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions:
   // 目录在此一次性创建，写入阶段不再探测目录是否存在
   await fs.mkdir(apiOptions.absOutputDir || './', { recursive: true })
   // 全部文件写入完成后才返回，调用方据此判断生成是否结束
-  const apiFiles = await writeApiToFile(apiOptions, apiList, initOptions)
+  const apiFiles = await writeApiToFile(apiOptions, apiList, initOptions, dtoNames)
   const interfaceFile = await writeInterfaceToFile(apiOptions, interfaces)
   await formatFiles([...apiFiles, interfaceFile], initOptions)
 }
 
-async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initOptions: InitOptions) {
+/** 同一控制器文件内的接口名必须唯一，重名会产出无法编译的重复实现 */
+function assertUniqueApiNames(apiList: ApiBlock[]) {
+  apiList.forEach((block) => {
+    const byName = new Map<string, ApiBodyParams[]>()
+    block.apis.forEach((api) => {
+      const namesakes = byName.get(api.name) ?? []
+      namesakes.push(api)
+      byName.set(api.name, namesakes)
+    })
+    const conflicts = [...byName].filter(([, namesakes]) => namesakes.length > 1)
+    if (!conflicts.length)
+      return
+
+    const detail = conflicts
+      .map(([name, namesakes]) => `${name}（${namesakes.map(api => `${api.method.toUpperCase()} ${api.url}`).join('、')}）`)
+      .join('；')
+    throw new Error(`${block.namespace}.ts 内接口名重复：${detail}；请用 ignore 或 only 排除冲突接口`)
+  })
+}
+
+async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initOptions: InitOptions, dtoNames: Set<string>) {
   const outputDir = apiOptions.absOutputDir || './'
-  const writtenFiles: string[] = []
-  for (const item of apiList) {
+  const controllers = apiList.map((item) => {
     const tplStr = `${initOptions.httpTpl || ''}`
     let apiStr = ''
     const namespace = item.namespace
@@ -161,7 +182,7 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initO
         pstr1: p1,
         pstr2: p2,
       })
-      if (!apiBodyStr)
+      if (!apiBodyStr?.trim())
         throw new Error('apiBody缺少返回值！')
 
       apiStr += `${apiBodyStr}\n`
@@ -178,17 +199,48 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initO
       importStr += `} from './_interfaces'`
     }
 
-    // 写入目标目录
-    const targetFile = path.join(outputDir, `${namespace}.ts`)
+    return {
+      namespace,
+      targetFile: path.join(outputDir, `${namespace}.ts`),
+      content: `${tplStr}\n${importStr}\n${apiStr}`,
+      imports: fileUsedInterface,
+    }
+  })
+
+  // 全部渲染完成后再校验，避免把悬空 import 写进目标目录
+  assertDtoImports(controllers, dtoNames)
+
+  const writtenFiles: string[] = []
+  for (const controller of controllers) {
     try {
-      await fs.writeFile(targetFile, `${tplStr}\n${importStr}\n${apiStr}`)
+      await fs.writeFile(controller.targetFile, controller.content)
     }
     catch (error) {
-      throw new Error(`写入 ${namespace}.ts 失败`, { cause: error })
+      throw new Error(`写入 ${controller.namespace}.ts 失败`, { cause: error })
     }
-    writtenFiles.push(targetFile)
+    writtenFiles.push(controller.targetFile)
   }
   return writtenFiles
+}
+
+/** 控制器 import 的 DTO 名必须在本轮生成的 _interfaces.ts 中，否则会产出悬空 import */
+function assertDtoImports(controllers: { namespace: string, imports: string[] }[], dtoNames: Set<string>) {
+  const missing = new Map<string, string[]>()
+  controllers.forEach((controller) => {
+    controller.imports.forEach((name) => {
+      if (dtoNames.has(name))
+        return
+
+      const namespaces = missing.get(name) ?? []
+      namespaces.push(controller.namespace)
+      missing.set(name, namespaces)
+    })
+  })
+  if (!missing.size)
+    return
+
+  const detail = [...missing].map(([name, namespaces]) => `${name}（${namespaces.join('、')}）`).join('；')
+  throw new Error(`_interfaces.ts 里不存在以下类型：${detail}；通常是文档中的 $ref 指向了未定义的模型`)
 }
 
 /** eslint 缺失或格式化报错时不阻断生成，提示一次后跳过剩余文件 */
