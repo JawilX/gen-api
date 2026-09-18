@@ -1,5 +1,5 @@
 import type { UseFetchOptions } from '@vueuse/core'
-import type { AddTastyCredentialProjectReq, ApiResponse, ApiResponseappChaXianBanShuiGuoDaoFanHui, ApiResponseboolean, ApiResponseChaXianBanGongShangShuiGuoDaoFanHui, ApiResponseChaXianBanQingMingCaoZhiShengJiTiaoJianFanHui, ApiResponseComPageChaXianBanBuLiangGuShiLieBiaoXiangYing, ApiResponseComPageChaXianBanChiGuanTouJuanXinCaiXiangYing, ApiResponseComPageChaXianBanErJiJuanXinCai, ApiResponseComPageChaXianBanFenZhiJiGou, ApiResponseComPageChaXianBanGongChengShuiBeiXiangYing, ApiResponseComPageChaXianBanHeiMingDanXiangYing, ApiResponseComPageChaXianBanLiangHaoGuShiLieBiaoXiangYing, ApiResponseComPageChaXianBanQingMingCaoZhiXiangYing, ApiResponseComPageChaXianBanShiXinLianHeChengJieGuShi, ApiResponseComPageEntCredPlanResp, ApiResponseComPageErJiJuanXinCaiShuiGuoDao, ApiResponseComPageGuanTouShuRenLingRiZhi, ApiResponseComPageJiJuXieXiaGongSiXiangYing, ApiResponseComPageJiXuDaShuiNiuWeiShengSu, ApiResponseComPageJuanXinCaiChiGuanTouShuiGuoDao, ApiResponseComPageJuanXinCaiGongZuoYeJi, ApiResponseComPageQingMingCaoZhiXiaoChouYu, ApiResponseComPageShuiLiuKanBanChaXianBanQingMingCaoZhiFenYeXiangYing, ApiResponseComPagestring, ApiResponseComPageTastyCredExamResultResp, ApiResponseComPageYeJiRenLingRiZhi, ApiResponseEntCredOverviewResp, ApiResponseEntCredPlanMainResp, ApiResponseFridayAllCountResp, ApiResponseFridayBranchRawResp, ApiResponseGeRenGongZuoNiuNaiXiangYingYeJiBiaoBianJi, ApiResponseGeRenShuiGuoDao, ApiResponseGuanTouShuHeGongChengShuiBei, ApiResponseHuoQuNiuNaiBianJiXiaLaHaiTunZhiXiangYing, ApiResponseJiXuDaShuiNiuWeiShengSu, ApiResponseJSONArray, ApiResponseJSONObject, ApiResponseJuanXinCaiSuoYouShuiGuoDao, ApiResponseListChaXianBanBuLiangGuShiLieBiaoXiangYing, ApiResponseListChaXianBanErJiJuanXinCai, ApiResponseListChaXianBanGongChengShuiBeiXiangYing, ApiResponseListChaXianBanHeiMingDanXiangYing, ApiResponseListChaXianBanLiangHaoGuShiLieBiaoXiangYing, ApiResponseListChaXianBanQingMingCaoZhiWuShu, ApiResponseListChaXianBanQingMingCaoZhiXiangYing, ApiResponseListChaXianBanShiXinLianHeChengJieGuShi, ApiResponseListDaShuiNiuJingLiShuiGuoDao, ApiResponseListEntCredentialExpireAlertResp, ApiResponseListErJiJuanXinCaiTongJi, ApiResponseListHrTastyCredentialDO, ApiResponseListJiaTingChengYuanShuiGuoDao, ApiResponseListJiJuXieXiaGongSiXiangYing, ApiResponseListJuanXinCaiChiGuanTouQingKuang, ApiResponseListJuanXinCaiChiGuanTouShuiGuoDao, ApiResponseListJuanXinCaiGongZuoJingLi, ApiResponseListJuanXinCaiGongZuoYeJi, ApiResponseListMap, ApiResponseListobject, ApiResponseListstring, ApiResponseListTastyCredEvalInfo, ApiResponseListTastyCredUpRecommendResp, ApiResponseListVOResp, ApiResponseListYinHangKaShuiGuoDao, ApiResponseMap, ApiResponseMapstringobject, ApiResponseMapstringstring, ApiResponsePlanCreditResp, ApiResponsePlanTastyResp, ApiResponseQingMingCaoZhiXiaoChouYu, ApiResponseSetstring, ApiResponseSheBaoZhangHao, ApiResponseShengJiTiaoJianJuanXinCaiXiangQing, ApiResponsestring, ApiResponseTastyAllCountResp, ApiResponseTastyCredEvalInfo, ApiResponseTastyCredUpRecommendResp, ApiResponseTastyIntroductionInfo, ApiResponseXueXinZhangHao, ApiResponseZhanShiZanShiYongDeShengJiTiaoJianFanHui, ChaXianBanFenZhiJiGouGengXinQingQiu, ChaXianBanHuiZongFenYeQingQiu, ChaXianBanQingMingCaoZhiXinZengGengXinQingQiu, ChiGuanTouJuanXinCaiHuiZongShaiXuanTiaoJian, EntCredPlanMainReq, EntCredStartReq, EntUpgradeValidReq, FridayCredentialAddReq, FridayCredentialNameReq, FridayMainUpdateReq, GengXinDaShuiNiuJingLiShuiGuoDao, GengXinGeRenShuiGuoDao, GengXinJiXuDaShuiNiuWeiShengSu, GengXinYinHangKaShuiGuoDao, GeRenGongZuoJingLi, GuanTouShuRenLingRiZhi, JuanXinCaiBeiZhuShuiGuoDaoBaoCunQingQiu, JuanXinCaiChiGuanTouShuiGuoDao0, JuanXinCaiGongZuoJingLi, JuanXinCaiGongZuoYeJi0, NiuNaiXiaZaiQingQiu, OcrBigDataReq, PageTastyCredExamResultReq, PageTastyCredExamTimeReq, QingMingCaoZhiXiaoChouYu0, QingMingCaoZhiXiaoChouYuWuShuLianDongNingMengDeRuShuBiaoGeShi, SheBaoZhangHao0, SignUrlReq, TianJiaDaShuiNiuJingLiShuiGuoDao, TianJiaGeRenShuiGuoDao, TianJiaJiXuDaShuiNiuWeiShengSu, XueXinZhangHao, YeJiRenLingRiZhi } from './_interfaces'
+import type { AddTastyCredentialProjectReq, ApiResponse, ApiResponseappChaXianBanShuiGuoDaoFanHui, ApiResponseboolean, ApiResponseChaXianBanGongShangShuiGuoDaoFanHui, ApiResponseChaXianBanQingMingCaoZhiShengJiTiaoJianFanHui, ApiResponseComPageChaXianBanBuLiangGuShiLieBiaoXiangYing, ApiResponseComPageChaXianBanChiGuanTouJuanXinCaiXiangYing, ApiResponseComPageChaXianBanErJiJuanXinCai, ApiResponseComPageChaXianBanFenZhiJiGou, ApiResponseComPageChaXianBanGongChengShuiBeiXiangYing, ApiResponseComPageChaXianBanHeiMingDanXiangYing, ApiResponseComPageChaXianBanLiangHaoGuShiLieBiaoXiangYing, ApiResponseComPageChaXianBanQingMingCaoZhiXiangYing, ApiResponseComPageChaXianBanShiXinLianHeChengJieGuShi, ApiResponseComPageEntCredPlanResp, ApiResponseComPageErJiJuanXinCaiShuiGuoDao, ApiResponseComPageGuanTouShuRenLingRiZhi, ApiResponseComPageJiJuXieXiaGongSiXiangYing, ApiResponseComPageJiXuDaShuiNiuWeiShengSu, ApiResponseComPageJuanXinCaiChiGuanTouShuiGuoDao, ApiResponseComPageJuanXinCaiGongZuoYeJi, ApiResponseComPageQingMingCaoZhiXiaoChouYu, ApiResponseComPageShuiLiuKanBanChaXianBanQingMingCaoZhiFenYeXiangYing, ApiResponseComPagestring, ApiResponseComPageTastyCredExamResultResp, ApiResponseComPageYeJiRenLingRiZhi, ApiResponseEntCredOverviewResp, ApiResponseEntCredPlanMainResp, ApiResponseFridayAllCountResp, ApiResponseFridayBranchRawResp, ApiResponseGeRenGongZuoNiuNaiXiangYingYeJiBiaoBianJi, ApiResponseGeRenShuiGuoDao, ApiResponseGuanTouShuHeGongChengShuiBei, ApiResponseHuoQuNiuNaiBianJiXiaLaHaiTunZhiXiangYing, ApiResponseJiXuDaShuiNiuWeiShengSu, ApiResponseJSONArray, ApiResponseJSONObject, ApiResponseJuanXinCaiSuoYouShuiGuoDao, ApiResponseListChaXianBanBuLiangGuShiLieBiaoXiangYing, ApiResponseListChaXianBanErJiJuanXinCai, ApiResponseListChaXianBanGongChengShuiBeiXiangYing, ApiResponseListChaXianBanHeiMingDanXiangYing, ApiResponseListChaXianBanLiangHaoGuShiLieBiaoXiangYing, ApiResponseListChaXianBanQingMingCaoZhiWuShu, ApiResponseListChaXianBanQingMingCaoZhiXiangYing, ApiResponseListChaXianBanShiXinLianHeChengJieGuShi, ApiResponseListDaShuiNiuJingLiShuiGuoDao, ApiResponseListEntCredentialExpireAlertResp, ApiResponseListErJiJuanXinCaiTongJi, ApiResponseListHrTastyCredentialDO, ApiResponseListJiaTingChengYuanShuiGuoDao, ApiResponseListJiJuXieXiaGongSiXiangYing, ApiResponseListJuanXinCaiChiGuanTouQingKuang, ApiResponseListJuanXinCaiChiGuanTouShuiGuoDao, ApiResponseListJuanXinCaiGongZuoJingLi, ApiResponseListJuanXinCaiGongZuoYeJi, ApiResponseListMap, ApiResponseListobject, ApiResponseListstring, ApiResponseListTastyCredEvalInfo, ApiResponseListTastyCredUpRecommendResp, ApiResponseListVOResp, ApiResponseListYinHangKaShuiGuoDao, ApiResponseMap, ApiResponseMapstringobject, ApiResponseMapstringstring, ApiResponsePlanCreditResp, ApiResponsePlanTastyResp, ApiResponseQingMingCaoZhiXiaoChouYu, ApiResponseSetstring, ApiResponseSheBaoZhangHao, ApiResponseShengJiTiaoJianJuanXinCaiXiangQing, ApiResponsestring, ApiResponseTastyAllCountResp, ApiResponseTastyCredEvalInfo, ApiResponseTastyCredUpRecommendResp, ApiResponseTastyIntroductionInfo, ApiResponseXueXinZhangHao, ApiResponseZhanShiZanShiYongDeShengJiTiaoJianFanHui, ChaXianBanFenZhiJiGouGengXinQingQiu, ChaXianBanHuiZongFenYeQingQiu, ChaXianBanQingMingCaoZhiGuanLi, ChaXianBanQingMingCaoZhiWuShu, ChaXianBanQingMingCaoZhiXinZengGengXinQingQiu, ChiGuanTouJuanXinCaiHuiZongShaiXuanTiaoJian, EntCredPlanMainReq, EntCredStartReq, EntUpgradeValidReq, FridayCredentialAddReq, FridayCredentialNameReq, FridayMainUpdateReq, GengXinDaShuiNiuJingLiShuiGuoDao, GengXinGeRenShuiGuoDao, GengXinJiXuDaShuiNiuWeiShengSu, GengXinYinHangKaShuiGuoDao, GeRenGongZuoJingLi, GuanTouShuRenLingRiZhi, JiaTingChengYuanShuiGuoDao, JuanXinCaiBeiZhuShuiGuoDaoBaoCunQingQiu, JuanXinCaiChiGuanTouShuiGuoDao0, JuanXinCaiGongZuoJingLi, JuanXinCaiGongZuoYeJi0, NiuNaiXiaZaiQingQiu, OcrBigDataReq, PageTastyCredExamResultReq, PageTastyCredExamTimeReq, QingMingCaoZhiXiaoChouYu0, QingMingCaoZhiXiaoChouYuWuShuLianDongNingMengDeRuShuBiaoGeShi, SheBaoZhangHao0, SignUrlReq, TianJiaDaShuiNiuJingLiShuiGuoDao, TianJiaGeRenShuiGuoDao, TianJiaJiXuDaShuiNiuWeiShengSu, XinZengYinHangKaShuiGuoDao, XueXinZhangHao, YeJiRenLingRiZhi } from './_interfaces'
 
 /** 1-所有枚举值名称列表 */
 export function thkApiCommonV1EnumAll(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseMapstringstring['data']> & PromiseLike<UseFetchReturn<ApiResponseMapstringstring['data']>> {
@@ -219,12 +219,12 @@ export function thkApiV1ConfigCredentialWarningGet(data?: any, useFetchOptions?:
 }
 
 /** 添加清明草质过期提醒维生素 */
-export function thkApiV1ConfigCredentialWarningPost(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1ConfigCredentialWarningPost(data?: ChaXianBanQingMingCaoZhiGuanLi[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/config/credential-warning`, data, useFetchOptions)
 }
 
 /** 更新清明草质过期提醒维生素 */
-export function thkApiV1ConfigCredentialWarningPut(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1ConfigCredentialWarningPut(data?: ChaXianBanQingMingCaoZhiWuShu[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePut<ApiResponseboolean>(`/thk/api/v1/config/credential-warning`, data, useFetchOptions)
 }
 
@@ -450,7 +450,7 @@ export function thkApiV1FridayCredentialUpdate(data?: ChaXianBanQingMingCaoZhiXi
 }
 
 /** 批量更新插线板清明草质 */
-export function thkApiV1FridayCredentialUpdateBatch(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1FridayCredentialUpdateBatch(data?: ChaXianBanQingMingCaoZhiXinZengGengXinQingQiu[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/friday/credential/update-batch`, data, useFetchOptions)
 }
 
@@ -1054,7 +1054,7 @@ export function thkApiV1TastyBankRecordId(data?: {
 }
 
 /** 新增银行卡水果刀 */
-export function thkApiV1TastyBankRecordPost(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1TastyBankRecordPost(data?: XinZengYinHangKaShuiGuoDao[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/tasty/bank-record`, data, useFetchOptions)
 }
 
@@ -1064,7 +1064,7 @@ export function thkApiV1TastyBankRecordPut(data?: GengXinYinHangKaShuiGuoDao, us
 }
 
 /** 批量新增持罐头水果刀 */
-export function thkApiV1TastyCredentialBatch(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1TastyCredentialBatch(data?: JuanXinCaiChiGuanTouShuiGuoDao0[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/tasty/credential/batch`, data, useFetchOptions)
 }
 
@@ -1074,7 +1074,7 @@ export function thkApiV1TastyCredentialCancel(data?: GuanTouShuRenLingRiZhi, use
 }
 
 /** 罐头书认领 */
-export function thkApiV1TastyCredentialClaim(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1TastyCredentialClaim(data?: JuanXinCaiChiGuanTouShuiGuoDao0[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/tasty/credential/claim`, data, useFetchOptions)
 }
 
@@ -1479,7 +1479,7 @@ export function thkApiV1TastyCredUpgradeUpRecommend(data?: {
 }
 
 /** 批量新增大水牛经历 */
-export function thkApiV1TastyEducationBatch(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1TastyEducationBatch(data?: TianJiaDaShuiNiuJingLiShuiGuoDao[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/tasty/education/batch`, data, useFetchOptions)
 }
 
@@ -1526,7 +1526,7 @@ export function thkApiV1TastyFamilyGet(data?: {
 }
 
 /** 批量新增家庭水果刀 */
-export function thkApiV1TastyFamilyPost(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1TastyFamilyPost(data?: JiaTingChengYuanShuiGuoDao[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/tasty/family`, data, useFetchOptions)
 }
 
@@ -1559,7 +1559,7 @@ export function thkApiV1TastyPost(data?: TianJiaGeRenShuiGuoDao, useFetchOptions
 }
 
 /** 批量新增工作业绩 */
-export function thkApiV1TastyProjectBatch(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1TastyProjectBatch(data?: JuanXinCaiGongZuoYeJi0[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/tasty/project/batch`, data, useFetchOptions)
 }
 
@@ -1569,7 +1569,7 @@ export function thkApiV1TastyProjectCancel(data?: YeJiRenLingRiZhi, useFetchOpti
 }
 
 /** 工作业绩认领 */
-export function thkApiV1TastyProjectClaim(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1TastyProjectClaim(data?: JuanXinCaiGongZuoYeJi0[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/tasty/project/claim`, data, useFetchOptions)
 }
 
@@ -1659,7 +1659,7 @@ export function thkApiV1TastyToolMajorInEducation(data?: any, useFetchOptions?: 
 }
 
 /** 批量新增工作经历 */
-export function thkApiV1TastyWorkHistoryBatch(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function thkApiV1TastyWorkHistoryBatch(data?: GeRenGongZuoJingLi[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/thk/api/v1/tasty/work-history/batch`, data, useFetchOptions)
 }
 

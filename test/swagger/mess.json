@@ -564,7 +564,7 @@
           "type": "array",
           "description": "日期",
           "items": {
-            "$ref": "Error-ModelName{namespace='java.time', name='LocalDateTime'}",
+            "$ref": "#/definitions/Error-ModelName{namespace='java.time', name='LocalDateTime'}",
             "originalRef": "Error-ModelName{namespace='java.time', name='LocalDateTime'}"
           }
         }
@@ -579,6 +579,13 @@
       },
       "title": "HappyPlanAddCustomerListReq"
     },
+    "Error-ModelName{namespace='java.time', name='LocalDateTime'}": {
+      "type": "object",
+      "properties": {
+        "nanosecond": { "type": "integer", "format": "int32" }
+      },
+      "title": "Error-ModelName{namespace='java.time', name='LocalDateTime'}"
+    },
     "ApiResponse«object»": {
       "type": "object",
       "properties": {
@@ -590,6 +597,18 @@
         "traceId": { "type": "string" }
       },
       "title": "ApiResponse«object»"
+    },
+    "ApiResponse«boolean»": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "integer", "format": "int32" },
+        "data": { "type": "boolean" },
+        "msg": { "type": "string" },
+        "success": { "type": "boolean" },
+        "timestamp": { "type": "integer", "format": "int64" },
+        "traceId": { "type": "string" }
+      },
+      "title": "ApiResponse«boolean»"
     },
     "ApiResponse«ResumeInfoMobileResp»": {
       "type": "object",
@@ -658,6 +677,16 @@
         "workNature": { "type": "string", "description": "工作性质: UNLIMITED 不限,FULL-TIME 全职, PART-TIME 兼职" }
       },
       "title": "女娲补天烙饼"
+    },
+    "辟邪刀": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "authStatus": { "type": "boolean", "description": "是否同意授权" },
+        "id": { "type": "integer", "format": "int64", "description": "主键ID" },
+        "烙饼备注": { "type": "string", "description": "备注" }
+      },
+      "title": "辟邪刀"
     },
     "ApiResponse«Void»": {
       "type": "object",

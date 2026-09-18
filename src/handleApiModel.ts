@@ -1,6 +1,7 @@
-import type { ApiBlock, ApiBodyParams, ApiOptions, ApiParameter, SwaggerData } from './types'
+import type { ApiBlock, ApiBodyParams, ApiInterface, ApiOptions, ApiParameter, Schema, SwaggerData } from './types'
 import c from 'picocolors'
-import { getApiName, getContentOriginRef, getNamespace, handleDescription, handleJsType, handleWeirdName } from './utils'
+import { handleInlineType } from './handleInterface'
+import { getApiName, getContentOriginRef, getContentSchema, getNamespace, handleDescription, handleJsType, handleWeirdName } from './utils'
 
 export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths']): ApiBlock[] {
   const apiList: ApiBlock[] = []
@@ -19,8 +20,14 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
       const namespace = getNamespace(url)
       const summary = handleDescription(item.summary) // 接口注释
       const parameters = getParameters(item.parameters) // 入参
-      const requestBodyRef = getContentOriginRef(item.requestBody?.content)
-      const requestFormData = item.requestBody?.content?.['multipart/form-data']
+      const requestBodyContent = item.requestBody?.content
+      const requestBodyRef = getContentOriginRef(requestBodyContent)
+      const requestFormData = requestBodyContent?.['multipart/form-data']
+      // 内联（非 $ref）请求体展开成内联 TS 类型，multipart 由 formDataParameters 处理
+      const requestBodySchema = requestFormData ? undefined : getContentSchema(requestBodyContent)
+      const requestBodyInline = requestBodySchema && !requestBodySchema.$ref
+        ? createInlineRequestBody(requestBodySchema)
+        : undefined
       const formDataProperties = requestFormData?.schema?.properties
       let formDataParameters
       if (formDataProperties) {
@@ -55,6 +62,7 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
         summary,
         parameters,
         requestBodyRef,
+        requestBodyInline,
         requestFormData,
         formDataParameters,
         outputInterface,
@@ -66,6 +74,14 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
     })
   }
   return apiList
+}
+
+/** 内联请求体：渲染出类型文本，并收集其中需要从 _interfaces 引入的命名类型 */
+function createInlineRequestBody(schema: Schema) {
+  const imports: string[] = []
+  // 属性归一化与 DTO 共用同一套结构，这里沿用 ApiInterface 的形状
+  const type = handleInlineType(schema as ApiInterface, imports)
+  return { type, imports }
 }
 
 /** 处理入参 */

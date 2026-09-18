@@ -235,7 +235,7 @@ export function empowerDoorReScanGetOrgInfo(data?: {
 }
 
 /** 邀请辟邪刀-发送邀请辟邪刀短信 */
-export function empowerDoorReSendEmpowerSms(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
+export function empowerDoorReSendEmpowerSms(data?: (number | string)[], useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
   return usePost<ApiResponseVoid>(`/api/empower/doorRe/sendEmpowerSms`, data, useFetchOptions)
 }
 

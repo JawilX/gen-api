@@ -2,7 +2,7 @@ import type { UseFetchOptions } from '@vueuse/core'
 import type { ApiResponseImportDesktopResp, ApiResponseListImportDesktopResp, FileSystemResource } from './_interfaces'
 
 /** 导出小麦 */
-export function excelExport(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<FileSystemResource['data']> & PromiseLike<UseFetchReturn<FileSystemResource['data']>> {
+export function excelExport(data?: (number | string)[], useFetchOptions?: UseFetchOptions): UseFetchReturn<FileSystemResource['data']> & PromiseLike<UseFetchReturn<FileSystemResource['data']>> {
   return usePost<FileSystemResource>(`/api/excel/export`, data, useFetchOptions)
 }
 

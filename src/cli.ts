@@ -1,10 +1,23 @@
 import process from 'node:process'
+import c from 'picocolors'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { version } from '../package.json'
 import { resolveConfig } from './config'
 import { gen } from './gen'
 import { init } from './init'
+
+async function runGen(configPath: string) {
+  try {
+    await gen(await resolveConfig({ config: configPath }))
+  }
+  catch (error) {
+    console.error(c.red(error instanceof Error ? error.message : String(error)))
+    if (error instanceof Error && error.cause)
+      console.error(c.dim(error.cause instanceof Error ? error.cause.message : String(error.cause)))
+    process.exitCode = 1
+  }
+}
 
 // eslint-disable-next-line ts/no-unused-expressions
 yargs(hideBin(process.argv))
@@ -26,7 +39,7 @@ yargs(hideBin(process.argv))
       default: '',
       describe: 'api.config.ts 所在文件夹的相对路径',
     })
-      .help(), async args => gen(await resolveConfig({ config: args.config })))
+      .help(), async args => runGen(args.config))
   .alias('h', 'help')
   .version('version', version)
   .alias('v', 'version')

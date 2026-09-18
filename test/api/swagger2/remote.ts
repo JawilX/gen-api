@@ -7,7 +7,7 @@ export function remoteBigdataAutoBird(data?: RemoteAutoBirdReq, useFetchOptions?
 }
 
 /** 模拟大数据建鸟窝 */
-export function remoteBigdataMockAutoBird(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
+export function remoteBigdataMockAutoBird(data?: (number | string)[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponse['data']> & PromiseLike<UseFetchReturn<ApiResponse['data']>> {
   return usePost<ApiResponse>(`/api/remote/bigdata/mockAutoBird`, data, useFetchOptions)
 }
 

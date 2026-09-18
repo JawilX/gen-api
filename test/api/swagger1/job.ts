@@ -1,8 +1,8 @@
 import type { UseFetchOptions } from '@vueuse/core'
-import type { AddOrUpdateJobReq, ApiResponseboolean, ApiResponseListSelectorDesktopResp, ApiResponseListTreelong, DesktopSelectorReq, QueryDesktopByPhoneOrNameReq, QueryJobReq, RemoveDesktopReq } from './_interfaces'
+import type { AddOrUpdateJobReq, ApiResponseboolean, ApiResponseListSelectorDesktopResp, ApiResponseListTreelong, DesktopSelectorReq, JobAddDesktopReq, QueryDesktopByPhoneOrNameReq, QueryJobReq, RemoveDesktopReq } from './_interfaces'
 
 /** 添加成员 */
-export function jobAddDesktop(data?: any, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+export function jobAddDesktop(data?: JobAddDesktopReq[], useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
   return usePost<ApiResponseboolean>(`/api/job/addDesktop`, data, useFetchOptions)
 }
 

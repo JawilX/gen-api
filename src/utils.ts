@@ -62,14 +62,22 @@ export function getNamespace(url: string) {
 }
 
 /**
+ * 取 content 中第一个媒体类型的 schema，请求体相关处理统一用它选 schema
+ */
+export function getContentSchema(content?: ApiContent) {
+  if (!content)
+    return undefined
+
+  const keys = Object.keys(content)
+  return keys.length ? content[keys[0]].schema : undefined
+}
+
+/**
  * 获取 requestBody 或 responses 里的 $ref 的实际接口对象
  */
 export function getContentOriginRef(content: ApiContent) {
-  if (!content)
-    return ''
-
-  const keys = Object.keys(content)
-  return handleWeirdName(content[keys[0]].schema.$ref?.replace('#/components/schemas/', ''))
+  const schema = getContentSchema(content)
+  return schema ? handleWeirdName(schema.$ref?.replace('#/components/schemas/', '')) : ''
 }
 
 /**

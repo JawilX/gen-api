@@ -1,20 +1,19 @@
 import type { UseFetchOptions } from '@vueuse/core'
-import type { BiXieDao, EntReSetReq } from './_interfaces'
+import type { ApiResponseboolean, ApiResponseComPageXiLanHuaLieBiao, ApiResponseListJobCategoryConfigResp, ApiResponseListListlong, ApiResponseVoid, ApiResponseWhiteDetailResp, BiXieDao, EntReSetReq } from './_interfaces'
 
 /** 这个接口出参树形结构，同样的children 结构导致 mock 函数死循环了 */
 export function emoCenterApiAdminJobCategoryByParentIds(data?: {
   isEnable?: number
   parentIds?: (number | string)[]
-}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
-  return useGet<any>(`/emo-center/api/admin/jobCategory/byParentIds`, data, useFetchOptions)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListJobCategoryConfigResp['data']> & PromiseLike<UseFetchReturn<ApiResponseListJobCategoryConfigResp['data']>> {
+  return useGet<ApiResponseListJobCategoryConfigResp>(`/emo-center/api/admin/jobCategory/byParentIds`, data, useFetchOptions)
 }
 
 /** 这个接口的入参既有 in path, 又有 in body */
-export function emoCenterApiEmpowerEnterpriseReUpEntReSetEnterpriseId(data?: {
+export function emoCenterApiEmpowerEnterpriseReUpEntReSetEnterpriseId(data?: EntReSetReq & {
   enterpriseId?: (number | string)
-  req?: EntReSetReq
-}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
-  return usePost<any>(`/emo-center/api/empower/enterpriseRe/upEntReSet/${data?.enterpriseId}`, data, useFetchOptions)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
+  return usePost<ApiResponseVoid>(`/emo-center/api/empower/enterpriseRe/upEntReSet/${data?.enterpriseId}`, data, useFetchOptions)
 }
 
 /** 这个接口注释、入参注释、出参注释 有特殊字符 ， 等，导致报错 */
@@ -33,35 +32,34 @@ export function emoCenterApiEnterpriseList(data?: {
   id?: (number | string)
   // 字母
   letter?: string
-}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
-  return useGet<any>(`/emo-center/api/enterprise/list`, data, useFetchOptions)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseComPageXiLanHuaLieBiao['data']> & PromiseLike<UseFetchReturn<ApiResponseComPageXiLanHuaLieBiao['data']>> {
+  return useGet<ApiResponseComPageXiLanHuaLieBiao>(`/emo-center/api/enterprise/list`, data, useFetchOptions)
 }
 
 /** 这个接口处理后的 parsedData 里的type为空，导出出现形如 'data|1-20': [()] 的错误mock数据 */
 export function emoCenterApiFeeRuleGetCooperateTypeIdsByFeeId(data?: {
   feeId?: (number | string)
-}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
-  return useGet<any>(`/emo-center/api/feeRule/getCooperateTypeIdsByFeeId`, data, useFetchOptions)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseListListlong['data']> & PromiseLike<UseFetchReturn<ApiResponseListListlong['data']>> {
+  return useGet<ApiResponseListListlong>(`/emo-center/api/feeRule/getCooperateTypeIdsByFeeId`, data, useFetchOptions)
 }
 
 /** 这个接口的入参既有 in query,又有 in body */
-export function emoCenterApiSearchRecordDeleteByKeywords(data?: {
+export function emoCenterApiSearchRecordDeleteByKeywords(data?: string[] & {
   groupCode?: (number | string)
-  keywords?: string[]
-}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
-  return usePost<any>(`/emo-center/api/searchRecord/deleteByKeywords`, data, useFetchOptions)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
+  return usePost<ApiResponseVoid>(`/emo-center/api/searchRecord/deleteByKeywords`, data, useFetchOptions)
 }
 
 /** 这是一个 delete 请求 */
 export function emoCenterApiV1TastyWorkHistoryId(data?: {
   id?: (number | string)
-}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
-  return useDelete<any>(`/emo-center/api/v1/tasty/work-history/${data?.id}`, data, useFetchOptions)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseboolean['data']> & PromiseLike<UseFetchReturn<ApiResponseboolean['data']>> {
+  return useDelete<ApiResponseboolean>(`/emo-center/api/v1/tasty/work-history/${data?.id}`, data, useFetchOptions)
 }
 
 /** 这是一个 put 请求 */
-export function emoCenterAuthExecute(data?: BiXieDao, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
-  return usePut<any>(`/api/emo-center/auth/execute`, data, useFetchOptions)
+export function emoCenterAuthExecute(data?: BiXieDao, useFetchOptions?: UseFetchOptions): UseFetchReturn<unknown> & PromiseLike<UseFetchReturn<unknown>> {
+  return usePut<ApiResponseVoid>(`/api/emo-center/auth/execute`, data, useFetchOptions)
 }
 
 /** 返回数值是个数组而非对象 */
@@ -75,6 +73,6 @@ export function emoCenterEffectiveDept(data?: {
 /** 参数在路径上 */
 export function emoCenterWhiteGetWhiteId(data?: {
   whiteId?: (number | string)
-}, useFetchOptions?: UseFetchOptions): UseFetchReturn<any['data']> & PromiseLike<UseFetchReturn<any['data']>> {
-  return useGet<any>(`/api/emo-center/white/get/${data?.whiteId}`, data, useFetchOptions)
+}, useFetchOptions?: UseFetchOptions): UseFetchReturn<ApiResponseWhiteDetailResp['data']> & PromiseLike<UseFetchReturn<ApiResponseWhiteDetailResp['data']>> {
+  return useGet<ApiResponseWhiteDetailResp>(`/api/emo-center/white/get/${data?.whiteId}`, data, useFetchOptions)
 }

@@ -29,8 +29,10 @@ export interface ApiBodyParams {
   name: string
   /** 接口入参，格式： [{in:"body",type:"IUserModel",interface:"IUserModel",name:"",description:"注释"},{in:"query",type:string,interface:""}] */
   parameters?: ApiParameter[]
-  /** 请求参数的接口 */
+  /** 请求参数的接口，仅 schema 使用 $ref 时有值 */
   requestBodyRef?: string
+  /** 内联请求体（schema 未使用 $ref 时展开出的 TS 类型）及其中用到的命名类型 */
+  requestBodyInline?: { type: string, imports: string[] }
   /** 请求类型是 multipart/form-data 时 requestBody 里面对应的数据 */
   requestFormData?: { schema?: Schema }
   formDataParameters?: ApiParameter[]
@@ -54,6 +56,11 @@ export interface InitOptions {
   apiBody: (params: ApiBodyParams) => string
   /** 接口名称是否强制拼接 method, 默认 false，当url内有多个method时才拼接 */
   apiNameForceAppendMethod?: boolean
+  /**
+   * 生成后是否逐文件执行 eslint --fix 格式化，默认 true
+   * eslint 未安装或格式化报错时只提示，不会中断生成
+   */
+  formatWithEslint?: boolean
 }
 
 export interface ApiBlock {
