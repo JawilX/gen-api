@@ -19,6 +19,7 @@ export async function gen(config: InitOptions): Promise<GenResult> {
   if (!config)
     throw new Error('请先执行 gen-api init 初始化配置文件')
 
+  const started = performance.now()
   const apiList = config.apiList.filter(item => item.enable)
 
   if (!config.apiBody)
@@ -64,6 +65,7 @@ export async function gen(config: InitOptions): Promise<GenResult> {
   // 多个条目可能共用同一个输出目录，必须等全部写完再按目录取并集清理
   if (prune)
     await pruneStale(entries, banner)
+  console.log(c.green(`生成完成，耗时 ${((performance.now() - started) / 1000).toFixed(1)} 秒`))
   return { entries }
 }
 
