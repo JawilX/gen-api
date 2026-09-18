@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { AddUserReqM, DelModel, EmptyReqM, EnableOrDisableReqM, LoginReqM, LoginRespMResponseModel, ModifyUserReqM, ObjectResponseModel, PreLoginRespMResponseModel, StringResponseModel, UserListReqM, UserListRespMListResponseModel } from './_interfaces'
 

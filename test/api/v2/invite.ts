@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { AddOrUpdateInviteSetReq, ApiResponseboolean, ApiResponseComPageInviteDesktopResp, ApiResponseInviteJoinEchoResp, ApiResponseInviteLoginResp, ApiResponseInviteSetResp, ApiResponseJianChaYaoQingMa, ApiResponseListShengChengYaoQing, ApiResponsestring, ApiResponseYaoQingZhuCe, FileSystemResource, InviteLoginReq, QueryInviteDesktopReq, RefuseJoinReq, ShengChengYaoQing, ShenHeTongGuo, YaoQingZhuCe0 } from './_interfaces'
 

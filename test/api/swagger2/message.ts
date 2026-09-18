@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { ApiResponseAtListAndAckSequenceResp, ApiResponseComPageXiaoXiDuiXiang, ApiResponseListXiaoXiDuiXiang, ApiResponseobject, ApiResponseXiaoXiDuiXiang, LiShiXiaoXiMessageHistoryReq, MessagePositionReqq, MsgSearchReq, QingKongXiaoXiRuCan, XiaoXiAck, XiaoXiGunDongQingQiuTi, XiaoXiSaoXue, XiaoXiXiangQingMessageDetailReq } from './_interfaces'
 

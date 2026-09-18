@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { ApiResponse, ApiResponseboolean, ApiResponseComPageNiaoWoChengYuanXinXiDuiXiangBirdMemberResp, ApiResponseListNiaoWoChengYuanXinXiDuiXiangBirdMemberResp, ApiResponseMemberBirdStatusResp, ApiResponseNiaoWoChengYuanXinXiDuiXiangBirdMemberResp, BirdSetNoticeAndTopReq, NiaoWoChengYuanFenYeBirdMemberPageReq, NiaoWoChengYuanJiaShiBirdMemberSaveReq, NiaoWoChengYuanSaoXueBirdMemberDelReq, NiaoWoChengYuanYongDaoChuXingRuCan, NiaoWoXinXiBirdDetailReq, XiuGaiBeiZhuModifyRemarkBirdReq } from './_interfaces'
 

@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { ApiResponseboolean, ApiResponseComPageDesktopResp, ApiResponseComPageDoorIdentificationResp, ApiResponseJudgeSwitchDoorLimitResp, ApiResponsePageZhiXieChangBaoJuZiXinXi, ApiResponseQueryDoorPageHomeResp, ApiResponseQueryJudgeClaimResp, ApiResponsestring, ApiResponseVoid, ApiResponseWhiteLinkDoorResp, ApiResponseZhiXieChangBaoJuZiXinXi, ApiResponseZhiXieChangJianDanFangXing, ApiResponseZhiXieChangZhuTiXinXi, ChuangJianZhiXieChang, ComPage, DesktopSimpleListReq, DoorIdentificationReq, WhiteLinkDoorReq, ZhiXieChangBaoJuZiXinXi, ZhiXieChangJianDanFangXing, ZhiXieChangZhiNengPiaoJiaFangXing } from './_interfaces'
 

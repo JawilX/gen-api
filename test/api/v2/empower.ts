@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { ApiResponseAccInfoResp, ApiResponseComPageEpDesktopResp, ApiResponseEntReSetResp, ApiResponseGuanLianMaoZiXiangQing, ApiResponseGuanLianMaoZiYongDao, ApiResponseHeaderEmpowerSmsInfo, ApiResponseInviteDoorReInfo, ApiResponseListEmpowerWhiteResp, ApiResponseListEpEntTreeResp, ApiResponseListPinkInfo, ApiResponseListZhiXieChangFangDongXinXi, ApiResponseMapstringstring, ApiResponseScanReQrResp, ApiResponsestring, ApiResponseVoid, EntReSetReq, InviteRePlatFromOrgReq, StationDesktopAuthReq } from './_interfaces'
 

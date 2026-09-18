@@ -79,6 +79,11 @@ const spec = {
   components: { schemas },
 }
 
+/** 200 响应引用指定 schema */
+function refResponse(name: string) {
+  return { 200: { content: { 'application/json': { schema: { $ref: `#/components/schemas/${name}` } } } } }
+}
+
 async function writeSpec(name: string, content: unknown) {
   await fs.mkdir(tmpDir, { recursive: true })
   await fs.writeFile(path.join(tmpDir, name), JSON.stringify(content))
@@ -196,6 +201,79 @@ describe('gen', () => {
     ])
     expect(entries[0]?.dtoFile).toBe(path.join(tmpDir, 'api/_interfaces.ts'))
     expect([...(entries[0]?.dtoNames ?? [])].sort()).toEqual(['DemoItem', 'DemoResp'])
+  })
+
+  it('默认写入抬头，banner 可覆盖', async () => {
+    await writeSpec('spec.json', spec)
+
+    const builtin = 'api-banner-builtin'
+    const custom = 'api-banner-custom'
+    await gen(createConfig({ apiList: [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir: `/test/.tmp-gen/${builtin}`, enable: true }] }))
+    await gen(createConfig({
+      apiList: [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir: `/test/.tmp-gen/${custom}`, enable: true }],
+      banner: '自定义抬头',
+    }))
+
+    for (const [name, expected] of [[builtin, '// 由 @jawilx/gen-api 生成，请勿手动修改'], [custom, '// 自定义抬头']] as const) {
+      const controller = await fs.readFile(path.join(tmpDir, `${name}/demo.ts`), 'utf-8')
+      const dto = await fs.readFile(path.join(tmpDir, `${name}/_interfaces.ts`), 'utf-8')
+      expect(controller.split('\n')[0]).toBe(expected)
+      expect(dto.split('\n')[0]).toBe(expected)
+    }
+  })
+
+  it('prune 清理不再生成的文件，但不动同目录的其他文件', async () => {
+    const name = 'api-prune'
+    const dir = path.join(tmpDir, name)
+    const config = (specFile: string) => createConfig({
+      apiList: [{ swaggerUrl: `./test/.tmp-gen/${specFile}`, outputDir: `/test/.tmp-gen/${name}`, enable: true }],
+    })
+    const schemas = {
+      DemoResp: { type: 'object', properties: { id: { type: 'integer' } } },
+      ExtraResp: { type: 'object', properties: { id: { type: 'integer' } } },
+    }
+    const openapi = '3.0.0'
+    const info = { title: 'tmp', version: '1.0.0' }
+
+    await writeSpec('big.json', { openapi, info, paths: { '/demo/list': { get: { responses: refResponse('DemoResp') } }, '/extra/list': { get: { responses: refResponse('ExtraResp') } } }, components: { schemas } })
+    await gen(config('big.json'))
+    // 手写文件与别的工具生成的文件都没有本轮抬头
+    await fs.writeFile(path.join(dir, 'handwritten.ts'), 'export const keep = 1\n')
+    await fs.writeFile(path.join(dir, 'other.ts'), '// 别的抬头\nexport const other = 1\n')
+    expect((await fs.readdir(dir)).sort()).toEqual(['_interfaces.ts', 'demo.ts', 'extra.ts', 'handwritten.ts', 'other.ts'])
+
+    // 接口 /extra/list 下线：extra.ts 会变成引用已消失 DTO 的悬空文件
+    await writeSpec('small.json', { openapi, info, paths: { '/demo/list': { get: { responses: refResponse('DemoResp') } } }, components: { schemas } })
+    await gen(config('small.json'))
+
+    expect((await fs.readdir(dir)).sort()).toEqual(['_interfaces.ts', 'demo.ts', 'handwritten.ts', 'other.ts'])
+  })
+
+  it('磁盘上存在同名不同大小写的文件时，不误删本轮产物', async () => {
+    const name = 'api-case'
+    const dir = path.join(tmpDir, name)
+    // 大小写不敏感的文件系统（macOS 默认）上，Demo.ts 与生成器要写的 demo.ts 是同一个文件
+    await fs.mkdir(dir, { recursive: true })
+    await fs.writeFile(path.join(dir, 'Demo.ts'), 'export const legacy = 1\n')
+    await writeSpec('spec.json', spec)
+
+    await gen(createConfig({ apiList: [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir: `/test/.tmp-gen/${name}`, enable: true }] }))
+
+    const files = (await fs.readdir(dir)).map(file => file.toLowerCase())
+    expect(files).toContain('demo.ts')
+    expect(files).toContain('_interfaces.ts')
+  })
+
+  it('banner 为空时拒绝 prune，关闭 prune 则不写抬头', async () => {
+    await writeSpec('spec.json', spec)
+    const name = 'api-no-banner'
+    const apiList = [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir: `/test/.tmp-gen/${name}`, enable: true }]
+
+    await expect(gen(createConfig({ apiList, banner: '' }))).rejects.toThrow('prune 依赖 banner')
+
+    await gen(createConfig({ apiList, banner: '', prune: false }))
+    const controller = await fs.readFile(path.join(tmpDir, `${name}/demo.ts`), 'utf-8')
+    expect(controller.split('\n')[0]).toBe('')
   })
 
   it('同一控制器内接口名重复时 reject，且不创建输出目录', async () => {

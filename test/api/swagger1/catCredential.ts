@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { ApiResponse, ApiResponseboolean, ApiResponseComPageTianJiaDouJiangJiBeiJing, FenYeChuXingDouJiangJiBeiJing, TianJiaDouJiangJiBeiJing0 } from './_interfaces'
 

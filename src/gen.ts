@@ -13,6 +13,7 @@ import { handleInterface } from './handleInterface'
 import { commonUrl, handleDescription, handleJsType, mixedTypeCompare } from './utils'
 
 const CWD = process.cwd()
+const DEFAULT_BANNER = '由 @jawilx/gen-api 生成，请勿手动修改'
 
 export async function gen(config: InitOptions): Promise<GenResult> {
   if (!config)
@@ -22,6 +23,12 @@ export async function gen(config: InitOptions): Promise<GenResult> {
 
   if (!config.apiBody)
     throw new Error('配置文件里的 apiBody不能为空, 且必须是一个函数')
+
+  const banner = getBanner(config)
+  const prune = config.prune ?? true
+  // 清理靠首行抬头识别生成物，没有抬头就无法保证只删自己写的文件
+  if (prune && !banner)
+    throw new Error('prune 依赖 banner 识别生成物，请配置 banner 或关闭 prune')
 
   const entries: GeneratedEntry[] = []
   for (const item of apiList) {
@@ -54,7 +61,54 @@ export async function gen(config: InitOptions): Promise<GenResult> {
     const normalized = await normalizeData(data, config, item.swaggerVersion)
     entries.push(await parseData(apiOptions, normalized, config))
   }
+  // 多个条目可能共用同一个输出目录，必须等全部写完再按目录取并集清理
+  if (prune)
+    await pruneStale(entries, banner)
   return { entries }
+}
+
+/** 生成文件首行的抬头文案，未配置时用默认值 */
+function getBanner(initOptions: InitOptions) {
+  return (initOptions.banner ?? DEFAULT_BANNER).trim()
+}
+
+/** 抬头行，banner 为空时不写抬头 */
+function bannerLine(banner: string) {
+  return banner ? `// ${banner}\n` : ''
+}
+
+/** 清理输出目录里本轮不再生成的文件：只认首行是本轮抬头、且不在本轮清单内的文件 */
+async function pruneStale(entries: GeneratedEntry[], banner: string) {
+  const generatedByDir = new Map<string, Set<string>>()
+  entries.forEach((entry) => {
+    const generated = generatedByDir.get(entry.outputDir) ?? new Set<string>()
+    entry.controllers.forEach(controller => generated.add(path.basename(controller.file)))
+    generated.add(path.basename(entry.dtoFile))
+    generatedByDir.set(entry.outputDir, generated)
+  })
+
+  for (const [outputDir, generated] of generatedByDir) {
+    // 大小写不敏感的文件系统（macOS 默认）上，本轮写入的文件在目录里可能保持着另一种大小写，
+    // 统一按小写比较，避免把刚写出的文件当成陈旧文件删掉
+    const generatedNames = new Set([...generated].map(name => name.toLowerCase()))
+    const dirents = await fs.readdir(outputDir, { withFileTypes: true })
+    for (const dirent of dirents) {
+      const target = path.join(outputDir, dirent.name)
+      if (!dirent.isFile() || !dirent.name.endsWith('.ts') || generatedNames.has(dirent.name.toLowerCase()))
+        continue
+      if (!await isGeneratedFile(target, banner))
+        continue
+
+      await fs.rm(target)
+      console.log(c.yellow(`清理已不再生成的文件：${dirent.name}`))
+    }
+  }
+}
+
+/** 首行是本轮抬头的文件才算 gen-api 生成物，避免误删同目录的手写文件 */
+async function isGeneratedFile(file: string, banner: string) {
+  const firstLine = (await fs.readFile(file, 'utf-8')).split('\n')[0]
+  return firstLine.trim() === `// ${banner}`
 }
 
 async function normalizeData(data: any, initOptions: InitOptions, swaggerVersion?: 2 | 3) {
@@ -104,7 +158,7 @@ async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions:
   await fs.mkdir(apiOptions.absOutputDir || './', { recursive: true })
   // 全部文件写入完成后才返回，调用方据此判断生成是否结束
   const controllers = await writeApiToFile(apiOptions, apiList, initOptions, new Set(dtoNames))
-  const dtoFile = await writeInterfaceToFile(apiOptions, interfaces)
+  const dtoFile = await writeInterfaceToFile(apiOptions, interfaces, initOptions)
   await formatFiles([...controllers.map(controller => controller.file), dtoFile], initOptions)
 
   return {
@@ -212,7 +266,7 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initO
     return {
       namespace,
       targetFile: path.join(outputDir, `${namespace}.ts`),
-      content: `${tplStr}\n${importStr}\n${apiStr}`,
+      content: `${bannerLine(getBanner(initOptions))}${tplStr}\n${importStr}\n${apiStr}`,
       imports: fileUsedInterface,
       names: itemApis.map(api => api.name),
     }
@@ -270,7 +324,7 @@ async function formatFiles(targetFiles: string[], initOptions: InitOptions) {
   }
 }
 
-async function writeInterfaceToFile(apiOptions: ApiOptions, interfaces: GeneratedInterface[]) {
+async function writeInterfaceToFile(apiOptions: ApiOptions, interfaces: GeneratedInterface[], initOptions: InitOptions) {
   const absOutputDir = apiOptions.absOutputDir || ''
   let str = ''
   const interfacesSorted = interfaces.sort((a, b) => mixedTypeCompare(a?.name, b?.name))
@@ -286,7 +340,7 @@ async function writeInterfaceToFile(apiOptions: ApiOptions, interfaces: Generate
   })
   const targetFile = path.join(absOutputDir, `_interfaces.ts`)
   try {
-    await fs.writeFile(targetFile, str)
+    await fs.writeFile(targetFile, `${bannerLine(getBanner(initOptions))}${str}`)
   }
   catch (error) {
     throw new Error('写入 _interfaces.ts 失败', { cause: error })

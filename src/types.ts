@@ -61,6 +61,14 @@ export interface InitOptions {
    * eslint 未安装或格式化报错时只提示，不会中断生成
    */
   formatWithEslint?: boolean
+  /** 生成文件首行的抬头文案，默认「由 @jawilx/gen-api 生成，请勿手动修改」；设为空字符串则不写抬头 */
+  banner?: string
+  /**
+   * 是否清理输出目录里本轮已不再生成的文件，默认 true
+   * 只删除首行是本轮 banner 的文件，因此不会动同目录的手写文件；
+   * banner 为空时无法识别生成物，会直接报错
+   */
+  prune?: boolean
 }
 
 export interface ApiBlock {

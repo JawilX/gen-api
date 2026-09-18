@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 export interface AddButtonReqM {
 
   /** 编码名称 */

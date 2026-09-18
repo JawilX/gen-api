@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 export interface AddBirdResp {
 
   /** 是否直接入鸟窝 */

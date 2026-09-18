@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { ApiResponseComPageCommonSearchResp, ApiResponseComPageSearchBeforeAddFriendResp, ApiResponseKeyBorardBindResp, ApiResponseListSwitchKeyBorardListResp, ApiResponseMapstringSearchMapResp, CommonSearchReq, KeyBorardBindReq, SearchBeforeAddFriendReq, SearchReq, SwitchKeyBorardReq } from './_interfaces'
 

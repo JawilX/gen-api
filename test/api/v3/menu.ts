@@ -1,3 +1,4 @@
+// 由 @jawilx/gen-api 生成，请勿手动修改
 import type { UseFetchOptions } from '@vueuse/core'
 import type { AddMenuReqM, DelModel, EmptyReqM, GetSelectMenuTreeForRoleReqM, MenuNodeForBtnListResponseModel, MenuNodeListResponseModel, ModifyMenuReqM, ObjectResponseModel, SelectMenuReqM, SelectMenuRespMListResponseModel, StringResponseModel, UpdateSortForMenusByMenuIdsReqM } from './_interfaces'
 
