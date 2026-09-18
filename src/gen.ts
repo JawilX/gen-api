@@ -14,6 +14,8 @@ import { commonUrl, handleDescription, handleJsType, mixedTypeCompare } from './
 
 const CWD = process.cwd()
 const DEFAULT_BANNER = '由 @jawilx/gen-api 生成，请勿手动修改'
+/** 单批格式化的文件数上限：Windows 命令行约 32767 字符，分批避免参数超长 */
+const FORMAT_BATCH_SIZE = 100
 
 export async function gen(config: InitOptions): Promise<GenResult> {
   if (!config)
@@ -65,6 +67,8 @@ export async function gen(config: InitOptions): Promise<GenResult> {
   // 多个条目可能共用同一个输出目录，必须等全部写完再按目录取并集清理
   if (prune)
     await pruneStale(entries, banner)
+  // 全部写完再一次性格式化：逐文件调用时 eslint 的启动开销占绝大部分
+  await formatFiles(entries.flatMap(entry => [...entry.controllers.map(controller => controller.file), entry.dtoFile]), config)
   console.log(c.green(`生成完成，耗时 ${((performance.now() - started) / 1000).toFixed(1)} 秒`))
   return { entries }
 }
@@ -161,7 +165,6 @@ async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions:
   // 全部文件写入完成后才返回，调用方据此判断生成是否结束
   const controllers = await writeApiToFile(apiOptions, apiList, initOptions, new Set(dtoNames))
   const dtoFile = await writeInterfaceToFile(apiOptions, interfaces, initOptions)
-  await formatFiles([...controllers.map(controller => controller.file), dtoFile], initOptions)
 
   return {
     swaggerUrl: apiOptions.swaggerUrl,
@@ -310,17 +313,18 @@ function assertDtoImports(controllers: { namespace: string, imports: string[] }[
   throw new Error(`_interfaces.ts 里不存在以下类型：${detail}；通常是文档中的 $ref 指向了未定义的模型`)
 }
 
-/** eslint 缺失或格式化报错时不阻断生成，提示一次后跳过剩余文件 */
+/** eslint 缺失或格式化报错时不阻断生成，提示后跳过剩余批次 */
 async function formatFiles(targetFiles: string[], initOptions: InitOptions) {
-  if (initOptions.formatWithEslint === false)
+  if (initOptions.formatWithEslint === false || !targetFiles.length)
     return
-  for (const targetFile of targetFiles) {
+  for (let index = 0; index < targetFiles.length; index += FORMAT_BATCH_SIZE) {
+    const batch = targetFiles.slice(index, index + FORMAT_BATCH_SIZE)
     try {
-      await execa('eslint', ['--fix', targetFile], { stdio: 'inherit' })
+      await execa('eslint', ['--fix', ...batch], { stdio: 'inherit' })
     }
     catch (error) {
       const reason = error instanceof Error ? error.message.split('\n')[0] : String(error)
-      console.warn(c.yellow(`eslint 格式化失败，已跳过剩余文件：${reason}`))
+      console.warn(c.yellow(`eslint 格式化失败：${reason}`))
       return
     }
   }

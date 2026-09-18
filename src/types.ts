@@ -57,8 +57,8 @@ export interface InitOptions {
   /** 接口名称是否强制拼接 method, 默认 false，当url内有多个method时才拼接 */
   apiNameForceAppendMethod?: boolean
   /**
-   * 生成后是否逐文件执行 eslint --fix 格式化，默认 true
-   * eslint 未安装或格式化报错时只提示，不会中断生成
+   * 生成后是否对生成的文件执行 eslint --fix 格式化，默认 true
+   * 全部写完后按批调用 eslint；eslint 未安装或格式化报错时只提示，不会中断生成
    */
   formatWithEslint?: boolean
   /** 生成文件首行的抬头文案，默认「由 @jawilx/gen-api 生成，请勿手动修改」；设为空字符串则不写抬头 */
