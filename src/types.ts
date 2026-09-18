@@ -40,6 +40,8 @@ export interface ApiBodyParams {
   formDataStr?: 'FormData' | ''
   /** 出参interface */
   outputInterface?: string
+  /** 文档声明了 200 响应体却解析不出模型，出参按 any 生成 */
+  outputInterfaceUnresolved?: boolean
   /** 由 parameters 处理得到的 */
   pstr1?: string
   pstr2?: string
@@ -66,6 +68,50 @@ export interface InitOptions {
 export interface ApiBlock {
   namespace: string
   apis: ApiBodyParams[]
+}
+
+/** 出参模型无法识别、按 any 生成的接口 */
+export interface DegradedOutput {
+  /** 接口名 */
+  name: string
+  url: string
+  method: string
+}
+
+/** 类型无法映射、按 any 生成的 DTO 属性 */
+export interface DegradedProperty {
+  /** 属性所属的 DTO */
+  interface: string
+  /** 属性名 */
+  name: string
+}
+
+export interface GeneratedController {
+  /** 控制器文件绝对路径 */
+  file: string
+  /** 文件内的接口名，与写入顺序一致（模板据此产出函数名） */
+  names: string[]
+}
+
+export interface GeneratedEntry {
+  /** 本条 apiList 的 swagger 地址 */
+  swaggerUrl: string
+  /** 控制器与 DTO 的输出目录，绝对路径 */
+  outputDir: string
+  /** 生成的控制器文件 */
+  controllers: GeneratedController[]
+  /** DTO 文件绝对路径 */
+  dtoFile: string
+  /** DTO 名称，与 dtoFile 中的定义一致 */
+  dtoNames: string[]
+  /** 出参退化为 any 的接口 */
+  degradedOutputs: DegradedOutput[]
+  /** 属性退化为 any 的 DTO 位置 */
+  degradedProperties: DegradedProperty[]
+}
+
+export interface GenResult {
+  entries: GeneratedEntry[]
 }
 
 export interface ApiInterface {
@@ -149,6 +195,8 @@ export interface SwaggerData {
           [code: string]: {
             description: string
             content: ApiContent
+            /** swagger2 形态的响应体声明；文档未经转换时只有 schema 而没有 content */
+            schema?: Schema
           }
         }
       }

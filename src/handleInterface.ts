@@ -2,7 +2,8 @@ import type { ApiInterface, SwaggerData } from './types'
 import { handleDescription, handleJsType, handleWeirdName } from './utils'
 
 /** Schema 的属性是映射结构，转换后的 DTO 属性按原顺序保存为列表。 */
-export interface GeneratedInterface extends Omit<ApiInterface, 'properties'> {
+export interface GeneratedInterface extends Omit<ApiInterface, 'properties' | 'name'> {
+  name: string
   properties: ApiInterface[]
 }
 

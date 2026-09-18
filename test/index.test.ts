@@ -183,6 +183,50 @@ describe('gen', () => {
     expect(importLine).toContain('DemoItem')
   })
 
+  it('返回值报告控制器、DTO 与接口名', async () => {
+    await writeSpec('spec.json', spec)
+
+    const { entries } = await gen(createConfig())
+
+    expect(entries).toHaveLength(1)
+    expect(entries[0]?.swaggerUrl).toBe('./test/.tmp-gen/spec.json')
+    expect(entries[0]?.outputDir).toBe(path.join(tmpDir, 'api'))
+    expect(entries[0]?.controllers).toEqual([
+      { file: path.join(tmpDir, 'api/demo.ts'), names: ['demoCreate', 'demoList', 'demoSearch'] },
+    ])
+    expect(entries[0]?.dtoFile).toBe(path.join(tmpDir, 'api/_interfaces.ts'))
+    expect([...(entries[0]?.dtoNames ?? [])].sort()).toEqual(['DemoItem', 'DemoResp'])
+    expect(entries[0]?.degradedOutputs).toEqual([])
+    expect(entries[0]?.degradedProperties).toEqual([])
+  })
+
+  it('类型退化为 any 的位置进入报告并给出警告', async () => {
+    await writeSpec('degraded.json', {
+      openapi: '3.0.0',
+      info: { title: 'tmp', version: '1.0.0' },
+      paths: {
+        // 声明了响应体却用的是 swagger2 形态，openapi3 下解析不出模型
+        '/demo/legacy': {
+          get: { responses: { 200: { description: 'OK', schema: { $ref: '#/components/schemas/DemoResp' } } } },
+        },
+      },
+      components: {
+        schemas: {
+          // payload 既没有 type 也没有 format，无法映射
+          DemoResp: { type: 'object', properties: { name: { type: 'string' }, payload: {} } },
+        },
+      },
+    })
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+    const config = createConfig({ apiList: [{ swaggerUrl: './test/.tmp-gen/degraded.json', outputDir: '/test/.tmp-gen/api-degraded', enable: true }] })
+
+    const { entries } = await gen(config)
+
+    expect(entries[0]?.degradedOutputs).toEqual([{ name: 'demoLegacy', url: '/demo/legacy', method: 'get' }])
+    expect(entries[0]?.degradedProperties).toEqual([{ interface: 'DemoResp', name: 'payload' }])
+    expect(warn).toHaveBeenCalledTimes(1)
+  })
+
   it('同一控制器内接口名重复时 reject，且不创建输出目录', async () => {
     await writeSpec('dup-names.json', {
       openapi: '3.0.0',

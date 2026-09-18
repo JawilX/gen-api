@@ -39,7 +39,8 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
         formDataParameters = getParameters(list)
       }
 
-      const resContent = item?.responses['200']?.content
+      const response = item?.responses['200']
+      const resContent = response?.content
       // 出参模型
       const resScheme = resContent?.['application/json']?.schema || resContent?.['*/*']?.schema
 
@@ -54,6 +55,8 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
       outputInterface = handleJsType(outputInterface) ? handleJsType(outputInterface) : outputInterface
       if (outputInterface === 'Void' || outputInterface === 'void')
         outputInterface = ''
+      // 声明了响应体却解析不出模型时，出参会静默变成 any，这里显式记下来交给报告
+      const outputInterfaceUnresolved = !!(response?.schema || resContent) && !outputInterface
 
       const apiModel: ApiBodyParams = {
         name,
@@ -66,6 +69,7 @@ export function handleApiModel(apiOptions: ApiOptions, paths: SwaggerData['paths
         requestFormData,
         formDataParameters,
         outputInterface,
+        outputInterfaceUnresolved,
       }
       const idx = apiList.findIndex(item => item.namespace === namespace)
       if (idx > -1)

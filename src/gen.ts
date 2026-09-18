@@ -1,5 +1,5 @@
 import type { GeneratedInterface } from './handleInterface'
-import type { ApiBlock, ApiBodyParams, ApiOptions, ApiParameter, InitOptions, SwaggerData } from './types'
+import type { ApiBlock, ApiBodyParams, ApiOptions, ApiParameter, GeneratedController, GeneratedEntry, GenResult, InitOptions, SwaggerData } from './types'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
@@ -14,7 +14,7 @@ import { commonUrl, handleDescription, handleJsType, mixedTypeCompare } from './
 
 const CWD = process.cwd()
 
-export async function gen(config: InitOptions) {
+export async function gen(config: InitOptions): Promise<GenResult> {
   if (!config)
     throw new Error('请先执行 gen-api init 初始化配置文件')
 
@@ -23,6 +23,7 @@ export async function gen(config: InitOptions) {
   if (!config.apiBody)
     throw new Error('配置文件里的 apiBody不能为空, 且必须是一个函数')
 
+  const entries: GeneratedEntry[] = []
   for (const item of apiList) {
     const swaggerUrl = item.swaggerUrl
     const absOutputDir = path.join(CWD, item.outputDir || '/src/api')
@@ -51,8 +52,9 @@ export async function gen(config: InitOptions) {
     }
 
     const normalized = await normalizeData(data, config, item.swaggerVersion)
-    await parseData(apiOptions, normalized, config)
+    entries.push(await parseData(apiOptions, normalized, config))
   }
+  return { entries }
 }
 
 async function normalizeData(data: any, initOptions: InitOptions, swaggerVersion?: 2 | 3) {
@@ -86,24 +88,46 @@ async function normalizeData(data: any, initOptions: InitOptions, swaggerVersion
   return data
 }
 
-async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions: InitOptions) {
+async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions: InitOptions): Promise<GeneratedEntry> {
   if (!data.paths || typeof data.paths !== 'object')
     throw new Error('swagger 文档缺少可用的 paths')
 
   const apiList = handleApiModel(apiOptions, data.paths)
   assertUniqueApiNames(apiList)
   const interfaces = handleInterface(data.components?.schemas)
-  const dtoNames = new Set(interfaces.flatMap(item => (item.name ? [item.name] : [])))
+  const dtoNames = interfaces.map(item => item.name)
+  // 类型无法识别时生成器会退回 any，这里把退化位置显式挑出来交给报告
+  const degradedOutputs = apiList.flatMap(block => block.apis
+    .filter(api => api.outputInterfaceUnresolved)
+    .map(api => ({ name: api.name, url: api.url, method: api.method })))
+  const degradedProperties = interfaces.flatMap(item => item.properties
+    .filter(property => property.type === 'any' && !property.isSimpleJsType)
+    .map(property => ({ interface: item.name, name: property.name ?? '' })))
   const count = apiList.reduce((pre, cur) => {
     return pre + cur.apis.length
   }, 0)
   console.log(c.green(`总共 ${count} 个接口生成中...`))
+  if (degradedOutputs.length || degradedProperties.length) {
+    console.warn(c.yellow(
+      `类型无法识别，已按 any 生成：${degradedOutputs.length} 个接口出参、${degradedProperties.length} 个 DTO 属性；明细见 gen() 返回值`,
+    ))
+  }
   // 目录在此一次性创建，写入阶段不再探测目录是否存在
   await fs.mkdir(apiOptions.absOutputDir || './', { recursive: true })
   // 全部文件写入完成后才返回，调用方据此判断生成是否结束
-  const apiFiles = await writeApiToFile(apiOptions, apiList, initOptions, dtoNames)
-  const interfaceFile = await writeInterfaceToFile(apiOptions, interfaces)
-  await formatFiles([...apiFiles, interfaceFile], initOptions)
+  const controllers = await writeApiToFile(apiOptions, apiList, initOptions, new Set(dtoNames))
+  const dtoFile = await writeInterfaceToFile(apiOptions, interfaces)
+  await formatFiles([...controllers.map(controller => controller.file), dtoFile], initOptions)
+
+  return {
+    swaggerUrl: apiOptions.swaggerUrl,
+    outputDir: apiOptions.absOutputDir || '',
+    controllers,
+    dtoFile,
+    dtoNames,
+    degradedOutputs,
+    degradedProperties,
+  }
 }
 
 /** 同一控制器文件内的接口名必须唯一，重名会产出无法编译的重复实现 */
@@ -204,13 +228,14 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initO
       targetFile: path.join(outputDir, `${namespace}.ts`),
       content: `${tplStr}\n${importStr}\n${apiStr}`,
       imports: fileUsedInterface,
+      names: itemApis.map(api => api.name),
     }
   })
 
   // 全部渲染完成后再校验，避免把悬空 import 写进目标目录
   assertDtoImports(controllers, dtoNames)
 
-  const writtenFiles: string[] = []
+  const writtenControllers: GeneratedController[] = []
   for (const controller of controllers) {
     try {
       await fs.writeFile(controller.targetFile, controller.content)
@@ -218,9 +243,9 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initO
     catch (error) {
       throw new Error(`写入 ${controller.namespace}.ts 失败`, { cause: error })
     }
-    writtenFiles.push(controller.targetFile)
+    writtenControllers.push({ file: controller.targetFile, names: controller.names })
   }
-  return writtenFiles
+  return writtenControllers
 }
 
 /** 控制器 import 的 DTO 名必须在本轮生成的 _interfaces.ts 中，否则会产出悬空 import */
