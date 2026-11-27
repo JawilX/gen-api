@@ -154,7 +154,10 @@ async function parseData(apiOptions: ApiOptions, data: SwaggerData, initOptions:
 
   const apiList = handleApiModel(apiOptions, data.paths)
   assertUniqueApiNames(apiList)
-  const interfaces = handleInterface(data.components?.schemas)
+  const interfaces = handleInterface(
+    data.components?.schemas,
+    apiOptions.only ? apiList.flatMap(block => block.apis.flatMap(getApiImports)) : undefined,
+  )
   const dtoNames = interfaces.map(item => item.name)
   const count = apiList.reduce((pre, cur) => {
     return pre + cur.apis.length
@@ -195,28 +198,30 @@ function assertUniqueApiNames(apiList: ApiBlock[]) {
   })
 }
 
+/** 控制器 import 与 DTO 裁剪共用入口，保证所选接口的命名类型都能生成。 */
+function getApiImports(api: ApiBodyParams) {
+  const refs = [...(api.requestBodyInline?.imports || [])]
+  if (api.outputInterface && !handleJsType(api.outputInterface))
+    refs.push(api.outputInterface)
+  if (api.requestBodyRef)
+    refs.push(api.requestBodyRef)
+  for (const parameter of [...(api.parameters || []), ...(api.formDataParameters || [])]) {
+    if (!parameter.isSimpleJsType && parameter.type)
+      refs.push(parameter.type)
+  }
+  return refs
+}
+
 async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initOptions: InitOptions, dtoNames: Set<string>) {
   const outputDir = apiOptions.absOutputDir || './'
   const controllers = apiList.map((item) => {
     const tplStr = `${initOptions.httpTpl || ''}`
     let apiStr = ''
     const namespace = item.namespace
-    let fileUsedInterface: string[] = [] // 当前文件用到的 interface
     const itemApis = item.apis.sort((a, b) => mixedTypeCompare(a.name, b.name))
     itemApis.forEach((api) => {
       const { name, url, method, summary, parameters, requestBodyRef, requestBodyInline, requestFormData, formDataParameters, outputInterface } = api
-      // 出参存在且不是简单类型
-      if (outputInterface && !handleJsType(outputInterface))
-        fileUsedInterface.push(outputInterface)
-
-      // 入参需要引入的interface
-      parameters?.forEach(item => !item.isSimpleJsType && item.type && fileUsedInterface.push(item.type))
-
       let { p1, p2 } = getParamStr(parameters)
-      // $ref 请求体引入命名类型，内联请求体已在解析阶段展开成 TS 类型
-      if (requestBodyRef)
-        fileUsedInterface.push(requestBodyRef)
-      requestBodyInline?.imports.forEach(item => fileUsedInterface.push(item))
       const requestBodyType = requestBodyRef || requestBodyInline?.type
       if (requestBodyType) {
         // 既有请求体，也有在 parameters 中，则需要处理；any 与对象交叉会退化成 any，直接用 any
@@ -259,7 +264,7 @@ async function writeApiToFile(apiOptions: ApiOptions, apiList: ApiBlock[], initO
 
     // interface 引入
     let importStr = ''
-    fileUsedInterface = [...new Set(fileUsedInterface)].sort((a, b) => mixedTypeCompare(a, b))
+    const fileUsedInterface = [...new Set(itemApis.flatMap(getApiImports))].sort((a, b) => mixedTypeCompare(a, b))
     if (fileUsedInterface.length) {
       importStr += `import type {`
       fileUsedInterface.forEach((item, index) => {

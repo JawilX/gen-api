@@ -203,6 +203,145 @@ describe('gen', () => {
     expect([...(entries[0]?.dtoNames ?? [])].sort()).toEqual(['DemoItem', 'DemoResp'])
   })
 
+  it('only 仅保留所选接口的递归依赖，支持数组、字典和循环引用', async () => {
+    await writeSpec('spec.json', {
+      ...spec,
+      paths: {
+        ...spec.paths,
+        '/extra/list': { get: { responses: refResponse('Unused') } },
+      },
+      components: {
+        schemas: {
+          ...schemas,
+          'DemoResp': {
+            ...schemas.DemoResp,
+            properties: {
+              ...schemas.DemoResp.properties,
+              lookup: { type: 'object', additionalProperties: { $ref: '#/components/schemas/Leaf-DTO', originalRef: 'Leaf-DTO' } },
+            },
+          },
+          'DemoItem': {
+            ...schemas.DemoItem,
+            properties: { ...schemas.DemoItem.properties, parent: { $ref: '#/components/schemas/DemoResp' } },
+          },
+          'Leaf-DTO': {
+            type: 'object',
+            properties: {
+              owner: { $ref: '#/components/schemas/DemoItem' },
+              self: { $ref: '#/components/schemas/Leaf-DTO' },
+            },
+          },
+          'Unused': { type: 'object', properties: { id: { type: 'string' } } },
+        },
+      },
+    })
+
+    const { entries } = await gen(createConfig({
+      apiList: [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir, enable: true, only: /^\/demo\/list$/ }],
+    }))
+
+    expect(entries[0]?.controllers).toEqual([{ file: path.join(tmpDir, 'api/demo.ts'), names: ['demoList'] }])
+    expect([...(entries[0]?.dtoNames ?? [])].sort()).toEqual(['DemoItem', 'DemoResp', 'LeafDTO'])
+    const dto = await fs.readFile(path.join(tmpDir, 'api/_interfaces.ts'), 'utf-8')
+    expect(dto).toContain('refMatrix?: DemoItem[][]')
+    expect(dto).toContain('lookup?: LeafDTO')
+    expect(dto).toContain('parent?: DemoResp')
+    expect(dto).toContain('self?: LeafDTO')
+    expect(dto).not.toContain('Unused')
+  })
+
+  it.each([
+    ['命名请求体', {
+      requestBody: { content: { 'application/json': { schema: { $ref: '#/components/schemas/DemoItem' } } } },
+    }],
+    ['命名参数', {
+      parameters: [{ name: 'item', in: 'query', schema: { $ref: '#/components/schemas/DemoItem', originalRef: 'DemoItem' } }],
+    }],
+    ['数组参数', {
+      parameters: [{ name: 'items', in: 'query', schema: { type: 'array', items: { $ref: '#/components/schemas/DemoItem', originalRef: 'DemoItem' } } }],
+    }],
+    ['内联对象请求体', {
+      requestBody: { content: { 'application/json': { schema: { type: 'object', properties: { item: { $ref: '#/components/schemas/DemoItem' } } } } } },
+    }],
+    ['内联数组请求体', {
+      requestBody: { content: { 'application/json': { schema: { type: 'array', items: { type: 'array', items: { $ref: '#/components/schemas/DemoItem' } } } } } },
+    }],
+    ['内联字典请求体', {
+      requestBody: { content: { 'application/json': { schema: { type: 'object', additionalProperties: { $ref: '#/components/schemas/DemoItem', originalRef: 'DemoItem' } } } } },
+    }],
+    ['表单参数', {
+      requestBody: { content: { 'multipart/form-data': { schema: { type: 'object', properties: { items: { type: 'array', items: { $ref: '#/components/schemas/DemoItem', originalRef: 'DemoItem' } } } } } } },
+    }],
+  ])('only 保留%s使用的类型，不保留反向依赖', async (_, operation) => {
+    await writeSpec('spec.json', {
+      ...spec,
+      paths: {
+        '/chosen/create': { post: { ...operation, responses: { 200: { content: { 'application/json': { schema: { type: 'string' } } } } } } },
+        '/extra/list': { get: { responses: refResponse('DemoResp') } },
+      },
+    })
+
+    const { entries } = await gen(createConfig({
+      apiList: [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir, enable: true, only: /^\/chosen\// }],
+    }))
+
+    expect(entries[0]?.dtoNames).toEqual(['DemoItem'])
+    const dto = await fs.readFile(path.join(tmpDir, 'api/_interfaces.ts'), 'utf-8')
+    expect(dto).toContain('export interface DemoItem')
+    expect(dto).not.toContain('DemoResp')
+    const controller = await fs.readFile(path.join(tmpDir, 'api/chosen.ts'), 'utf-8')
+    expect(controller.split('\n').find(line => line.includes('./_interfaces'))).toContain('DemoItem')
+  })
+
+  it('only 与 ignore 同时配置时，只保留最终所选接口的类型', async () => {
+    await writeSpec('spec.json', {
+      ...spec,
+      paths: {
+        '/demo/list': { get: { responses: refResponse('DemoResp') } },
+        '/demo/item': { get: { responses: refResponse('DemoItem') } },
+      },
+    })
+
+    const { entries } = await gen(createConfig({
+      apiList: [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir, enable: true, only: /^\/demo\//, ignore: /\/list$/ }],
+    }))
+
+    expect(entries[0]?.dtoNames).toEqual(['DemoItem'])
+    expect(entries[0]?.controllers[0]?.names).toEqual(['demoItem'])
+  })
+
+  it.each([
+    ['无匹配接口', /^\/missing\//],
+    ['接口仅用简单类型', /^\/simple\//],
+  ])('only %s时不生成 DTO', async (_, only) => {
+    await writeSpec('spec.json', {
+      ...spec,
+      paths: {
+        ...spec.paths,
+        '/simple/detail': { get: { responses: { 200: { content: { 'application/json': { schema: { type: 'string' } } } } } } },
+      },
+    })
+
+    const { entries } = await gen(createConfig({
+      apiList: [{ swaggerUrl: './test/.tmp-gen/spec.json', outputDir, enable: true, only }],
+    }))
+
+    expect(entries[0]?.dtoNames).toEqual([])
+    const dto = await fs.readFile(path.join(tmpDir, 'api/_interfaces.ts'), 'utf-8')
+    expect(dto).not.toContain('export interface')
+  })
+
+  it('未配置 only 时仍生成全部 DTO', async () => {
+    await writeSpec('spec.json', {
+      ...spec,
+      components: { schemas: { ...schemas, Unused: { type: 'object', properties: {} } } },
+    })
+
+    const { entries } = await gen(createConfig())
+
+    expect([...(entries[0]?.dtoNames ?? [])].sort()).toEqual(['DemoItem', 'DemoResp', 'Unused'])
+  })
+
   it('默认写入抬头，banner 可覆盖', async () => {
     await writeSpec('spec.json', spec)
 

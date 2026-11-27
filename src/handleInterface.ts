@@ -5,9 +5,10 @@ import { handleDescription, handleJsType, handleWeirdName } from './utils'
 export interface GeneratedInterface extends Omit<ApiInterface, 'properties' | 'name'> {
   name: string
   properties: ApiInterface[]
+  refs: string[]
 }
 
-export function handleInterface(schemas: SwaggerData['components']['schemas'] = {}): GeneratedInterface[] {
+export function handleInterface(schemas: SwaggerData['components']['schemas'] = {}, usedTypes?: Iterable<string>): GeneratedInterface[] {
   /**
    * [{
    *    name:"",   // 原始 key 处理后结果，如： ApiResponse
@@ -29,11 +30,22 @@ export function handleInterface(schemas: SwaggerData['components']['schemas'] = 
       return []
 
     const obj = schemas[key]
-    const properties = handleProperties(obj.properties || {})
+    const refs: string[] = []
+    const properties = handleProperties(obj.properties || {}, refs)
     const interfaceModal = handleInterfaceModal(obj)
-    defs.push({ name: interfaceName, ...interfaceModal, properties })
+    defs.push({ name: interfaceName, ...interfaceModal, properties, refs })
   })
-  return defs
+  if (!usedTypes)
+    return defs
+
+  const required = new Set(usedTypes)
+  const byName = new Map(defs.map(item => [item.name, item]))
+  // Set 迭代会访问新加入的依赖，同时去重终止自引用和循环引用。
+  for (const name of required) {
+    for (const ref of byName.get(name)?.refs || [])
+      required.add(ref)
+  }
+  return defs.filter(item => required.has(item.name))
 }
 
 /**
